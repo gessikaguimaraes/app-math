@@ -116,6 +116,12 @@
       "languageVersion": "2.6"
     },
     {
+      "name": "splashscreen",
+      "rootUri": "file:///G:/Programas%20Files/src/flutter/.pub-cache/hosted/pub.dartlang.org/splashscreen-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "stack_trace",
       "rootUri": "file:///G:/Programas%20Files/src/flutter/.pub-cache/hosted/pub.dartlang.org/stack_trace-1.9.3",
       "packageUri": "lib/",
@@ -170,7 +176,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-06-19T15:38:55.133366Z",
+  "generated": "2020-06-20T16:22:14.313591Z",
   "generator": "pub",
   "generatorVersion": "2.8.4"
 }

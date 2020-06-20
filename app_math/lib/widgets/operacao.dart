@@ -17,7 +17,7 @@ class Operacao extends StatelessWidget {
         child: Center(
           child: Column(
             children: <Widget>[
-
+              Image.asset('images/osso-soma.png'),
             ]
           )
         )

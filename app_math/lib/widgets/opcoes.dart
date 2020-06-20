@@ -8,17 +8,23 @@ class Opcoes extends StatelessWidget {
       appBar: AppBar(
         title: Text('Opções'),
       ),
-      body: Center(
+       backgroundColor: Colors.blueAccent,
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
         child: Center(
           child: Column(
+            //crossAxisAlignment: CrossAxisAlignment.stretch,
+            //mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('Escolha a opção:'),
-               _buildImageColumn(),
+              Text(
+                'Escolha a opção:',
+                style: TextStyle(height: 5, fontSize: 50),
+              ),
+              _buildImageColumn(),
               ButtonTheme(
                 height: 60.0,
                 child: RaisedButton(
-                  onPressed: () => { 
-                    print("pressionei o botão"), 
+                  onPressed: () => {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => Operacao()),
@@ -61,8 +67,8 @@ class Opcoes extends StatelessWidget {
         borderRadius: const BorderRadius.all(const Radius.circular(8)),
       ),
       margin: const EdgeInsets.all(4),
-      child: Image.asset('images/osso.png'),
-      //child: Image.asset('images/pic$imageIndex.jpg'),
+      //child: Image.asset('images/osso.png'),
+      child: Image.asset('images/osso$imageIndex.png'),
     ),
   );
 
