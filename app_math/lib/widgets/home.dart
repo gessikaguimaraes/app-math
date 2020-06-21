@@ -36,6 +36,24 @@ class _HomeState extends State<Home> {
                   alignLabelWithHint: true,
                 ),
               ),
+              ButtonTheme(
+                height: 60.0,
+                child: RaisedButton(
+                  onPressed: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Opcoes()),
+                    )
+                  },
+                  shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0)),
+                  child: Text(
+                    "Proximo",
+                    style: TextStyle(color: Colors.white, fontSize: 30),
+                  ),
+                  color: Colors.blue,
+                ),
+              ),
             ],
           );
         }),
@@ -86,3 +104,5 @@ class _HomeState extends State<Home> {
     );*/
   }
 }
+
+
