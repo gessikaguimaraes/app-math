@@ -1,7 +1,7 @@
+import 'package:app_math/app/modules/operacoes/operacao_page.dart';
 import 'package:flutter/material.dart';
-import 'package:app_math/widgets/operacao.dart';
 
-class Opcoes extends StatelessWidget {
+class OpcoesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +24,7 @@ class Opcoes extends StatelessWidget {
                     onPressed: () => {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Operacao()),
+                        MaterialPageRoute(builder: (context) => OperacaoPage()),
                       )
                     },
                     shape: new RoundedRectangleBorder(

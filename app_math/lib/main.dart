@@ -1,5 +1,5 @@
+import 'package:app_math/app/modules/home/homeScreen_page.dart';
 import 'package:flutter/material.dart';
-import 'package:app_math/widgets/homeScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(title: 'Splash Screen Flutter'),
+      home: HomeScreenPage(title: 'Splash Screen Flutter'),
     );
   }
 }

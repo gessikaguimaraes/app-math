@@ -1,12 +1,12 @@
+import 'package:app_math/app/modules/opcoes/opcoes_page.dart';
 import 'package:flutter/material.dart';
-import 'package:app_math/widgets/opcoes.dart';
 
-class Home extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomeState extends State<Home> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
                   onPressed: () => {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Opcoes()),
+                      MaterialPageRoute(builder: (context) => OpcoesPage()),
                     )
                   },
                   shape: new RoundedRectangleBorder(
@@ -61,7 +61,7 @@ class _HomeState extends State<Home> {
     );
     /*return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text('HomePage'),
       ),
       backgroundColor: Colors.pinkAccent,
       body: Padding(

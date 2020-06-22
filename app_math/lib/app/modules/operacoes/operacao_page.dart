@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class Operacao extends StatelessWidget {
+class OperacaoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +91,7 @@ Widget _botoesGesture(BuildContext context) => GestureDetector(
         print("Numero");
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Operacao()),
+          MaterialPageRoute(builder: (context) => OperacaoPage()),
         );
       },
       child: _botoesNumeros(),
