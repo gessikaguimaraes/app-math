@@ -1,7 +1,12 @@
 import 'package:app_math/app/modules/operacoes/operacao_page.dart';
 import 'package:flutter/material.dart';
 
-class OpcoesPage extends StatelessWidget {
+class OpcoesPage extends StatefulWidget {
+  @override
+  _OpcoesPageState createState() => _OpcoesPageState();
+}
+
+class _OpcoesPageState extends State<OpcoesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
