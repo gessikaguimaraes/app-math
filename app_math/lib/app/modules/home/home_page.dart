@@ -1,4 +1,5 @@
 import 'package:app_math/app/shared/components/button_floating.dart';
+import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -26,7 +27,7 @@ class _HomePageState extends State<HomePage> {
         height: size.height,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("images/osso.png"),
+            image: AssetImage(ImagesConst.ossoBranco),
             fit: BoxFit.none,
           ),
           color: Colors.red,

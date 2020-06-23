@@ -1,4 +1,5 @@
 import 'package:app_math/app/modules/home/home_page.dart';
+import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
@@ -33,7 +34,7 @@ Widget _introScreen() {
       Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("images/osso.png"),
+            image: AssetImage(ImagesConst.ossoBranco),
             fit: BoxFit.none,
           ),
         ),
