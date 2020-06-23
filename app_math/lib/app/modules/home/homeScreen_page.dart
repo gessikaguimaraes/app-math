@@ -25,10 +25,7 @@ Widget _introScreen() {
         gradientBackground: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [
-            Color(0xffED213A),
-            Color(0xff93291E)
-          ],
+          colors: [Color(0xffED213A), Color(0xff93291E)],
         ),
         navigateAfterSeconds: HomePage(),
         loaderColor: Colors.transparent,

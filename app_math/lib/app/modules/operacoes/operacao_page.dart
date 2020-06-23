@@ -2,9 +2,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class OperacaoPage extends StatefulWidget {
-  OperacaoPage({Key key, this.opcoes}) : super(key: key);
-  final List<String> opcoes;
-
   @override
   _OperacaoPageState createState() => _OperacaoPageState();
 }
@@ -13,27 +10,32 @@ class _OperacaoPageState extends State<OperacaoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("images/casa.png"),
-                  fit: BoxFit.fill,
-                ),
-                gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [
-                    Color.fromARGB(255, 15, 172, 240),
-                    Color.fromARGB(255, 15, 240, 132)
-                  ],
-                )),
-            child: Center(
-                child: Column(children: <Widget>[
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/casa.png"),
+            fit: BoxFit.fill,
+          ),
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Color.fromARGB(255, 15, 172, 240),
+              Color.fromARGB(255, 15, 240, 132),
+            ],
+          ),
+        ),
+        child: Center(
+          child: Column(
+            children: <Widget>[
               Image.asset('images/osso1.png'),
               Conta(),
               BotaoNumero()
-            ])))
-        /*body: Center(
+            ],
+          ),
+        ),
+      ),
+      /*body: Center(
         child: RaisedButton(
           onPressed: () { 
             Navigator.pop(context);
@@ -41,7 +43,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
           child: Text('Retornar !'),
         ),
       ),*/
-        );
+    );
   }
 }
 
@@ -57,10 +59,13 @@ class Conta extends StatelessWidget {
       //height: 30.0,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-          color: Color.fromARGB(255, 240, 15, 56),
-          borderRadius: BorderRadius.all(Radius.circular(7.0))),
-      child: Text('$numero1 + $numero2 = ',
-          style: TextStyle(color: Colors.white, fontSize: 50)),
+        color: Color.fromARGB(255, 240, 15, 56),
+        borderRadius: BorderRadius.all(Radius.circular(7.0)),
+      ),
+      child: Text(
+        '$numero1 + $numero2 = ',
+        style: TextStyle(color: Colors.white, fontSize: 50),
+      ),
     );
   }
 }
@@ -76,14 +81,19 @@ Widget _botoesNumeros() => Container(
 
 Widget _botoesDecorated(int numeroIndex, int numero) => Expanded(
       child: Container(
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: Colors.blue,
-            borderRadius: const BorderRadius.all(const Radius.circular(8)),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: Colors.blue,
+          borderRadius: const BorderRadius.all(
+            const Radius.circular(8),
           ),
-          margin: const EdgeInsets.all(6),
-          child: Text("$numero",
-              style: TextStyle(color: Colors.white, fontSize: 50))),
+        ),
+        margin: const EdgeInsets.all(6),
+        child: Text(
+          "$numero",
+          style: TextStyle(color: Colors.white, fontSize: 50),
+        ),
+      ),
     );
 
 Widget _botoesRow(int numeroIndex) => Row(

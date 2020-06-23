@@ -1,4 +1,5 @@
 import 'package:app_math/app/modules/operacoes/operacao_page.dart';
+import 'package:app_math/app/shared/components/button_floating.dart';
 import 'package:flutter/material.dart';
 
 class OpcoesPage extends StatefulWidget {
@@ -12,36 +13,21 @@ class _OpcoesPageState extends State<OpcoesPage> {
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       body: Container(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-              //crossAxisAlignment: CrossAxisAlignment.center,
-              //mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'Escolha a opção:',
-                  style: TextStyle(height: 5, fontSize: 50),
-                ),
-                //_buildImageColumn(),
-                BotaoOpcao(),
-                ButtonTheme(
-                  height: 60.0,
-                  child: RaisedButton(
-                    onPressed: () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => OperacaoPage()),
-                      )
-                    },
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0)),
-                    child: Text(
-                      "Proximo",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
-                    ),
-                    color: Colors.red,
-                  ),
-                ),
-              ])),
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Escolha a opção:',
+              style: TextStyle(height: 5, fontSize: 50),
+            ),
+            //_buildImageColumn(),
+            BotaoOpcao(),
+          ],
+        ),
+      ),
+      floatingActionButton: ButtonFloating(),
     );
   }
 }
@@ -74,11 +60,15 @@ Widget _buildImageRow(int imageIndex) => Row(
     );
 
 Widget aoSelecionar() => Container(
-        child: Container(
-            decoration: BoxDecoration(
-      border: Border.all(width: 10, color: Colors.black38),
-      borderRadius: const BorderRadius.all(const Radius.circular(8)),
-    )));
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(width: 10, color: Colors.black38),
+          borderRadius: const BorderRadius.all(
+            const Radius.circular(8),
+          ),
+        ),
+      ),
+    );
 
 Widget _botoesGesture(BuildContext context) => GestureDetector(
       onTap: () {
