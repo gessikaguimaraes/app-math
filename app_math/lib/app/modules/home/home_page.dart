@@ -1,5 +1,6 @@
 import 'package:app_math/app/shared/components/button_floating.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
+import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -9,13 +10,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final myController = TextEditingController();
+  final TextEditingController _controladorNome = TextEditingController();
+  /*  final myController = TextEditingController();
 
   @override
   void dispose() {
     myController.dispose();
     super.dispose();
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 margin: const EdgeInsets.only(right: 25, left: 10),
                 child: TextFormField(
-                  controller: myController,
+                  controller: _controladorNome,
                   maxLength: 20,
                   keyboardType: TextInputType.text,
                   style: TextStyle(
@@ -67,7 +69,9 @@ class _HomePageState extends State<HomePage> {
           );
         }),
       ),
-      floatingActionButton: ButtonFloating(route: "/opcoes"),
+      floatingActionButton: ButtonFloating(
+          route: "/opcoes",
+          parametros: Parametros(_controladorNome.text, null, 0, 0)),
     );
   }
 }
