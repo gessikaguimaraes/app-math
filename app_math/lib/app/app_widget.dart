@@ -1,6 +1,7 @@
 import 'package:app_math/app/modules/home/homeScreen_page.dart';
 import 'package:app_math/app/modules/home/home_page.dart';
 import 'package:app_math/app/modules/opcoes/opcoes_page.dart';
+import 'package:app_math/app/modules/operacoes/operacao_page.dart';
 import 'package:flutter/material.dart';
 
 class AppWidget extends StatelessWidget {
@@ -17,6 +18,7 @@ class AppWidget extends StatelessWidget {
         "/": (_) => HomeScreenPage(),
         "/home": (_) => HomePage(),
         "/opcoes": (_) => OpcoesPage(),
+        "/operacao": (_) => OperacaoPage(),
       },
     );
   }

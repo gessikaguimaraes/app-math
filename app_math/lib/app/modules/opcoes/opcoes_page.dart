@@ -1,4 +1,3 @@
-import 'package:app_math/app/modules/operacoes/operacao_page.dart';
 import 'package:app_math/app/shared/components/button_floating.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +26,7 @@ class _OpcoesPageState extends State<OpcoesPage> {
           ],
         ),
       ),
-      floatingActionButton: ButtonFloating(),
+      floatingActionButton: ButtonFloating(route: "/operacao"),
     );
   }
 }

@@ -1,5 +1,3 @@
-import 'package:app_math/app/modules/opcoes/opcoes_page.dart';
-import 'package:app_math/app/modules/operacoes/operacao_page.dart';
 import 'package:flutter/material.dart';
 
 class ButtonFloating extends StatefulWidget {
@@ -16,7 +14,7 @@ class _ButtonFloatingState extends State<ButtonFloating> {
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
       onPressed: () => {
-        Navigator.pushNamed(context, '/opcoes'),
+        Navigator.pushNamed(context, widget.route),
         /*  Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => OperacaoPage()),

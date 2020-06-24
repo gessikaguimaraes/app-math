@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
           );
         }),
       ),
-      floatingActionButton: ButtonFloating(),
+      floatingActionButton: ButtonFloating(route: "/opcoes"),
     );
   }
 }
