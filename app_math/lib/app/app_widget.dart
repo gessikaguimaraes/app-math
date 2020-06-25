@@ -1,8 +1,5 @@
-import 'package:app_math/app/modules/home/homeScreen_page.dart';
-import 'package:app_math/app/modules/home/home_page.dart';
-import 'package:app_math/app/modules/opcoes/opcoes_page.dart';
-import 'package:app_math/app/modules/operacoes/operacao_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class AppWidget extends StatelessWidget {
   @override
@@ -10,16 +7,18 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       title: 'Math',
       debugShowCheckedModeBanner: false,
+      navigatorKey: Modular.navigatorKey,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       initialRoute: "/",
-      routes: {
+      /* routes: {
         "/": (_) => HomeScreenPage(),
         "/home": (_) => HomePage(),
         "/opcoes": (_) => OpcoesPage(),
         "/operacao": (_) => OperacaoPage(),
-      },
+      }, */
+      onGenerateRoute: Modular.generateRoute,
     );
   }
 }

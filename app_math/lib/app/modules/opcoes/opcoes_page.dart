@@ -5,11 +5,6 @@ import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
 
 class OpcoesPage extends StatefulWidget {
-  OpcoesPage({Key key, @required this.route, @required this.parametros})
-      : super(key: key);
-  final String route;
-  final Parametros parametros;
-
   @override
   _OpcoesPageState createState() => _OpcoesPageState();
 }
@@ -17,6 +12,8 @@ class OpcoesPage extends StatefulWidget {
 class _OpcoesPageState extends State<OpcoesPage> {
   @override
   Widget build(BuildContext context) {
+    final Parametros args = ModalRoute.of(context).settings.arguments;
+    //print(args.nome);
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       body: Container(

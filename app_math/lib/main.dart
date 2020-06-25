@@ -1,4 +1,9 @@
-import 'package:app_math/app/app_widget.dart';
+import 'package:app_math/app/app_module.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-void main() => runApp(AppWidget());
+void main() => runApp(
+      ModularApp(
+        module: AppModule(),
+      ),
+    );
