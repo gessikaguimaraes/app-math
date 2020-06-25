@@ -13,7 +13,6 @@ class _OpcoesPageState extends State<OpcoesPage> {
   @override
   Widget build(BuildContext context) {
     final Parametros args = ModalRoute.of(context).settings.arguments;
-    double borda = 0;
     print(args);
     return Scaffold(
       backgroundColor: Colors.blueAccent,
@@ -32,10 +31,9 @@ class _OpcoesPageState extends State<OpcoesPage> {
               onTap: () {
                 setState(() {
                   //aoSelecionar();
-                  borda = 10;
                 });
               },
-              child: _buildImageColumn(borda),
+              child: _buildImageColumn(),
             ),
             //BotaoOpcao(),
           ],
@@ -54,30 +52,30 @@ class _OpcoesPageState extends State<OpcoesPage> {
   }
 }
 
-Widget _buildImageColumn(double borda) => Container(
+Widget _buildImageColumn() => Container(
       child: Column(
         children: [
-          _buildImageRow(1, borda),
-          _buildImageRow(3, borda),
+          _buildImageRow(1),
+          _buildImageRow(3),
         ],
       ),
     );
 
-Widget _buildDecoratedImage(int imageIndex, double borda) => Expanded(
+Widget _buildDecoratedImage(int imageIndex) => Expanded(
       child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(width: borda, color: Colors.black38),
+        /* decoration: BoxDecoration(
+          border: Border.all(width: 10, color: Colors.black38),
           borderRadius: const BorderRadius.all(const Radius.circular(8)),
-        ),
+        ), */
         margin: const EdgeInsets.all(4),
         child: Image.asset('images/osso$imageIndex.png'),
       ),
     );
 
-Widget _buildImageRow(int imageIndex, double borda) => Row(
+Widget _buildImageRow(int imageIndex) => Row(
       children: [
-        _buildDecoratedImage(imageIndex, borda),
-        _buildDecoratedImage(imageIndex + 1, borda),
+        _buildDecoratedImage(imageIndex),
+        _buildDecoratedImage(imageIndex + 1),
       ],
     );
 
