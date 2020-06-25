@@ -11,13 +11,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TextEditingController _controladorNome = TextEditingController();
-  /*  final myController = TextEditingController();
-
-  @override
-  void dispose() {
-    myController.dispose();
-    super.dispose();
-  } */
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +44,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 margin: const EdgeInsets.only(right: 25, left: 10),
                 child: TextFormField(
+                  autofocus: false,
                   controller: _controladorNome,
                   maxLength: 20,
                   keyboardType: TextInputType.text,
@@ -70,8 +64,14 @@ class _HomePageState extends State<HomePage> {
         }),
       ),
       floatingActionButton: ButtonFloating(
-          route: "/opcoes",
-          parametros: Parametros(_controladorNome.text, null, 0, 0)),
+        route: "/opcoes",
+        parametros: Parametros(
+          nome: _controladorNome.text,
+          opcoes: null,
+          quantidade: 0,
+          resultado: 0,
+        ),
+      ),
     );
   }
 }

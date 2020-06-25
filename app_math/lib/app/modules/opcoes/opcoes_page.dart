@@ -13,7 +13,8 @@ class _OpcoesPageState extends State<OpcoesPage> {
   @override
   Widget build(BuildContext context) {
     final Parametros args = ModalRoute.of(context).settings.arguments;
-    //print(args.nome);
+    double borda = 0;
+    print(args);
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       body: Container(
@@ -27,42 +28,56 @@ class _OpcoesPageState extends State<OpcoesPage> {
               style: TextStyle(height: 5, fontSize: 50),
             ),
             //_buildImageColumn(),
-            BotaoOpcao(),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  //aoSelecionar();
+                  borda = 10;
+                });
+              },
+              child: _buildImageColumn(borda),
+            ),
+            //BotaoOpcao(),
           ],
         ),
       ),
       floatingActionButton: ButtonFloating(
         route: "/operacao",
-        parametros: Parametros("", null, 0, 0),
+        parametros: Parametros(
+          nome: args.nome,
+          opcoes: null,
+          quantidade: 0,
+          resultado: 0,
+        ),
       ),
     );
   }
 }
 
-Widget _buildImageColumn() => Container(
+Widget _buildImageColumn(double borda) => Container(
       child: Column(
         children: [
-          _buildImageRow(1),
-          _buildImageRow(3),
+          _buildImageRow(1, borda),
+          _buildImageRow(3, borda),
         ],
       ),
     );
 
-Widget _buildDecoratedImage(int imageIndex) => Expanded(
+Widget _buildDecoratedImage(int imageIndex, double borda) => Expanded(
       child: Container(
-        /*decoration: BoxDecoration(
-        border: Border.all(width: 10, color: Colors.black38),
-        borderRadius: const BorderRadius.all(const Radius.circular(8)),
-      ),*/
+        decoration: BoxDecoration(
+          border: Border.all(width: borda, color: Colors.black38),
+          borderRadius: const BorderRadius.all(const Radius.circular(8)),
+        ),
         margin: const EdgeInsets.all(4),
         child: Image.asset('images/osso$imageIndex.png'),
       ),
     );
 
-Widget _buildImageRow(int imageIndex) => Row(
+Widget _buildImageRow(int imageIndex, double borda) => Row(
       children: [
-        _buildDecoratedImage(imageIndex),
-        _buildDecoratedImage(imageIndex + 1),
+        _buildDecoratedImage(imageIndex, borda),
+        _buildDecoratedImage(imageIndex + 1, borda),
       ],
     );
 
@@ -81,9 +96,10 @@ void aoSelecionar() {
   // Para usar Random() tem que importar 'dart:math'
   int randomHexColor = Random().nextInt(0xFFFFFF);
   int opaqueColor = 0xFF000000 + randomHexColor;
+  print(randomHexColor);
 }
 
-Widget _botoesGesture(BuildContext context) => GestureDetector(
+/* Widget _botoesGesture(BuildContext context) => GestureDetector(
       onTap: () {
         aoSelecionar();
         print(context);
@@ -103,3 +119,4 @@ class BotaoOpcao extends StatelessWidget {
     );
   }
 }
+ */

@@ -12,12 +12,6 @@ class AppWidget extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: "/",
-      /* routes: {
-        "/": (_) => HomeScreenPage(),
-        "/home": (_) => HomePage(),
-        "/opcoes": (_) => OpcoesPage(),
-        "/operacao": (_) => OperacaoPage(),
-      }, */
       onGenerateRoute: Modular.generateRoute,
     );
   }

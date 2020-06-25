@@ -15,8 +15,16 @@ class _ButtonFloatingState extends State<ButtonFloating> {
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
       onPressed: () => {
-        print("Nome: " + widget.parametros.nome),
-        Navigator.pushNamed(context, widget.route),
+        print(widget.parametros.nome),
+        Navigator.pushNamed(
+          context,
+          widget.route,
+          arguments: Parametros(
+              nome: widget.parametros.nome,
+              opcoes: widget.parametros.opcoes,
+              resultado: widget.parametros.resultado,
+              quantidade: widget.parametros.quantidade),
+        ),
         /*  Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => OperacaoPage()),
