@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:app_math/app/shared/components/button_floating.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +8,13 @@ class OpcoesPage extends StatefulWidget {
 }
 
 class _OpcoesPageState extends State<OpcoesPage> {
+  bool selectedSoma = false;
+  bool selectedSubstracao = false;
+  bool selectedMultiplicacao = false;
+  bool selectedDivisao = false;
+
+  List<String> listaOpcoes;
+
   @override
   Widget build(BuildContext context) {
     final Parametros args = ModalRoute.of(context).settings.arguments;
@@ -26,16 +31,105 @@ class _OpcoesPageState extends State<OpcoesPage> {
               'Escolha a opção :',
               style: TextStyle(height: 5, fontSize: 50),
             ),
-            //_buildImageColumn(),
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  //aoSelecionar();
-                });
-              },
-              child: _buildImageColumn(),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedSoma = !selectedSoma;
+                              });
+                              print(context.widget);
+                            },
+                            child: Center(
+                              child: AnimatedContainer(
+                                color: selectedSoma ? Colors.red : Colors.blue,
+                                duration: Duration(seconds: 2),
+                                curve: Curves.fastOutSlowIn,
+                                child: Image.asset('images/osso1.png'),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedSubstracao = !selectedSubstracao;
+                              });
+                              print(context);
+                            },
+                            child: Center(
+                              child: AnimatedContainer(
+                                color: selectedSubstracao
+                                    ? Colors.green
+                                    : Colors.blue,
+                                duration: Duration(seconds: 2),
+                                curve: Curves.fastOutSlowIn,
+                                child: Image.asset('images/osso2.png'),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedMultiplicacao = !selectedMultiplicacao;
+                              });
+                              print(context);
+                            },
+                            child: Center(
+                              child: AnimatedContainer(
+                                color: selectedMultiplicacao
+                                    ? Colors.yellow
+                                    : Colors.blue,
+                                duration: Duration(seconds: 2),
+                                curve: Curves.fastOutSlowIn,
+                                child: Image.asset('images/osso3.png'),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedDivisao = !selectedDivisao;
+                              });
+                              print(context);
+                            },
+                            child: Center(
+                              child: AnimatedContainer(
+                                color:
+                                    selectedDivisao ? Colors.pink : Colors.blue,
+                                duration: Duration(seconds: 2),
+                                curve: Curves.fastOutSlowIn,
+                                child: Image.asset('images/osso4.png'),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            //BotaoOpcao(),
           ],
         ),
       ),
@@ -43,7 +137,7 @@ class _OpcoesPageState extends State<OpcoesPage> {
         route: "/operacao",
         parametros: Parametros(
           nome: args.nome,
-          opcoes: null,
+          opcoes: args.opcoes,
           quantidade: 0,
           resultado: 0,
         ),
@@ -79,42 +173,113 @@ Widget _buildImageRow(int imageIndex) => Row(
       ],
     );
 
-/* Widget aoSelecionar() => Container(
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(width: 10, color: Colors.black38),
-          borderRadius: const BorderRadius.all(
-            const Radius.circular(8),
-          ),
-        ),
-      ),
-    );
- */
-void aoSelecionar() {
-  // Para usar Random() tem que importar 'dart:math'
-  int randomHexColor = Random().nextInt(0xFFFFFF);
-  int opaqueColor = 0xFF000000 + randomHexColor;
-  print(randomHexColor);
+/* class BotaoOpcao extends StatefulWidget {
+  @override
+  _BotaoOpcaoState createState() => _BotaoOpcaoState();
 }
 
-/* Widget _botoesGesture(BuildContext context) => GestureDetector(
-      onTap: () {
-        aoSelecionar();
-        print(context);
-      },
-      child: _buildImageColumn(),
-    );
+class _BotaoOpcaoState extends State<BotaoOpcao> {
+  bool selectedSoma = false;
+  bool selectedSubstracao = false;
+  bool selectedMultiplicacao = false;
+  bool selectedDivisao = false;
 
-class BotaoOpcao extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: <Widget>[
-          _botoesGesture(context),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedSoma = !selectedSoma;
+                      });
+                      print(context.widget);
+                    },
+                    child: Center(
+                      child: AnimatedContainer(
+                        color: selectedSoma ? Colors.red : Colors.blue,
+                        duration: Duration(seconds: 2),
+                        curve: Curves.fastOutSlowIn,
+                        child: Image.asset('images/osso1.png'),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedSubstracao = !selectedSubstracao;
+                      });
+                      print(context);
+                    },
+                    child: Center(
+                      child: AnimatedContainer(
+                        color: selectedSubstracao ? Colors.green : Colors.blue,
+                        duration: Duration(seconds: 2),
+                        curve: Curves.fastOutSlowIn,
+                        child: Image.asset('images/osso2.png'),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedMultiplicacao = !selectedMultiplicacao;
+                      });
+                      print(context);
+                    },
+                    child: Center(
+                      child: AnimatedContainer(
+                        color:
+                            selectedMultiplicacao ? Colors.yellow : Colors.blue,
+                        duration: Duration(seconds: 2),
+                        curve: Curves.fastOutSlowIn,
+                        child: Image.asset('images/osso3.png'),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedDivisao = !selectedDivisao;
+                      });
+                      print(context);
+                    },
+                    child: Center(
+                      child: AnimatedContainer(
+                        color: selectedDivisao ? Colors.pink : Colors.blue,
+                        duration: Duration(seconds: 2),
+                        curve: Curves.fastOutSlowIn,
+                        child: Image.asset('images/osso4.png'),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
-}
- */
+} */
