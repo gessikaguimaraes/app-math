@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
         route: "/opcoes",
         parametros: Parametros(
           nome: _controladorNome.text,
-          opcoes: null,
+          opcoes: [],
           quantidade: 0,
           resultado: 0,
         ),

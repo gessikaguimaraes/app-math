@@ -21,9 +21,11 @@ class _OperacaoPageState extends State<OperacaoPage> {
   @override
   Widget build(BuildContext context) {
     final Parametros args = ModalRoute.of(context).settings.arguments;
-    print(args);
+    print(args.opcoes);
 
-    int resultadoOperacao = numero1 + numero2;
+    String operacao = getOperacao(numero1, numero2, "Substracao");
+
+    int resultadoOperacao = getResutado(numero1, numero2, "Substracao");
 
     return Scaffold(
       body: Container(
@@ -55,7 +57,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                   borderRadius: BorderRadius.all(Radius.circular(7.0)),
                 ),
                 child: Text(
-                  '$numero1 + $numero2 = ',
+                  '$numero1 $operacao $numero2 = ',
                   style: TextStyle(color: Colors.white, fontSize: 50),
                 ),
               ),
@@ -266,3 +268,75 @@ class _OperacaoPageState extends State<OperacaoPage> {
     );
   }
 }
+
+getOperacao(int numero1, int numero2, String tipoOperacao) {
+  switch (tipoOperacao) {
+    case "Soma":
+      return " + ";
+    case "Divisao":
+      return " / ";
+    case "Multiplicacao":
+      return " * ";
+    case "Substracao":
+      return " - ";
+    default:
+      return ' + ';
+  }
+}
+
+getResutado(int numero1, int numero2, String tipoOperacao) {
+  switch (tipoOperacao) {
+    case "Soma":
+      return numero1 + numero2;
+    case "Divisao":
+      var respostaCerta;
+      if (numero2 == 0 && numero1 != 0) {
+        respostaCerta = (numero2 / numero1) as int;
+      } else {
+        respostaCerta = (numero1 / numero2) as int;
+      }
+      return respostaCerta;
+    case "Multiplicacao":
+      return numero1 * numero2;
+    case "Substracao":
+      var respostaCerta;
+      if (numero1 > numero2) {
+        respostaCerta = numero1 - numero2;
+      } else {
+        respostaCerta = numero2 - numero1;
+      }
+      return respostaCerta;
+    default:
+      return numero1 + numero2;
+  }
+}
+/* getOperacao(numero1: number, numero2: number): string {
+    switch (this.tipoOperacao) {
+      case TipoOperacaoEnum.ADICAO:
+        this.respostaCerta = numero1 + numero2;
+        return ' + ';
+      case TipoOperacaoEnum.DIVISAO:
+        let resultado = 0;
+        if (numero2 == 0 && numero1 != 0){
+          resultado = numero2 / numero1;
+        } else {
+          resultado = numero1 / numero2;
+        }
+        this.respostaCerta = parseFloat(resultado.toFixed(2));
+        return ' / ';
+      case TipoOperacaoEnum.MULTIPLICACAO:
+        this.respostaCerta = numero1 * numero2;
+        return ' * ';
+      case TipoOperacaoEnum.SUBTRACAO:
+        if (numero1 > numero2) {
+          this.respostaCerta = numero1 - numero2;
+        } else {
+          this.respostaCerta = numero2 - numero1;
+        }
+        return ' - ';
+      default:
+        TipoOperacaoEnum.ADICAO;
+        return ' + ';
+    }
+
+  } */

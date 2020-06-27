@@ -13,7 +13,7 @@ class _OpcoesPageState extends State<OpcoesPage> {
   bool selectedMultiplicacao = false;
   bool selectedDivisao = false;
 
-  List<String> listaOpcoes;
+  List<String> listaOpcoes = [];
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,12 @@ class _OpcoesPageState extends State<OpcoesPage> {
                               setState(() {
                                 selectedSoma = !selectedSoma;
                               });
-                              print(context.widget);
+                              if (selectedSoma &&
+                                  !listaOpcoes.contains("Soma")) {
+                                listaOpcoes.add("Soma");
+                              } else {
+                                listaOpcoes.remove("Soma");
+                              }
                             },
                             child: Center(
                               child: AnimatedContainer(
@@ -63,7 +68,12 @@ class _OpcoesPageState extends State<OpcoesPage> {
                               setState(() {
                                 selectedSubstracao = !selectedSubstracao;
                               });
-                              print(context);
+                              if (selectedSubstracao &&
+                                  !listaOpcoes.contains("Substracao")) {
+                                listaOpcoes.add("Substracao");
+                              } else {
+                                listaOpcoes.remove("Substracao");
+                              }
                             },
                             child: Center(
                               child: AnimatedContainer(
@@ -89,7 +99,12 @@ class _OpcoesPageState extends State<OpcoesPage> {
                               setState(() {
                                 selectedMultiplicacao = !selectedMultiplicacao;
                               });
-                              print(context);
+                              if (selectedMultiplicacao &&
+                                  !listaOpcoes.contains("Multiplicacao")) {
+                                listaOpcoes.add("Multiplicacao");
+                              } else {
+                                listaOpcoes.remove("Multiplicacao");
+                              }
                             },
                             child: Center(
                               child: AnimatedContainer(
@@ -111,7 +126,12 @@ class _OpcoesPageState extends State<OpcoesPage> {
                               setState(() {
                                 selectedDivisao = !selectedDivisao;
                               });
-                              print(context);
+                              if (selectedDivisao &&
+                                  !listaOpcoes.contains("Divisao")) {
+                                listaOpcoes.add("Divisao");
+                              } else {
+                                listaOpcoes.remove("Divisao");
+                              }
                             },
                             child: Center(
                               child: AnimatedContainer(
@@ -137,7 +157,7 @@ class _OpcoesPageState extends State<OpcoesPage> {
         route: "/operacao",
         parametros: Parametros(
           nome: args.nome,
-          opcoes: args.opcoes,
+          opcoes: listaOpcoes,
           quantidade: 0,
           resultado: 0,
         ),
