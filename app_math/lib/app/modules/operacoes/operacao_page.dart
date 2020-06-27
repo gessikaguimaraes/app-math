@@ -310,33 +310,3 @@ getResutado(int numero1, int numero2, String tipoOperacao) {
       return numero1 + numero2;
   }
 }
-/* getOperacao(numero1: number, numero2: number): string {
-    switch (this.tipoOperacao) {
-      case TipoOperacaoEnum.ADICAO:
-        this.respostaCerta = numero1 + numero2;
-        return ' + ';
-      case TipoOperacaoEnum.DIVISAO:
-        let resultado = 0;
-        if (numero2 == 0 && numero1 != 0){
-          resultado = numero2 / numero1;
-        } else {
-          resultado = numero1 / numero2;
-        }
-        this.respostaCerta = parseFloat(resultado.toFixed(2));
-        return ' / ';
-      case TipoOperacaoEnum.MULTIPLICACAO:
-        this.respostaCerta = numero1 * numero2;
-        return ' * ';
-      case TipoOperacaoEnum.SUBTRACAO:
-        if (numero1 > numero2) {
-          this.respostaCerta = numero1 - numero2;
-        } else {
-          this.respostaCerta = numero2 - numero1;
-        }
-        return ' - ';
-      default:
-        TipoOperacaoEnum.ADICAO;
-        return ' + ';
-    }
-
-  } */

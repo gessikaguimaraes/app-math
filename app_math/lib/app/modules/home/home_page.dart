@@ -1,4 +1,5 @@
 import 'package:app_math/app/shared/components/button_floating.dart';
+import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,9 @@ class _HomePageState extends State<HomePage> {
             image: AssetImage(ImagesConst.ossoBranco),
             fit: BoxFit.none,
           ),
-          color: Colors.red,
+          color: Color(0xffED213A),
+          //color: ColorConst.verde,
+          //color: Colors.red,
         ),
         child: LayoutBuilder(builder: (_, constraints) {
           return Column(
