@@ -28,6 +28,24 @@ class _OperacaoPageState extends State<OperacaoPage> {
 
     int resultadoOperacao = getResutado(numero1, numero2, "Soma");
 
+    //contains the colours for the circle Avatars
+    final List<Color> circleColors = [
+      //ColorConst.amarelo,
+      ColorConst.azulClaro,
+      ColorConst.azulEscuro,
+      ColorConst.laranja,
+      ColorConst.rosaClaro,
+      ColorConst.rosaEscuro,
+      ColorConst.roxoClaro,
+      ColorConst.roxoEscuro,
+      ColorConst.verde,
+      ColorConst.vermelho,
+    ];
+
+    Color randomGenerator() {
+      return circleColors[new Random().nextInt(3)];
+    }
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -98,7 +116,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                               child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: ColorConst.azulClaro,
+                                  color: randomGenerator(),
                                   borderRadius: const BorderRadius.all(
                                     const Radius.circular(8),
                                   ),
@@ -144,7 +162,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                               child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: ColorConst.rosaClaro,
+                                  color: randomGenerator(),
                                   borderRadius: const BorderRadius.all(
                                     const Radius.circular(8),
                                   ),
@@ -194,7 +212,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                               child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: ColorConst.roxoEscuro,
+                                  color: randomGenerator(),
                                   borderRadius: const BorderRadius.all(
                                     const Radius.circular(8),
                                   ),
@@ -240,7 +258,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                               child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: ColorConst.verde,
+                                  color: randomGenerator(),
                                   borderRadius: const BorderRadius.all(
                                     const Radius.circular(8),
                                   ),

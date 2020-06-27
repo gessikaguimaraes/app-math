@@ -1,3 +1,4 @@
+import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
 
@@ -42,6 +43,32 @@ class _ResultadoPageState extends State<ResultadoPage> {
               Text(
                 "Você Acertou $resultado",
                 style: TextStyle(color: Colors.white, fontSize: 50),
+              ),
+              SizedBox(
+                width: 200,
+                height: 100,
+                child: RaisedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      "/home",
+                      arguments: Parametros(
+                        nome: "",
+                        opcoes: [],
+                        resultado: 0,
+                        quantidade: 0,
+                      ),
+                    );
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
+                  ),
+                  color: ColorConst.azulClaro,
+                  child: Text(
+                    "Retornar ao inicio",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ),
               ),
             ],
           ),
