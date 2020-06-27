@@ -24,11 +24,6 @@ class _OperacaoPageState extends State<OperacaoPage> {
     final Parametros args = ModalRoute.of(context).settings.arguments;
     print(args.opcoes);
 
-    String operacao = getOperacao(numero1, numero2, "Soma");
-
-    int resultadoOperacao = getResutado(numero1, numero2, "Soma");
-
-    //contains the colours for the circle Avatars
     final List<Color> circleColors = [
       //ColorConst.amarelo,
       ColorConst.azulClaro,
@@ -43,8 +38,21 @@ class _OperacaoPageState extends State<OperacaoPage> {
     ];
 
     Color randomGenerator() {
-      return circleColors[new Random().nextInt(3)];
+      return circleColors[new Random().nextInt(9)];
     }
+
+    final List<String> listaOpcao = args.opcoes;
+
+    int radomOpcao() {
+      return new Random().nextInt(4);
+    }
+
+    print(listaOpcao[radomOpcao()]);
+
+    String opcao = listaOpcao[radomOpcao()];
+    String operacao = getOperacao(numero1, numero2, opcao);
+
+    int resultadoOperacao = getResutado(numero1, numero2, opcao);
 
     return Scaffold(
       body: Container(
