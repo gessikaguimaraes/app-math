@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
@@ -38,8 +39,8 @@ class _OperacaoPageState extends State<OperacaoPage> {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              Color.fromARGB(255, 15, 172, 240),
-              Color.fromARGB(255, 15, 240, 132),
+              ColorConst.azulClaro,
+              ColorConst.verde,
             ],
           ),
         ),
@@ -53,7 +54,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                 //height: 30.0,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 240, 15, 56),
+                  color: ColorConst.vermelho,
                   borderRadius: BorderRadius.all(Radius.circular(7.0)),
                 ),
                 child: Text(
@@ -97,7 +98,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                               child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: Colors.blue,
+                                  color: ColorConst.azulClaro,
                                   borderRadius: const BorderRadius.all(
                                     const Radius.circular(8),
                                   ),
@@ -143,7 +144,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                               child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: Colors.blue,
+                                  color: ColorConst.rosaClaro,
                                   borderRadius: const BorderRadius.all(
                                     const Radius.circular(8),
                                   ),
@@ -193,7 +194,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                               child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: Colors.blue,
+                                  color: ColorConst.roxoEscuro,
                                   borderRadius: const BorderRadius.all(
                                     const Radius.circular(8),
                                   ),
@@ -239,7 +240,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                               child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: Colors.blue,
+                                  color: ColorConst.verde,
                                   borderRadius: const BorderRadius.all(
                                     const Radius.circular(8),
                                   ),

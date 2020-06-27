@@ -1,4 +1,5 @@
 import 'package:app_math/app/shared/components/button_floating.dart';
+import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,7 @@ class _OpcoesPageState extends State<OpcoesPage> {
     final Parametros args = ModalRoute.of(context).settings.arguments;
     print(args);
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: ColorConst.azulClaro,
       body: Container(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -52,7 +53,9 @@ class _OpcoesPageState extends State<OpcoesPage> {
                             },
                             child: Center(
                               child: AnimatedContainer(
-                                color: selectedSoma ? Colors.red : Colors.blue,
+                                color: selectedSoma
+                                    ? ColorConst.vermelho
+                                    : ColorConst.azulClaro,
                                 duration: Duration(seconds: 2),
                                 curve: Curves.fastOutSlowIn,
                                 child: Image.asset('images/osso1.png'),
@@ -78,8 +81,8 @@ class _OpcoesPageState extends State<OpcoesPage> {
                             child: Center(
                               child: AnimatedContainer(
                                 color: selectedSubstracao
-                                    ? Colors.green
-                                    : Colors.blue,
+                                    ? ColorConst.verde
+                                    : ColorConst.azulClaro,
                                 duration: Duration(seconds: 2),
                                 curve: Curves.fastOutSlowIn,
                                 child: Image.asset('images/osso2.png'),
@@ -109,8 +112,8 @@ class _OpcoesPageState extends State<OpcoesPage> {
                             child: Center(
                               child: AnimatedContainer(
                                 color: selectedMultiplicacao
-                                    ? Colors.yellow
-                                    : Colors.blue,
+                                    ? ColorConst.amarelo
+                                    : ColorConst.azulClaro,
                                 duration: Duration(seconds: 2),
                                 curve: Curves.fastOutSlowIn,
                                 child: Image.asset('images/osso3.png'),
@@ -135,8 +138,9 @@ class _OpcoesPageState extends State<OpcoesPage> {
                             },
                             child: Center(
                               child: AnimatedContainer(
-                                color:
-                                    selectedDivisao ? Colors.pink : Colors.blue,
+                                color: selectedDivisao
+                                    ? ColorConst.rosaEscuro
+                                    : ColorConst.azulClaro,
                                 duration: Duration(seconds: 2),
                                 curve: Curves.fastOutSlowIn,
                                 child: Image.asset('images/osso4.png'),

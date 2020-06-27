@@ -26,9 +26,7 @@ class _HomePageState extends State<HomePage> {
             image: AssetImage(ImagesConst.ossoBranco),
             fit: BoxFit.none,
           ),
-          color: Color(0xffED213A),
-          //color: ColorConst.verde,
-          //color: Colors.red,
+          color: ColorConst.vermelho,
         ),
         child: LayoutBuilder(builder: (_, constraints) {
           return Column(
