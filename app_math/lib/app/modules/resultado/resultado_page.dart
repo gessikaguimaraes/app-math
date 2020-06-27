@@ -31,8 +31,14 @@ class _ResultadoPageState extends State<ResultadoPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text("Parabéns!"),
-              Text("Você Acertou $resultado"),
+              Text(
+                "Parabéns!",
+                style: TextStyle(color: Colors.white, fontSize: 50),
+              ),
+              Text(
+                "Você Acertou $resultado",
+                style: TextStyle(color: Colors.white, fontSize: 50),
+              ),
             ],
           ),
         ),
