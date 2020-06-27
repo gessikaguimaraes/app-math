@@ -3,6 +3,7 @@ import 'package:app_math/app/modules/home/homeScreen_page.dart';
 import 'package:app_math/app/modules/home/home_page.dart';
 import 'package:app_math/app/modules/opcoes/opcoes_page.dart';
 import 'package:app_math/app/modules/operacoes/operacao_page.dart';
+import 'package:app_math/app/modules/resultado/resultado_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -24,5 +25,6 @@ class AppModule extends MainModule {
         Router('/home', child: (_, args) => HomePage()),
         Router('/opcoes', child: (_, args) => OpcoesPage()),
         Router('/operacao', child: (_, args) => OperacaoPage()),
+        Router('/resultado', child: (_, args) => ResultadoPage()),
       ];
 }

@@ -1,4 +1,4 @@
-import 'dart:math';
+/* import 'dart:math';
 import 'package:flutter/material.dart';
 
 class BotaoNumero extends StatelessWidget {
@@ -54,3 +54,4 @@ Widget _botoesGesture(BuildContext context) => GestureDetector(
       },
       child: _botoesNumeros(),
     );
+ */

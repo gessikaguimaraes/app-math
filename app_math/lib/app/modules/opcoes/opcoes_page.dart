@@ -146,6 +146,7 @@ class _OpcoesPageState extends State<OpcoesPage> {
   }
 }
 
+/*
 Widget _buildImageColumn() => Container(
       child: Column(
         children: [
@@ -173,7 +174,7 @@ Widget _buildImageRow(int imageIndex) => Row(
       ],
     );
 
-/* class BotaoOpcao extends StatefulWidget {
+ class BotaoOpcao extends StatefulWidget {
   @override
   _BotaoOpcaoState createState() => _BotaoOpcaoState();
 }
