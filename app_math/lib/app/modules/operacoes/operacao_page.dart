@@ -23,9 +23,9 @@ class _OperacaoPageState extends State<OperacaoPage> {
     final Parametros args = ModalRoute.of(context).settings.arguments;
     print(args.opcoes);
 
-    String operacao = getOperacao(numero1, numero2, "Substracao");
+    String operacao = getOperacao(numero1, numero2, "Soma");
 
-    int resultadoOperacao = getResutado(numero1, numero2, "Substracao");
+    int resultadoOperacao = getResutado(numero1, numero2, "Soma");
 
     return Scaffold(
       body: Container(
@@ -75,8 +75,8 @@ class _OperacaoPageState extends State<OperacaoPage> {
                                     context,
                                     "/operacao",
                                     arguments: Parametros(
-                                      nome: "",
-                                      opcoes: [],
+                                      nome: args.nome,
+                                      opcoes: args.opcoes,
                                       resultado: args.resultado + 1,
                                       quantidade: args.quantidade + 1,
                                     ),
@@ -86,8 +86,8 @@ class _OperacaoPageState extends State<OperacaoPage> {
                                     context,
                                     "/resultado",
                                     arguments: Parametros(
-                                      nome: "",
-                                      opcoes: [],
+                                      nome: args.nome,
+                                      opcoes: args.opcoes,
                                       resultado: args.resultado,
                                       quantidade: args.quantidade,
                                     ),
@@ -121,8 +121,8 @@ class _OperacaoPageState extends State<OperacaoPage> {
                                     context,
                                     "/operacao",
                                     arguments: Parametros(
-                                      nome: "",
-                                      opcoes: [],
+                                      nome: args.nome,
+                                      opcoes: args.opcoes,
                                       resultado: args.resultado,
                                       quantidade: args.quantidade + 1,
                                     ),
@@ -132,8 +132,8 @@ class _OperacaoPageState extends State<OperacaoPage> {
                                     context,
                                     "/resultado",
                                     arguments: Parametros(
-                                      nome: "",
-                                      opcoes: [],
+                                      nome: args.nome,
+                                      opcoes: args.opcoes,
                                       resultado: args.resultado,
                                       quantidade: args.quantidade,
                                     ),
@@ -171,8 +171,8 @@ class _OperacaoPageState extends State<OperacaoPage> {
                                     context,
                                     "/operacao",
                                     arguments: Parametros(
-                                      nome: "",
-                                      opcoes: [],
+                                      nome: args.nome,
+                                      opcoes: args.opcoes,
                                       resultado: args.resultado,
                                       quantidade: args.quantidade + 1,
                                     ),
@@ -182,8 +182,8 @@ class _OperacaoPageState extends State<OperacaoPage> {
                                     context,
                                     "/resultado",
                                     arguments: Parametros(
-                                      nome: "",
-                                      opcoes: [],
+                                      nome: args.nome,
+                                      opcoes: args.opcoes,
                                       resultado: args.resultado,
                                       quantidade: args.quantidade,
                                     ),
@@ -217,8 +217,8 @@ class _OperacaoPageState extends State<OperacaoPage> {
                                     context,
                                     "/operacao",
                                     arguments: Parametros(
-                                      nome: "",
-                                      opcoes: [],
+                                      nome: args.nome,
+                                      opcoes: args.opcoes,
                                       resultado: args.resultado,
                                       quantidade: args.quantidade + 1,
                                     ),
@@ -228,8 +228,8 @@ class _OperacaoPageState extends State<OperacaoPage> {
                                     context,
                                     "/resultado",
                                     arguments: Parametros(
-                                      nome: "",
-                                      opcoes: [],
+                                      nome: args.nome,
+                                      opcoes: args.opcoes,
                                       resultado: args.resultado,
                                       quantidade: args.quantidade,
                                     ),

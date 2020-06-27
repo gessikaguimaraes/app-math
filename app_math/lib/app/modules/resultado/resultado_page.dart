@@ -11,7 +11,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
   Widget build(BuildContext context) {
     final Parametros args = ModalRoute.of(context).settings.arguments;
     int resultado = args.resultado;
-    print(args);
+    String nome = args.nome;
 
     var size = MediaQuery.of(context).size;
 
@@ -32,8 +32,12 @@ class _ResultadoPageState extends State<ResultadoPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
-                "Parabéns!",
+                "$nome",
                 style: TextStyle(color: Colors.white, fontSize: 50),
+              ),
+              Text(
+                "Parabéns!",
+                style: TextStyle(color: Colors.white, fontSize: 80),
               ),
               Text(
                 "Você Acertou $resultado",
