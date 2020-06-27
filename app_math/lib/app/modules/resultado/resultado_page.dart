@@ -63,9 +63,9 @@ class _ResultadoPageState extends State<ResultadoPage> {
                   shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(15.0),
                   ),
-                  color: ColorConst.azulClaro,
+                  color: ColorConst.azulEscuro,
                   child: Text(
-                    "Retornar ao inicio",
+                    "Jogar Novamente",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ),

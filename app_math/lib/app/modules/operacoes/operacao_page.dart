@@ -47,12 +47,14 @@ class _OperacaoPageState extends State<OperacaoPage> {
       return new Random().nextInt(4);
     }
 
-    print(listaOpcao[radomOpcao()]);
-
     String opcao = listaOpcao[radomOpcao()];
+    print(opcao);
+
     String operacao = getOperacao(numero1, numero2, opcao);
+    print(operacao);
 
     int resultadoOperacao = getResutado(numero1, numero2, opcao);
+    print(resultadoOperacao);
 
     return Scaffold(
       body: Container(
