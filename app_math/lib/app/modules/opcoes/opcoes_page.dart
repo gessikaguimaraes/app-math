@@ -1,5 +1,6 @@
 import 'package:app_math/app/shared/components/button_floating.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
+import 'package:app_math/app/shared/const/tipoOperacao_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
 
@@ -45,10 +46,11 @@ class _OpcoesPageState extends State<OpcoesPage> {
                                 selectedSoma = !selectedSoma;
                               });
                               if (selectedSoma &&
-                                  !listaOpcoes.contains("Soma")) {
-                                listaOpcoes.add("Soma");
+                                  !listaOpcoes
+                                      .contains(TipoOperacaoConst.Soma)) {
+                                listaOpcoes.add(TipoOperacaoConst.Soma);
                               } else {
-                                listaOpcoes.remove("Soma");
+                                listaOpcoes.remove(TipoOperacaoConst.Soma);
                               }
                             },
                             child: Center(
@@ -72,10 +74,12 @@ class _OpcoesPageState extends State<OpcoesPage> {
                                 selectedSubstracao = !selectedSubstracao;
                               });
                               if (selectedSubstracao &&
-                                  !listaOpcoes.contains("Substracao")) {
-                                listaOpcoes.add("Substracao");
+                                  !listaOpcoes
+                                      .contains(TipoOperacaoConst.Substracao)) {
+                                listaOpcoes.add(TipoOperacaoConst.Substracao);
                               } else {
-                                listaOpcoes.remove("Substracao");
+                                listaOpcoes
+                                    .remove(TipoOperacaoConst.Substracao);
                               }
                             },
                             child: Center(
@@ -103,10 +107,13 @@ class _OpcoesPageState extends State<OpcoesPage> {
                                 selectedMultiplicacao = !selectedMultiplicacao;
                               });
                               if (selectedMultiplicacao &&
-                                  !listaOpcoes.contains("Multiplicacao")) {
-                                listaOpcoes.add("Multiplicacao");
+                                  !listaOpcoes.contains(
+                                      TipoOperacaoConst.Multiplicacao)) {
+                                listaOpcoes
+                                    .add(TipoOperacaoConst.Multiplicacao);
                               } else {
-                                listaOpcoes.remove("Multiplicacao");
+                                listaOpcoes
+                                    .remove(TipoOperacaoConst.Multiplicacao);
                               }
                             },
                             child: Center(
@@ -130,10 +137,11 @@ class _OpcoesPageState extends State<OpcoesPage> {
                                 selectedDivisao = !selectedDivisao;
                               });
                               if (selectedDivisao &&
-                                  !listaOpcoes.contains("Divisao")) {
-                                listaOpcoes.add("Divisao");
+                                  !listaOpcoes
+                                      .contains(TipoOperacaoConst.Divisao)) {
+                                listaOpcoes.add(TipoOperacaoConst.Divisao);
                               } else {
-                                listaOpcoes.remove("Divisao");
+                                listaOpcoes.remove(TipoOperacaoConst.Divisao);
                               }
                             },
                             child: Center(

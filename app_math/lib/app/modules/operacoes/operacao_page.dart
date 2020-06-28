@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
+import 'package:app_math/app/shared/const/tipoOperacao_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
 
@@ -295,13 +296,13 @@ class _OperacaoPageState extends State<OperacaoPage> {
 
 getImagem(String tipoOperacao) {
   switch (tipoOperacao) {
-    case "Soma":
+    case TipoOperacaoConst.Soma:
       return Image.asset(ImagesConst.ossoSoma);
-    case "Divisao":
+    case TipoOperacaoConst.Divisao:
       return Image.asset(ImagesConst.ossoDivisao);
-    case "Multiplicacao":
+    case TipoOperacaoConst.Multiplicacao:
       return Image.asset(ImagesConst.ossoMultiplicacao);
-    case "Substracao":
+    case TipoOperacaoConst.Substracao:
       return Image.asset(ImagesConst.ossoSubtracao);
     default:
       return Image.asset(ImagesConst.ossoSoma);
@@ -310,13 +311,13 @@ getImagem(String tipoOperacao) {
 
 getOperacao(int numero1, int numero2, String tipoOperacao) {
   switch (tipoOperacao) {
-    case "Soma":
+    case TipoOperacaoConst.Soma:
       return " + ";
-    case "Divisao":
+    case TipoOperacaoConst.Divisao:
       return " / ";
-    case "Multiplicacao":
+    case TipoOperacaoConst.Multiplicacao:
       return " * ";
-    case "Substracao":
+    case TipoOperacaoConst.Substracao:
       return " - ";
     default:
       return ' + ';
@@ -325,9 +326,9 @@ getOperacao(int numero1, int numero2, String tipoOperacao) {
 
 getResutado(int numero1, int numero2, String tipoOperacao) {
   switch (tipoOperacao) {
-    case "Soma":
+    case TipoOperacaoConst.Soma:
       return numero1 + numero2;
-    case "Divisao":
+    case TipoOperacaoConst.Divisao:
       num respostaCerta;
       if (numero2 == 0 && numero1 != 0) {
         respostaCerta = (numero2 / numero1);
@@ -335,9 +336,9 @@ getResutado(int numero1, int numero2, String tipoOperacao) {
         respostaCerta = (numero1 / numero2);
       }
       return num.parse(respostaCerta.toStringAsPrecision(2));
-    case "Multiplicacao":
+    case TipoOperacaoConst.Multiplicacao:
       return numero1 * numero2;
-    case "Substracao":
+    case TipoOperacaoConst.Substracao:
       int respostaCerta;
       if (numero1 > numero2) {
         respostaCerta = numero1 - numero2;
