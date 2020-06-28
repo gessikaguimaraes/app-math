@@ -44,7 +44,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
     final List<String> listaOpcao = args.opcoes;
 
     int radomOpcao() {
-      return new Random().nextInt(4);
+      return new Random().nextInt(listaOpcao.length);
     }
 
     String opcao = listaOpcao[radomOpcao()];
@@ -334,7 +334,7 @@ getResutado(int numero1, int numero2, String tipoOperacao) {
       } else {
         respostaCerta = (numero1 / numero2);
       }
-      return respostaCerta;
+      return num.parse(respostaCerta.toStringAsPrecision(2));
     case "Multiplicacao":
       return numero1 * numero2;
     case "Substracao":
