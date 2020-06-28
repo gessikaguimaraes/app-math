@@ -22,7 +22,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
   @override
   Widget build(BuildContext context) {
     final Parametros args = ModalRoute.of(context).settings.arguments;
-    print(args.opcoes);
+    //print(args.opcoes);
 
     final List<Color> circleColors = [
       //ColorConst.amarelo,
@@ -48,13 +48,8 @@ class _OperacaoPageState extends State<OperacaoPage> {
     }
 
     String opcao = listaOpcao[radomOpcao()];
-    print(opcao);
-
     String operacao = getOperacao(numero1, numero2, opcao);
-    print(operacao);
-
-    int resultadoOperacao = getResutado(numero1, numero2, opcao);
-    print(resultadoOperacao);
+    num resultadoOperacao = getResutado(numero1, numero2, opcao);
 
     return Scaffold(
       body: Container(
@@ -75,7 +70,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
         child: Center(
           child: Column(
             children: <Widget>[
-              Image.asset(ImagesConst.ossoSoma),
+              getImagem('$opcao'),
               Container(
                 padding: const EdgeInsets.all(0.0),
                 //width: 200.0,
@@ -298,6 +293,21 @@ class _OperacaoPageState extends State<OperacaoPage> {
   }
 }
 
+getImagem(String tipoOperacao) {
+  switch (tipoOperacao) {
+    case "Soma":
+      return Image.asset(ImagesConst.ossoSoma);
+    case "Divisao":
+      return Image.asset(ImagesConst.ossoDivisao);
+    case "Multiplicacao":
+      return Image.asset(ImagesConst.ossoMultiplicacao);
+    case "Substracao":
+      return Image.asset(ImagesConst.ossoSubtracao);
+    default:
+      return Image.asset(ImagesConst.ossoSoma);
+  }
+}
+
 getOperacao(int numero1, int numero2, String tipoOperacao) {
   switch (tipoOperacao) {
     case "Soma":
@@ -318,17 +328,17 @@ getResutado(int numero1, int numero2, String tipoOperacao) {
     case "Soma":
       return numero1 + numero2;
     case "Divisao":
-      var respostaCerta;
+      num respostaCerta;
       if (numero2 == 0 && numero1 != 0) {
-        respostaCerta = (numero2 / numero1) as int;
+        respostaCerta = (numero2 / numero1);
       } else {
-        respostaCerta = (numero1 / numero2) as int;
+        respostaCerta = (numero1 / numero2);
       }
       return respostaCerta;
     case "Multiplicacao":
       return numero1 * numero2;
     case "Substracao":
-      var respostaCerta;
+      int respostaCerta;
       if (numero1 > numero2) {
         respostaCerta = numero1 - numero2;
       } else {
