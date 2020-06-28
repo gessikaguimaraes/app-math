@@ -43,6 +43,15 @@ class _OperacaoPageState extends State<OperacaoPage> {
     }
 
     final List<String> listaOpcao = args.opcoes;
+    if (listaOpcao.length == 0) {
+      //Colocar na tela Opção uma snackBar informando para selecionar uma opção
+      //retornar a tela de opção
+      Navigator.popAndPushNamed(
+        context,
+        "/opcao",
+      );
+      print(context);
+    }
 
     int radomOpcao() {
       return new Random().nextInt(listaOpcao.length);
