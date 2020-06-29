@@ -14,10 +14,6 @@ class OperacaoPage extends StatefulWidget {
 class _OperacaoPageState extends State<OperacaoPage> {
   int numero1 = new Random().nextInt(9);
   int numero2 = new Random().nextInt(9);
-
-  int numero3 = new Random().nextInt(9);
-  int numero4 = new Random().nextInt(9);
-  int numero5 = new Random().nextInt(9);
   int quantidade = 0;
 
   @override
@@ -25,7 +21,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
     final Parametros args = ModalRoute.of(context).settings.arguments;
     //print(args.opcoes);
 
-    final List<Color> circleColors = [
+    final List<Color> listaCores = [
       //ColorConst.amarelo,
       ColorConst.azulClaro,
       ColorConst.azulEscuro,
@@ -39,7 +35,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
     ];
 
     Color randomGenerator() {
-      return circleColors[new Random().nextInt(9)];
+      return listaCores[new Random().nextInt(9)];
     }
 
     final List<String> listaOpcao = args.opcoes;
@@ -61,11 +57,18 @@ class _OperacaoPageState extends State<OperacaoPage> {
     String operacao = getOperacao(numero1, numero2, opcao);
     num resultadoOperacao = getResutado(numero1, numero2, opcao);
 
+    List<num> listaQuadrado = getNumeroRandomico(resultadoOperacao);
+
+    num numero3 = listaQuadrado[0];
+    num numero4 = listaQuadrado[1];
+    num numero5 = listaQuadrado[2];
+    num numero6 = listaQuadrado[3];
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("images/casa.png"),
+            image: AssetImage(ImagesConst.casa),
             fit: BoxFit.fill,
           ),
           gradient: LinearGradient(
@@ -100,6 +103,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
+                        //quadrado(context, args, resultadoOperacao),
                         Expanded(
                           child: Container(
                             child: GestureDetector(
@@ -138,52 +142,6 @@ class _OperacaoPageState extends State<OperacaoPage> {
                                 ),
                                 margin: const EdgeInsets.all(6),
                                 child: Text(
-                                  "$resultadoOperacao",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 50),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            child: GestureDetector(
-                              onTap: () {
-                                if (args.quantidade != 10) {
-                                  Navigator.pushNamed(
-                                    context,
-                                    "/operacao",
-                                    arguments: Parametros(
-                                      nome: args.nome,
-                                      opcoes: args.opcoes,
-                                      resultado: args.resultado,
-                                      quantidade: args.quantidade + 1,
-                                    ),
-                                  );
-                                } else {
-                                  Navigator.pushNamed(
-                                    context,
-                                    "/resultado",
-                                    arguments: Parametros(
-                                      nome: args.nome,
-                                      opcoes: args.opcoes,
-                                      resultado: args.resultado,
-                                      quantidade: args.quantidade,
-                                    ),
-                                  );
-                                }
-                              },
-                              child: Container(
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  color: randomGenerator(),
-                                  borderRadius: const BorderRadius.all(
-                                    const Radius.circular(8),
-                                  ),
-                                ),
-                                margin: const EdgeInsets.all(6),
-                                child: Text(
                                   "$numero3",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 50),
@@ -192,10 +150,6 @@ class _OperacaoPageState extends State<OperacaoPage> {
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
                         Expanded(
                           child: Container(
                             child: GestureDetector(
@@ -242,6 +196,10 @@ class _OperacaoPageState extends State<OperacaoPage> {
                             ),
                           ),
                         ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
                         Expanded(
                           child: Container(
                             child: GestureDetector(
@@ -288,19 +246,85 @@ class _OperacaoPageState extends State<OperacaoPage> {
                             ),
                           ),
                         ),
+                        Expanded(
+                          child: Container(
+                            child: GestureDetector(
+                              onTap: () {
+                                if (args.quantidade != 10) {
+                                  Navigator.pushNamed(
+                                    context,
+                                    "/operacao",
+                                    arguments: Parametros(
+                                      nome: args.nome,
+                                      opcoes: args.opcoes,
+                                      resultado: args.resultado,
+                                      quantidade: args.quantidade + 1,
+                                    ),
+                                  );
+                                } else {
+                                  Navigator.pushNamed(
+                                    context,
+                                    "/resultado",
+                                    arguments: Parametros(
+                                      nome: args.nome,
+                                      opcoes: args.opcoes,
+                                      resultado: args.resultado,
+                                      quantidade: args.quantidade,
+                                    ),
+                                  );
+                                }
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  color: randomGenerator(),
+                                  borderRadius: const BorderRadius.all(
+                                    const Radius.circular(8),
+                                  ),
+                                ),
+                                margin: const EdgeInsets.all(6),
+                                child: Text(
+                                  "$numero6",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 50),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ],
                 ),
               ),
-              //Conta(),
-              //BotaoNumero()
             ],
           ),
         ),
       ),
     );
   }
+}
+
+getNumeroRandomico(num resultado) {
+  List<num> listaQuadrado = [];
+  int i = 0;
+  listaQuadrado.add(resultado);
+  while (i < 3) {
+    int numero = new Random().nextInt(9);
+    while (listaQuadrado.contains(numero)) {
+      numero = new Random().nextInt(9);
+    }
+    listaQuadrado.add(numero);
+    i++;
+  }
+  return listaQuadrado;
+}
+
+getRadomQuadrado(num resultadoOperacao) {
+  List<num> listaQuadrado = getNumeroRandomico(resultadoOperacao);
+  num numero = new Random().nextInt(listaQuadrado.length);
+  print(numero);
+  return numero.toString();
 }
 
 getImagem(String tipoOperacao) {
@@ -359,3 +383,65 @@ getResutado(int numero1, int numero2, String tipoOperacao) {
       return numero1 + numero2;
   }
 }
+
+getCoresAleatoria() {
+  final List<Color> listaCores = [
+    //ColorConst.amarelo,
+    ColorConst.azulClaro,
+    ColorConst.azulEscuro,
+    ColorConst.laranja,
+    ColorConst.rosaClaro,
+    ColorConst.rosaEscuro,
+    ColorConst.roxoClaro,
+    ColorConst.roxoEscuro,
+    ColorConst.verde,
+    ColorConst.vermelho,
+  ];
+  return listaCores[new Random().nextInt(9)];
+}
+
+Widget quadrado(BuildContext context, Parametros args, num numero) => Expanded(
+      child: Container(
+        child: GestureDetector(
+          onTap: () {
+            if (args.quantidade != 10) {
+              Navigator.pushNamed(
+                context,
+                "/operacao",
+                arguments: Parametros(
+                  nome: args.nome,
+                  opcoes: args.opcoes,
+                  resultado: args.resultado + 1,
+                  quantidade: args.quantidade + 1,
+                ),
+              );
+            } else {
+              Navigator.pushNamed(
+                context,
+                "/resultado",
+                arguments: Parametros(
+                  nome: args.nome,
+                  opcoes: args.opcoes,
+                  resultado: args.resultado,
+                  quantidade: args.quantidade,
+                ),
+              );
+            }
+          },
+          child: Container(
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: getCoresAleatoria(),
+              borderRadius: const BorderRadius.all(
+                const Radius.circular(8),
+              ),
+            ),
+            margin: const EdgeInsets.all(6),
+            child: Text(
+              "$numero",
+              style: TextStyle(color: Colors.white, fontSize: 50),
+            ),
+          ),
+        ),
+      ),
+    );
