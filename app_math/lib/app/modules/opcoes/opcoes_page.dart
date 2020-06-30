@@ -1,5 +1,6 @@
 import 'package:app_math/app/shared/components/button_floating.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
+import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:app_math/app/shared/const/tipoOperacao_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
@@ -20,14 +21,13 @@ class _OpcoesPageState extends State<OpcoesPage> {
   @override
   Widget build(BuildContext context) {
     final Parametros args = ModalRoute.of(context).settings.arguments;
-    print(args);
     return Scaffold(
       backgroundColor: ColorConst.azulClaro,
       body: Container(
         padding: const EdgeInsets.all(10.0),
         child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.center,
-          //mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Text(
               'Escolha a opção :',
@@ -60,7 +60,7 @@ class _OpcoesPageState extends State<OpcoesPage> {
                                     : ColorConst.azulClaro,
                                 duration: Duration(seconds: 2),
                                 curve: Curves.fastOutSlowIn,
-                                child: Image.asset('images/osso1.png'),
+                                child: Image.asset(ImagesConst.ossoSoma),
                               ),
                             ),
                           ),
@@ -89,7 +89,7 @@ class _OpcoesPageState extends State<OpcoesPage> {
                                     : ColorConst.azulClaro,
                                 duration: Duration(seconds: 2),
                                 curve: Curves.fastOutSlowIn,
-                                child: Image.asset('images/osso2.png'),
+                                child: Image.asset(ImagesConst.ossoSubtracao),
                               ),
                             ),
                           ),
@@ -123,7 +123,8 @@ class _OpcoesPageState extends State<OpcoesPage> {
                                     : ColorConst.azulClaro,
                                 duration: Duration(seconds: 2),
                                 curve: Curves.fastOutSlowIn,
-                                child: Image.asset('images/osso3.png'),
+                                child:
+                                    Image.asset(ImagesConst.ossoMultiplicacao),
                               ),
                             ),
                           ),
@@ -151,7 +152,7 @@ class _OpcoesPageState extends State<OpcoesPage> {
                                     : ColorConst.azulClaro,
                                 duration: Duration(seconds: 2),
                                 curve: Curves.fastOutSlowIn,
-                                child: Image.asset('images/osso4.png'),
+                                child: Image.asset(ImagesConst.ossoDivisao),
                               ),
                             ),
                           ),
