@@ -178,7 +178,6 @@ class _OpcoesPageState extends State<OpcoesPage> {
     );
   }
 }
-
 /*
 Widget _buildImageColumn() => Container(
       child: Column(

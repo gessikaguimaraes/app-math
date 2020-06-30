@@ -1,4 +1,4 @@
-#Tue Jun 30 10:38:59 BRT 2020
+#Tue Jun 30 12:35:49 BRT 2020
 base.0=G\:\\Projetos\\Aplicativo\\app-math\\app_math\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
