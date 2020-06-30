@@ -35,7 +35,7 @@ Widget _introScreen() {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(ImagesConst.ossoBranco),
-            fit: BoxFit.none,
+            fit: BoxFit.contain,
           ),
         ),
       ),

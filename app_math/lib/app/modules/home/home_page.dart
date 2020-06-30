@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(ImagesConst.ossoBranco),
-            fit: BoxFit.none,
+            fit: BoxFit.contain,
           ),
           color: ColorConst.vermelho,
         ),
@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Container(
-                margin: const EdgeInsets.only(top: 15),
+                margin: const EdgeInsets.only(top: 20),
                 child: Text(
                   "Qual é o seu nome?",
                   style: TextStyle(

@@ -38,7 +38,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
               ),
               Text(
                 "Parabéns!",
-                style: TextStyle(color: Colors.white, fontSize: 80),
+                style: TextStyle(color: Colors.white, fontSize: 70),
               ),
               Text(
                 "Você Acertou $resultado",

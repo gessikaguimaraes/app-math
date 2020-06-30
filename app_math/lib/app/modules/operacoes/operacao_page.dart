@@ -14,7 +14,6 @@ class OperacaoPage extends StatefulWidget {
 class _OperacaoPageState extends State<OperacaoPage> {
   int numero1 = new Random().nextInt(9);
   int numero2 = new Random().nextInt(9);
-  int quantidade = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +47,8 @@ class _OperacaoPageState extends State<OperacaoPage> {
     num numero5 = lista[2];
     num numero6 = lista[3];
 
-    String conta = getConta(numero1, numero2, operacao);
+    String conta = getConta(numero1, numero2, operacao, opcao);
+    int quantidade = args.quantidade + 1;
 
     return Scaffold(
       body: Container(
@@ -68,7 +68,15 @@ class _OperacaoPageState extends State<OperacaoPage> {
         ),
         child: Center(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Container(
+                child: Text(
+                  "$quantidade / 10",
+                  style: TextStyle(color: Colors.white, fontSize: 50),
+                ),
+              ),
               getImagem('$opcao'),
               Container(
                 padding: const EdgeInsets.all(0.0),
@@ -89,195 +97,18 @@ class _OperacaoPageState extends State<OperacaoPage> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        //quadrado(context, args, resultadoOperacao),
-                        Expanded(
-                          child: Container(
-                            child: GestureDetector(
-                              onTap: () {
-                                if (args.quantidade != 10) {
-                                  Navigator.pushNamed(
-                                    context,
-                                    "/operacao",
-                                    arguments: Parametros(
-                                      nome: args.nome,
-                                      opcoes: args.opcoes,
-                                      resultado: args.resultado + 1,
-                                      quantidade: args.quantidade + 1,
-                                    ),
-                                  );
-                                } else {
-                                  Navigator.pushNamed(
-                                    context,
-                                    "/resultado",
-                                    arguments: Parametros(
-                                      nome: args.nome,
-                                      opcoes: args.opcoes,
-                                      resultado: args.resultado,
-                                      quantidade: args.quantidade,
-                                    ),
-                                  );
-                                }
-                              },
-                              child: Container(
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  color: cor1,
-                                  borderRadius: const BorderRadius.all(
-                                    const Radius.circular(8),
-                                  ),
-                                ),
-                                margin: const EdgeInsets.all(6),
-                                child: Text(
-                                  "$numero3",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 50),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            child: GestureDetector(
-                              onTap: () {
-                                if (args.quantidade != 10) {
-                                  Navigator.pushNamed(
-                                    context,
-                                    "/operacao",
-                                    arguments: Parametros(
-                                      nome: args.nome,
-                                      opcoes: args.opcoes,
-                                      resultado: args.resultado,
-                                      quantidade: args.quantidade + 1,
-                                    ),
-                                  );
-                                } else {
-                                  Navigator.pushNamed(
-                                    context,
-                                    "/resultado",
-                                    arguments: Parametros(
-                                      nome: args.nome,
-                                      opcoes: args.opcoes,
-                                      resultado: args.resultado,
-                                      quantidade: args.quantidade,
-                                    ),
-                                  );
-                                }
-                              },
-                              child: Container(
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  color: cor2,
-                                  borderRadius: const BorderRadius.all(
-                                    const Radius.circular(8),
-                                  ),
-                                ),
-                                margin: const EdgeInsets.all(6),
-                                child: Text(
-                                  "$numero4",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 50),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        quadrado(
+                            context, args, numero3, cor1, resultadoOperacao),
+                        quadrado(
+                            context, args, numero4, cor2, resultadoOperacao),
                       ],
                     ),
                     Row(
                       children: <Widget>[
-                        Expanded(
-                          child: Container(
-                            child: GestureDetector(
-                              onTap: () {
-                                if (args.quantidade != 10) {
-                                  Navigator.pushNamed(
-                                    context,
-                                    "/operacao",
-                                    arguments: Parametros(
-                                      nome: args.nome,
-                                      opcoes: args.opcoes,
-                                      resultado: args.resultado,
-                                      quantidade: args.quantidade + 1,
-                                    ),
-                                  );
-                                } else {
-                                  Navigator.pushNamed(
-                                    context,
-                                    "/resultado",
-                                    arguments: Parametros(
-                                      nome: args.nome,
-                                      opcoes: args.opcoes,
-                                      resultado: args.resultado,
-                                      quantidade: args.quantidade,
-                                    ),
-                                  );
-                                }
-                              },
-                              child: Container(
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  color: cor3,
-                                  borderRadius: const BorderRadius.all(
-                                    const Radius.circular(8),
-                                  ),
-                                ),
-                                margin: const EdgeInsets.all(6),
-                                child: Text(
-                                  "$numero5",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 50),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            child: GestureDetector(
-                              onTap: () {
-                                if (args.quantidade != 10) {
-                                  Navigator.pushNamed(
-                                    context,
-                                    "/operacao",
-                                    arguments: Parametros(
-                                      nome: args.nome,
-                                      opcoes: args.opcoes,
-                                      resultado: args.resultado,
-                                      quantidade: args.quantidade + 1,
-                                    ),
-                                  );
-                                } else {
-                                  Navigator.pushNamed(
-                                    context,
-                                    "/resultado",
-                                    arguments: Parametros(
-                                      nome: args.nome,
-                                      opcoes: args.opcoes,
-                                      resultado: args.resultado,
-                                      quantidade: args.quantidade,
-                                    ),
-                                  );
-                                }
-                              },
-                              child: Container(
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  color: cor4,
-                                  borderRadius: const BorderRadius.all(
-                                    const Radius.circular(8),
-                                  ),
-                                ),
-                                margin: const EdgeInsets.all(6),
-                                child: Text(
-                                  "$numero6",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 50),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        quadrado(
+                            context, args, numero5, cor3, resultadoOperacao),
+                        quadrado(
+                            context, args, numero6, cor4, resultadoOperacao),
                       ],
                     ),
                   ],
@@ -321,10 +152,16 @@ getRadomQuadrado(num resultadoOperacao) {
   return lista;
 }
 
-getConta(int numero1, int numero2, String operacao) {
+getConta(int numero1, int numero2, String operacao, String opcao) {
   String conta = "$numero1 $operacao $numero2 = ";
-  if (numero1 < numero2 && operacao != TipoOperacaoConst.Divisao) {
-    conta = "$numero2 $operacao $numero1 = ";
+  if (opcao != TipoOperacaoConst.Divisao) {
+    if (numero1 < numero2) {
+      conta = "$numero2 $operacao $numero1 = ";
+    }
+  } else {
+    if (numero2 == 0 && numero1 != 0) {
+      conta = "$numero2 $operacao $numero1 = ";
+    }
   }
   return conta;
 }
@@ -412,19 +249,26 @@ getCoresAleatoria() {
   return lista;
 }
 
-Widget quadrado(BuildContext context, Parametros args, num numero, Color cor) =>
+Widget quadrado(BuildContext context, Parametros args, num numero, Color cor,
+        num resultadoOperacao) =>
     Expanded(
       child: Container(
+        width: 150,
+        height: 150,
         child: GestureDetector(
           onTap: () {
-            if (args.quantidade != 10) {
+            var resultado = args.resultado;
+            if (resultadoOperacao.toString() == "$numero") {
+              resultado++;
+            }
+            if (args.quantidade != 9) {
               Navigator.pushNamed(
                 context,
                 "/operacao",
                 arguments: Parametros(
                   nome: args.nome,
                   opcoes: args.opcoes,
-                  resultado: args.resultado + 1,
+                  resultado: resultado,
                   quantidade: args.quantidade + 1,
                 ),
               );
@@ -435,7 +279,7 @@ Widget quadrado(BuildContext context, Parametros args, num numero, Color cor) =>
                 arguments: Parametros(
                   nome: args.nome,
                   opcoes: args.opcoes,
-                  resultado: args.resultado,
+                  resultado: resultado,
                   quantidade: args.quantidade,
                 ),
               );
