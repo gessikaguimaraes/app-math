@@ -21,23 +21,6 @@ class _OperacaoPageState extends State<OperacaoPage> {
     final Parametros args = ModalRoute.of(context).settings.arguments;
     //print(args.opcoes);
 
-    final List<Color> listaCores = [
-      //ColorConst.amarelo,
-      ColorConst.azulClaro,
-      ColorConst.azulEscuro,
-      ColorConst.laranja,
-      ColorConst.rosaClaro,
-      ColorConst.rosaEscuro,
-      ColorConst.roxoClaro,
-      ColorConst.roxoEscuro,
-      ColorConst.verde,
-      ColorConst.vermelho,
-    ];
-
-    Color randomGenerator() {
-      return listaCores[new Random().nextInt(9)];
-    }
-
     final List<String> listaOpcao = args.opcoes;
     if (listaOpcao.length == 0) {
       //Colocar na tela Opção uma snackBar informando para selecionar uma opção
@@ -49,20 +32,23 @@ class _OperacaoPageState extends State<OperacaoPage> {
       print(context);
     }
 
-    int radomOpcao() {
-      return new Random().nextInt(listaOpcao.length);
-    }
-
-    String opcao = listaOpcao[radomOpcao()];
+    String opcao = listaOpcao[new Random().nextInt(listaOpcao.length)];
     String operacao = getOperacao(numero1, numero2, opcao);
     num resultadoOperacao = getResutado(numero1, numero2, opcao);
 
-    List<num> listaQuadrado = getNumeroRandomico(resultadoOperacao);
+    List<Color> listaCores = getCoresAleatoria();
+    Color cor1 = listaCores[0];
+    Color cor2 = listaCores[1];
+    Color cor3 = listaCores[2];
+    Color cor4 = listaCores[3];
 
-    num numero3 = listaQuadrado[0];
-    num numero4 = listaQuadrado[1];
-    num numero5 = listaQuadrado[2];
-    num numero6 = listaQuadrado[3];
+    List<num> lista = getRadomQuadrado(resultadoOperacao);
+    num numero3 = lista[0];
+    num numero4 = lista[1];
+    num numero5 = lista[2];
+    num numero6 = lista[3];
+
+    String conta = getConta(numero1, numero2, operacao);
 
     return Scaffold(
       body: Container(
@@ -94,7 +80,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                   borderRadius: BorderRadius.all(Radius.circular(7.0)),
                 ),
                 child: Text(
-                  '$numero1 $operacao $numero2 = ',
+                  '$conta',
                   style: TextStyle(color: Colors.white, fontSize: 50),
                 ),
               ),
@@ -135,7 +121,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                               child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: randomGenerator(),
+                                  color: cor1,
                                   borderRadius: const BorderRadius.all(
                                     const Radius.circular(8),
                                   ),
@@ -181,7 +167,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                               child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: randomGenerator(),
+                                  color: cor2,
                                   borderRadius: const BorderRadius.all(
                                     const Radius.circular(8),
                                   ),
@@ -231,7 +217,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                               child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: randomGenerator(),
+                                  color: cor3,
                                   borderRadius: const BorderRadius.all(
                                     const Radius.circular(8),
                                   ),
@@ -277,7 +263,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
                               child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: randomGenerator(),
+                                  color: cor4,
                                   borderRadius: const BorderRadius.all(
                                     const Radius.circular(8),
                                   ),
@@ -321,10 +307,26 @@ getNumeroRandomico(num resultado) {
 }
 
 getRadomQuadrado(num resultadoOperacao) {
+  List<num> lista = [];
   List<num> listaQuadrado = getNumeroRandomico(resultadoOperacao);
-  num numero = new Random().nextInt(listaQuadrado.length);
-  print(numero);
-  return numero.toString();
+  int i = 0;
+  while (i < listaQuadrado.length) {
+    num numero = listaQuadrado[new Random().nextInt(listaQuadrado.length)];
+    while (lista.contains(numero)) {
+      numero = listaQuadrado[new Random().nextInt(listaQuadrado.length)];
+    }
+    lista.add(numero);
+    i++;
+  }
+  return lista;
+}
+
+getConta(int numero1, int numero2, String operacao) {
+  String conta = "$numero1 $operacao $numero2 = ";
+  if (numero1 < numero2 && operacao != TipoOperacaoConst.Divisao) {
+    conta = "$numero2 $operacao $numero1 = ";
+  }
+  return conta;
 }
 
 getImagem(String tipoOperacao) {
@@ -395,12 +397,23 @@ getCoresAleatoria() {
     ColorConst.roxoClaro,
     ColorConst.roxoEscuro,
     ColorConst.verde,
-    ColorConst.vermelho,
+    //ColorConst.vermelho,
   ];
-  return listaCores[new Random().nextInt(9)];
+  List<Color> lista = [];
+  int i = 0;
+  while (i < 4) {
+    Color cor = listaCores[new Random().nextInt(listaCores.length)];
+    while (lista.contains(cor)) {
+      cor = listaCores[new Random().nextInt(listaCores.length)];
+    }
+    lista.add(cor);
+    i++;
+  }
+  return lista;
 }
 
-Widget quadrado(BuildContext context, Parametros args, num numero) => Expanded(
+Widget quadrado(BuildContext context, Parametros args, num numero, Color cor) =>
+    Expanded(
       child: Container(
         child: GestureDetector(
           onTap: () {
@@ -431,7 +444,7 @@ Widget quadrado(BuildContext context, Parametros args, num numero) => Expanded(
           child: Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: getCoresAleatoria(),
+              color: cor,
               borderRadius: const BorderRadius.all(
                 const Radius.circular(8),
               ),
