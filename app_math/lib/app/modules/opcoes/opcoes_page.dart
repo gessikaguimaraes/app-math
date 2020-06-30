@@ -27,11 +27,11 @@ class _OpcoesPageState extends State<OpcoesPage> {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
               'Escolha a opção :',
-              style: TextStyle(height: 5, fontSize: 50),
+              style: TextStyle(fontSize: 30),
             ),
             Container(
               child: Column(
