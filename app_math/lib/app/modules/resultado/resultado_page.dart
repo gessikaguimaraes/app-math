@@ -51,9 +51,9 @@ class _ResultadoPageState extends State<ResultadoPage> {
                   onPressed: () {
                     Navigator.pushNamed(
                       context,
-                      "/home",
+                      "/opcoes",
                       arguments: Parametros(
-                        nome: "",
+                        nome: args.nome,
                         opcoes: [],
                         resultado: 0,
                         quantidade: 0,

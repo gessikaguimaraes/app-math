@@ -22,6 +22,9 @@ class _OpcoesPageState extends State<OpcoesPage> {
   Widget build(BuildContext context) {
     final Parametros args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Opção'),
+      ),
       backgroundColor: ColorConst.azulClaro,
       body: Container(
         padding: const EdgeInsets.all(10.0),
