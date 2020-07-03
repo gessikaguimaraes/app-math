@@ -29,8 +29,8 @@ class _OpcoesPageState extends State<OpcoesPage> {
       body: Container(
         padding: const EdgeInsets.all(10.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
               'Escolha a opção :',
@@ -39,129 +39,111 @@ class _OpcoesPageState extends State<OpcoesPage> {
             Container(
               child: Column(
                 children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Container(
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedSoma = !selectedSoma;
-                              });
-                              if (selectedSoma &&
-                                  !listaOpcoes
-                                      .contains(TipoOperacaoConst.Soma)) {
-                                listaOpcoes.add(TipoOperacaoConst.Soma);
-                              } else {
-                                listaOpcoes.remove(TipoOperacaoConst.Soma);
-                              }
-                            },
-                            child: Center(
-                              child: AnimatedContainer(
-                                color: selectedSoma
-                                    ? ColorConst.vermelho
-                                    : ColorConst.azulClaro,
-                                duration: Duration(seconds: 2),
-                                curve: Curves.fastOutSlowIn,
-                                child: Image.asset(ImagesConst.ossoSoma),
-                              ),
-                            ),
-                          ),
+                  Container(
+                    height: 100,
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedSoma = !selectedSoma;
+                        });
+                        if (selectedSoma &&
+                            !listaOpcoes.contains(TipoOperacaoConst.Soma)) {
+                          listaOpcoes.add(TipoOperacaoConst.Soma);
+                        } else {
+                          listaOpcoes.remove(TipoOperacaoConst.Soma);
+                        }
+                      },
+                      child: Center(
+                        child: AnimatedContainer(
+                          color: selectedSoma
+                              ? ColorConst.vermelho
+                              : ColorConst.azulClaro,
+                          duration: Duration(seconds: 2),
+                          curve: Curves.fastOutSlowIn,
+                          child: Image.asset(ImagesConst.ossoSoma),
                         ),
                       ),
-                      Expanded(
-                        child: Container(
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedSubstracao = !selectedSubstracao;
-                              });
-                              if (selectedSubstracao &&
-                                  !listaOpcoes
-                                      .contains(TipoOperacaoConst.Substracao)) {
-                                listaOpcoes.add(TipoOperacaoConst.Substracao);
-                              } else {
-                                listaOpcoes
-                                    .remove(TipoOperacaoConst.Substracao);
-                              }
-                            },
-                            child: Center(
-                              child: AnimatedContainer(
-                                color: selectedSubstracao
-                                    ? ColorConst.verde
-                                    : ColorConst.azulClaro,
-                                duration: Duration(seconds: 2),
-                                curve: Curves.fastOutSlowIn,
-                                child: Image.asset(ImagesConst.ossoSubtracao),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Container(
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedMultiplicacao = !selectedMultiplicacao;
-                              });
-                              if (selectedMultiplicacao &&
-                                  !listaOpcoes.contains(
-                                      TipoOperacaoConst.Multiplicacao)) {
-                                listaOpcoes
-                                    .add(TipoOperacaoConst.Multiplicacao);
-                              } else {
-                                listaOpcoes
-                                    .remove(TipoOperacaoConst.Multiplicacao);
-                              }
-                            },
-                            child: Center(
-                              child: AnimatedContainer(
-                                color: selectedMultiplicacao
-                                    ? ColorConst.amarelo
-                                    : ColorConst.azulClaro,
-                                duration: Duration(seconds: 2),
-                                curve: Curves.fastOutSlowIn,
-                                child:
-                                    Image.asset(ImagesConst.ossoMultiplicacao),
-                              ),
-                            ),
-                          ),
+                  Container(
+                    height: 100,
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedSubstracao = !selectedSubstracao;
+                        });
+                        if (selectedSubstracao &&
+                            !listaOpcoes
+                                .contains(TipoOperacaoConst.Substracao)) {
+                          listaOpcoes.add(TipoOperacaoConst.Substracao);
+                        } else {
+                          listaOpcoes.remove(TipoOperacaoConst.Substracao);
+                        }
+                      },
+                      child: Center(
+                        child: AnimatedContainer(
+                          color: selectedSubstracao
+                              ? ColorConst.verde
+                              : ColorConst.azulClaro,
+                          duration: Duration(seconds: 2),
+                          curve: Curves.fastOutSlowIn,
+                          child: Image.asset(ImagesConst.ossoSubtracao),
                         ),
                       ),
-                      Expanded(
-                        child: Container(
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedDivisao = !selectedDivisao;
-                              });
-                              if (selectedDivisao &&
-                                  !listaOpcoes
-                                      .contains(TipoOperacaoConst.Divisao)) {
-                                listaOpcoes.add(TipoOperacaoConst.Divisao);
-                              } else {
-                                listaOpcoes.remove(TipoOperacaoConst.Divisao);
-                              }
-                            },
-                            child: Center(
-                              child: AnimatedContainer(
-                                color: selectedDivisao
-                                    ? ColorConst.rosaEscuro
-                                    : ColorConst.azulClaro,
-                                duration: Duration(seconds: 2),
-                                curve: Curves.fastOutSlowIn,
-                                child: Image.asset(ImagesConst.ossoDivisao),
-                              ),
-                            ),
-                          ),
+                    ),
+                  ),
+                  Container(
+                    height: 100,
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedMultiplicacao = !selectedMultiplicacao;
+                        });
+                        if (selectedMultiplicacao &&
+                            !listaOpcoes
+                                .contains(TipoOperacaoConst.Multiplicacao)) {
+                          listaOpcoes.add(TipoOperacaoConst.Multiplicacao);
+                        } else {
+                          listaOpcoes.remove(TipoOperacaoConst.Multiplicacao);
+                        }
+                      },
+                      child: Center(
+                        child: AnimatedContainer(
+                          color: selectedMultiplicacao
+                              ? ColorConst.amarelo
+                              : ColorConst.azulClaro,
+                          duration: Duration(seconds: 2),
+                          curve: Curves.fastOutSlowIn,
+                          child: Image.asset(ImagesConst.ossoMultiplicacao),
                         ),
                       ),
-                    ],
+                    ),
+                  ),
+                  Container(
+                    height: 100,
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedDivisao = !selectedDivisao;
+                        });
+                        if (selectedDivisao &&
+                            !listaOpcoes.contains(TipoOperacaoConst.Divisao)) {
+                          listaOpcoes.add(TipoOperacaoConst.Divisao);
+                        } else {
+                          listaOpcoes.remove(TipoOperacaoConst.Divisao);
+                        }
+                      },
+                      child: Center(
+                        child: AnimatedContainer(
+                          color: selectedDivisao
+                              ? ColorConst.rosaEscuro
+                              : ColorConst.azulClaro,
+                          duration: Duration(seconds: 2),
+                          curve: Curves.fastOutSlowIn,
+                          child: Image.asset(ImagesConst.ossoDivisao),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
