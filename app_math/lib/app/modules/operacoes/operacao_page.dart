@@ -53,15 +53,26 @@ class _OperacaoPageState extends State<OperacaoPage> {
     return Scaffold(
       backgroundColor: ColorConst.verde,
       appBar: AppBar(
-        title: const Text(''),
+        title: Text(
+          "$quantidade / 10",
+          style: TextStyle(color: Colors.white, fontSize: 30),
+        ),
         automaticallyImplyLeading: false,
         centerTitle: true,
         actions: <Widget>[
-          Text(
+          /* Text(
             "$quantidade / 10",
             style: TextStyle(color: Colors.white, fontSize: 30),
+          ), */
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                "/configuracao",
+              );
+            },
           ),
-          IconButton(icon: Icon(Icons.settings), onPressed: () {}),
         ],
       ),
       body: Container(
@@ -79,56 +90,48 @@ class _OperacaoPageState extends State<OperacaoPage> {
             ],
           ),
         ),
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              /* Container(
-                child: Text(
-                  "$quantidade / 10",
-                  style: TextStyle(color: Colors.white, fontSize: 50),
-                ),
-              ), */
-              getImagem('$opcao'),
-              Container(
-                padding: const EdgeInsets.all(0.0),
-                //width: 200.0,
-                //height: 30.0,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: ColorConst.vermelho,
-                  borderRadius: BorderRadius.all(Radius.circular(7.0)),
-                ),
-                child: Text(
-                  '$conta',
-                  style: TextStyle(color: Colors.white, fontSize: 50),
-                ),
+        child: Column(
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image(
+              image: AssetImage(
+                getImagem('$opcao'),
               ),
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        quadrado(
-                            context, args, numero3, cor1, resultadoOperacao),
-                        quadrado(
-                            context, args, numero4, cor2, resultadoOperacao),
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        quadrado(
-                            context, args, numero5, cor3, resultadoOperacao),
-                        quadrado(
-                            context, args, numero6, cor4, resultadoOperacao),
-                      ],
-                    ),
-                  ],
-                ),
+              //fit: BoxFit.contain,
+            ),
+            Container(
+              padding: const EdgeInsets.all(0),
+              width: MediaQuery.of(context).size.width - 10,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: ColorConst.vermelho,
+                borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
-            ],
-          ),
+              child: Text(
+                '$conta',
+                style: TextStyle(color: Colors.white, fontSize: 50),
+              ),
+            ),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      quadrado(context, args, numero3, cor1, resultadoOperacao),
+                      quadrado(context, args, numero4, cor2, resultadoOperacao),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      quadrado(context, args, numero5, cor3, resultadoOperacao),
+                      quadrado(context, args, numero6, cor4, resultadoOperacao),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -182,15 +185,15 @@ getConta(int numero1, int numero2, String operacao, String opcao) {
 getImagem(String tipoOperacao) {
   switch (tipoOperacao) {
     case TipoOperacaoConst.Soma:
-      return Image.asset(ImagesConst.ossoSoma);
+      return ImagesConst.ossoSoma;
     case TipoOperacaoConst.Divisao:
-      return Image.asset(ImagesConst.ossoDivisao);
+      return ImagesConst.ossoDivisao;
     case TipoOperacaoConst.Multiplicacao:
-      return Image.asset(ImagesConst.ossoMultiplicacao);
+      return ImagesConst.ossoMultiplicacao;
     case TipoOperacaoConst.Substracao:
-      return Image.asset(ImagesConst.ossoSubtracao);
+      return ImagesConst.ossoSubtracao;
     default:
-      return Image.asset(ImagesConst.ossoSoma);
+      return ImagesConst.ossoSoma;
   }
 }
 
@@ -266,8 +269,8 @@ Widget quadrado(BuildContext context, Parametros args, num numero, Color cor,
         num resultadoOperacao) =>
     Expanded(
       child: Container(
-        width: 150,
-        height: 150,
+        width: MediaQuery.of(context).size.width / 2,
+        height: MediaQuery.of(context).size.height / 5,
         child: GestureDetector(
           onTap: () {
             var resultado = args.resultado;

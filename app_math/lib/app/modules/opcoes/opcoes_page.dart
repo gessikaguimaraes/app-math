@@ -28,7 +28,15 @@ class _OpcoesPageState extends State<OpcoesPage> {
         automaticallyImplyLeading: false,
         centerTitle: true,
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.settings), onPressed: () {}),
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                "/configuracao",
+              );
+            },
+          ),
         ],
       ),
       backgroundColor: ColorConst.azulClaro,
