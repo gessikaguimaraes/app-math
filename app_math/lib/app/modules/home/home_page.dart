@@ -19,6 +19,19 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: ColorConst.vermelho,
       appBar: AppBar(
         title: const Text('Home'),
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                "/configuracao",
+              );
+            },
+          ),
+        ],
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -29,12 +42,15 @@ class _HomePageState extends State<HomePage> {
           //color: ColorConst.vermelho,
         ),
         child: LayoutBuilder(builder: (_, constraints) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          return Stack(
+            alignment: Alignment.center,
+            //mainAxisAlignmento: MainAxisAlignment.start,
+            //crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Container(
-                margin: const EdgeInsets.only(top: 20),
+                padding: EdgeInsets.all(5.0),
+                alignment: Alignment.topCenter,
+                //margin: const EdgeInsets.only(top: 100),
                 child: Text(
                   "Qual é o seu nome?",
                   style: TextStyle(

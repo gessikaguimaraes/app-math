@@ -24,18 +24,23 @@ class _OpcoesPageState extends State<OpcoesPage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Opção'),
+        title: const Text('Escolha a opção:'),
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.settings), onPressed: () {}),
+        ],
       ),
       backgroundColor: ColorConst.azulClaro,
       body: Container(
         //padding: const EdgeInsets.all(10.0),
         child: Wrap(
-          direction: Axis.vertical,
+          direction: Axis.horizontal,
           children: <Widget>[
-            Text(
+            /* Text(
               'Escolha a opção :',
               style: TextStyle(fontSize: 40),
-            ),
+            ), */
             Container(
               height: size.height / 6,
               child: GestureDetector(

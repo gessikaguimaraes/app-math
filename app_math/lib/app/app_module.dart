@@ -1,4 +1,5 @@
 import 'package:app_math/app/app_widget.dart';
+import 'package:app_math/app/modules/configuracao/configuracao_page.dart';
 import 'package:app_math/app/modules/home/homeScreen_page.dart';
 import 'package:app_math/app/modules/home/home_page.dart';
 import 'package:app_math/app/modules/opcoes/opcoes_page.dart';
@@ -26,5 +27,6 @@ class AppModule extends MainModule {
         Router('/opcoes', child: (_, args) => OpcoesPage()),
         Router('/operacao', child: (_, args) => OperacaoPage()),
         Router('/resultado', child: (_, args) => ResultadoPage()),
+        Router('/configuracao', child: (_, args) => ConfiguracaoPage()),
       ];
 }
