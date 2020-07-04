@@ -17,6 +17,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: ColorConst.vermelho,
       body: Container(
         width: size.width,
         height: size.height,
@@ -24,7 +25,10 @@ class _ResultadoPageState extends State<ResultadoPage> {
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
-            colors: [Color(0xffED213A), Color(0xff93291E)],
+            colors: [
+              ColorConst.rosaEscuro,
+              ColorConst.vermelho,
+            ],
           ),
         ),
         child: Center(

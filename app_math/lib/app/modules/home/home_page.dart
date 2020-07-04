@@ -16,16 +16,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /* appBar: AppBar(
+      backgroundColor: ColorConst.vermelho,
+      appBar: AppBar(
         title: const Text('Home'),
-      ), */
+      ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(ImagesConst.ossoBranco),
             fit: BoxFit.contain,
           ),
-          color: ColorConst.vermelho,
+          //color: ColorConst.vermelho,
         ),
         child: LayoutBuilder(builder: (_, constraints) {
           return Column(

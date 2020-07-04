@@ -51,6 +51,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
     int quantidade = args.quantidade + 1;
 
     return Scaffold(
+      backgroundColor: ColorConst.verde,
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
