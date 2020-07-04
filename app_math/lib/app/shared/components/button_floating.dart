@@ -30,6 +30,8 @@ class _ButtonFloatingState extends State<ButtonFloating> {
       label: Text('Próximo'),
       icon: Icon(Icons.forward),
       backgroundColor: Colors.blue,
+      foregroundColor: Colors.white,
+      elevation: 6,
     );
   }
 }

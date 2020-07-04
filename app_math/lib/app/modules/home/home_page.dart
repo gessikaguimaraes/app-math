@@ -4,6 +4,7 @@ import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,7 +12,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final TextEditingController _controladorNome = TextEditingController();
+  TextEditingController _controladorNome = TextEditingController();
+
+  _salvar() async {
+    String valorDigitado = _controladorNome.text;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString("nome", valorDigitado);
+    print(valorDigitado);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +88,7 @@ class _HomePageState extends State<HomePage> {
           );
         }),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: ButtonFloating(
         route: "/opcoes",
         parametros: Parametros(
