@@ -1,4 +1,5 @@
 import 'package:app_math/app/shared/components/button_floating.dart';
+import 'package:app_math/app/shared/components/cutom_appbar.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
@@ -25,21 +26,46 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConst.vermelho,
-      appBar: AppBar(
-        title: const Text('Home'),
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                "/configuracao",
-              );
-            },
+      appBar: PreferredSize(
+        child: ClipPath(
+          clipper: CustomAppBar(),
+          child: Container(
+            color: Colors.grey[400],
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        'Home',
+                        style: TextStyle(color: Colors.red, fontSize: 25),
+                      ),
+                    ),
+                    Container(
+                      // margin: const EdgeInsets.only(right: 150),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.settings,
+                          size: 40,
+                        ),
+                        //color: ColorConst.vermelho,
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            "/configuracao",
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ],
+        ),
+        preferredSize: Size.fromHeight(kToolbarHeight + 50),
       ),
       body: Container(
         decoration: BoxDecoration(

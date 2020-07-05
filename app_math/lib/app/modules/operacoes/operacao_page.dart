@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:app_math/app/shared/components/cutom_appbar.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:app_math/app/shared/const/tipoOperacao_const.dart';
@@ -59,21 +60,6 @@ class _OperacaoPageState extends State<OperacaoPage> {
         ),
         automaticallyImplyLeading: false,
         centerTitle: true,
-        actions: <Widget>[
-          /* Text(
-            "$quantidade / 10",
-            style: TextStyle(color: Colors.white, fontSize: 30),
-          ), */
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                "/configuracao",
-              );
-            },
-          ),
-        ],
       ),
       body: Container(
         decoration: BoxDecoration(
