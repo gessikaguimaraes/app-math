@@ -31,6 +31,7 @@ dependencies:
   splashscreen: ^1.2.0
   flutter_modular: 
   shared_preferences: ^0.5.7+3
+  confetti: ^0.5.2
   #mobx:
   #flutter_mobx:
 
