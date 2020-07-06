@@ -1,3 +1,4 @@
+import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
 
@@ -33,12 +34,13 @@ class _ButtonFloatingState extends State<ButtonFloating> {
               ..showSnackBar(
                 SnackBar(
                   content: Text("Informe a opção"),
+                  //behavior: SnackBarBehavior.floating,
+                  backgroundColor: ColorConst.vermelho,
                 ),
               ),
           }
         else
           {
-            print(widget.parametros.nome),
             Navigator.pushNamed(
               context,
               widget.route,
