@@ -209,7 +209,9 @@ getResutado(int numero1, int numero2, String tipoOperacao) {
       } else {
         respostaCerta = (numero1 / numero2);
       }
-      return num.parse(respostaCerta.toStringAsPrecision(2));
+      return num.parse(respostaCerta
+          .toStringAsPrecision(2)
+          .replaceAll(RegExp(r"([.]*0)(?!.*\d)"), ""));
     case TipoOperacaoConst.Multiplicacao:
       return numero1 * numero2;
     case TipoOperacaoConst.Substracao:
