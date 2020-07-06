@@ -15,17 +15,41 @@ class _ButtonFloatingState extends State<ButtonFloating> {
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
       onPressed: () => {
-        print(widget.parametros.nome),
-        Navigator.pushNamed(
-          context,
-          widget.route,
-          arguments: Parametros(
-            nome: widget.parametros.nome,
-            opcoes: widget.parametros.opcoes,
-            resultado: widget.parametros.resultado,
-            quantidade: widget.parametros.quantidade,
-          ),
-        ),
+        /* if (widget.parametros.nome.isEmpty)
+          {
+            Scaffold.of(context)
+              ..removeCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(
+                  content: Text("Informe a seu nome"),
+                ),
+              ),
+          }
+        else  */
+        if (widget.route == "/operacao" && widget.parametros.opcoes.length == 0)
+          {
+            Scaffold.of(context)
+              ..removeCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(
+                  content: Text("Informe a opção"),
+                ),
+              ),
+          }
+        else
+          {
+            print(widget.parametros.nome),
+            Navigator.pushNamed(
+              context,
+              widget.route,
+              arguments: Parametros(
+                nome: widget.parametros.nome,
+                opcoes: widget.parametros.opcoes,
+                resultado: widget.parametros.resultado,
+                quantidade: widget.parametros.quantidade,
+              ),
+            ),
+          }
       },
       label: Text('Próximo'),
       icon: Icon(Icons.forward),
