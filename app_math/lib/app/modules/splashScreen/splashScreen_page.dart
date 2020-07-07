@@ -1,4 +1,4 @@
-import 'package:app_math/app/modules/identificacao/identificacao_page.dart';
+import 'package:app_math/app/modules/home/home_page.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
@@ -25,7 +25,7 @@ Widget _introScreen() {
           end: Alignment.bottomLeft,
           colors: [Color(0xffED213A), Color(0xff93291E)],
         ),
-        navigateAfterSeconds: IdentificacaoPage(),
+        navigateAfterSeconds: HomePage(),
         loaderColor: Colors.transparent,
       ),
       Container(
