@@ -11,4 +11,5 @@ class ColorConst {
   static Color verde = Color.fromARGB(255, 15, 240, 132);
   static Color azulClaro = Color.fromARGB(255, 15, 172, 240);
   static Color rosaEscuro = Color.fromARGB(255, 240, 15, 95);
+  static Color azulVerde = Color.fromARGB(255, 15, 240, 199);
 }
