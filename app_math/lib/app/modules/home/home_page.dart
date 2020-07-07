@@ -1,5 +1,6 @@
 import 'package:app_math/app/shared/components/cutom_appbar.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
+import 'package:clip_shadow/clip_shadow.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,8 +10,17 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.pink[400],
       appBar: PreferredSize(
-        child: ClipPath(
+        preferredSize: Size.fromHeight(kToolbarHeight + 250),
+        child: ClipShadow(
           clipper: CustomAppBar(),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.pink[300],
+              blurRadius: 10,
+              spreadRadius: 10,
+              offset: Offset(0.0, 1.0),
+            )
+          ],
           child: Container(
             color: Colors.grey[400],
             child: Column(
@@ -40,7 +50,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        preferredSize: Size.fromHeight(kToolbarHeight + 250),
       ),
       body: Container(
         child: Column(

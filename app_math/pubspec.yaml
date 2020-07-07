@@ -33,6 +33,7 @@ dependencies:
   shared_preferences: ^0.5.7+3
   confetti: ^0.5.2
   google_fonts: ^1.1.0
+  clip_shadow: ^0.2.1
   #mobx:
   #flutter_mobx:
 
