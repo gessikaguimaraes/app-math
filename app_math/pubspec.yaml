@@ -32,6 +32,7 @@ dependencies:
   flutter_modular: 
   shared_preferences: ^0.5.7+3
   confetti: ^0.5.2
+  google_fonts: ^1.1.0
   #mobx:
   #flutter_mobx:
 
