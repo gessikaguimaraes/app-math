@@ -3,15 +3,12 @@ import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
-class HomeScreenPage extends StatefulWidget {
-  HomeScreenPage({Key key, this.title}) : super(key: key);
-  final String title;
-
+class SplashScreenPage extends StatefulWidget {
   @override
-  _HomeScreenPageState createState() => _HomeScreenPageState();
+  _SplashScreenPageState createState() => _SplashScreenPageState();
 }
 
-class _HomeScreenPageState extends State<HomeScreenPage> {
+class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context) {
     return _introScreen();
