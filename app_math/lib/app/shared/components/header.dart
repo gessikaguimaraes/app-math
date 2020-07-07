@@ -18,35 +18,52 @@ class HeaderAppBar extends PreferredSize {
       child: ClipPath(
         clipper: CustomAppBar(),
         child: Container(
-          color: Colors.cyan[600],
+          decoration: BoxDecoration(
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                color: Colors.black54,
+                offset: Offset(20.0, 10.0),
+                blurRadius: 15.0,
+              )
+            ],
+            color: Colors.cyan[600],
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Container(
-                    child: Text(
-                      '',
-                      // 'Home',
-                      style: TextStyle(color: Colors.red, fontSize: 25),
+                  Icon(
+                    Icons.access_alarm,
+                    size: 40,
+                    color: ColorConst.vermelho,
+                  ),
+                  Text(
+                    'Matemática brincando',
+                    // 'Home',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 25,
+                      fontFamily: "Roboto",
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Container(
-                    // margin: const EdgeInsets.only(right: 150),
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.settings,
-                        size: 40,
-                      ),
-                      //color: ColorConst.vermelho,
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          "/configuracao",
-                        );
-                      },
+                  // margin: const EdgeInsets.only(right: 150),
+                  IconButton(
+                    icon: Icon(
+                      Icons.settings,
+                      size: 40,
+                      color: ColorConst.vermelho,
                     ),
+                    //color: ColorConst.vermelho,
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        "/configuracao",
+                      );
+                    },
                   ),
                 ],
               ),
