@@ -34,7 +34,7 @@ Widget _introScreen() {
       Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(ImagesConst.ossoBranco),
+            image: AssetImage(ImagesConst.favicon),
             fit: BoxFit.contain,
           ),
         ),

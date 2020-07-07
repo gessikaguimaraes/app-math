@@ -5,4 +5,5 @@ class ImagesConst {
   static const String ossoSubtracao = "images/osso2.png";
   static const String ossoMultiplicacao = "images/osso3.png";
   static const String ossoDivisao = "images/osso4.png";
+  static const String favicon = "images/favicon.png";
 }
