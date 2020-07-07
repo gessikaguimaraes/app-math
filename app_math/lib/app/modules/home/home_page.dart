@@ -1,3 +1,4 @@
+import 'package:app_math/app/modules/identificacao/identificacao_page.dart';
 import 'package:app_math/app/shared/components/cutom_appbar.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:clip_shadow/clip_shadow.dart';
@@ -59,7 +60,27 @@ class HomePage extends StatelessWidget {
             Center(
               child: GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, "/identificacao");
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                        transitionDuration: Duration(seconds: 0),
+                        /* transitionsBuilder: (BuildContext context,
+                            Animation<double> animation,
+                            Animation<double> secondaryAnimation,
+                            Widget child) {
+                          return ScaleTransition(
+                            alignment: Alignment.centerLeft,
+                            scale: animation,
+                            child: child,
+                          );
+                        }, */
+                        pageBuilder: (BuildContext context,
+                            Animation<double> animation,
+                            Animation<double> secondaryAnimation) {
+                          return IdentificacaoPage();
+                        }),
+                    //"/identificacao",
+                  );
                 },
                 child: ClipOval(
                   child: Container(
