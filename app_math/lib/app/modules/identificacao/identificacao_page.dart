@@ -1,6 +1,4 @@
-import 'package:app_math/app/modules/configuracao/configuracao_page.dart';
 import 'package:app_math/app/shared/components/button_floating.dart';
-import 'package:app_math/app/shared/components/cutom_appbar.dart';
 import 'package:app_math/app/shared/components/header.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
@@ -28,7 +26,12 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConst.vermelho,
-      appBar: HeaderAppBar(),
+      appBar: HeaderAppBar(
+        Colors.cyan[600],
+        "Matemática",
+        Colors.pink[500],
+        40,
+      ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -80,7 +83,7 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: ButtonFloating(
-        route: "/opcoes",
+        route: "/home",
         parametros: Parametros(
           nome: _controladorNome.text,
           opcoes: [],

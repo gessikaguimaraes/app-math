@@ -1,11 +1,19 @@
 import 'package:app_math/app/modules/configuracao/configuracao_page.dart';
-import 'package:app_math/app/shared/components/cutom_appbar.dart';
+import 'package:app_math/app/shared/components/custom_appbar.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
+import 'package:clip_shadow/clip_shadow.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HeaderAppBar extends PreferredSize {
+  final Color cor;
+  final String nome;
+  final Color corSombra;
+  final double fontSize;
+
+  HeaderAppBar(this.cor, this.nome, this.corSombra, this.fontSize);
+
   @override
   Size get preferredSize => new Size.fromHeight(kToolbarHeight + 50);
 
@@ -18,20 +26,19 @@ class HeaderAppBar extends PreferredSize {
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
-      // preferredSize: Size.fromHeight(kToolbarHeight + 50),
-      child: ClipPath(
+      preferredSize: preferredSize,
+      child: ClipShadow(
         clipper: CustomAppBar(),
-        child: Container(
-          decoration: BoxDecoration(
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                color: Colors.black54,
-                offset: Offset(20.0, 10.0),
-                blurRadius: 15.0,
-              )
-            ],
-            color: Colors.cyan[600],
+        boxShadow: [
+          BoxShadow(
+            color: corSombra,
+            blurRadius: 10,
+            spreadRadius: 10,
+            offset: Offset(0.0, 1.0),
           ),
+        ],
+        child: Container(
+          color: cor,
           child: Padding(
             padding: EdgeInsets.only(left: 10, top: 10, right: 10),
             child: Column(
@@ -47,11 +54,11 @@ class HeaderAppBar extends PreferredSize {
                           height: 45,
                         ),
                         Text(
-                          'Matemática',
+                          '$nome',
                           style: GoogleFonts.pacifico(
                             color: Colors.black87,
                             letterSpacing: 1,
-                            fontSize: 40,
+                            fontSize: fontSize,
                             fontWeight: FontWeight.w700,
                             fontStyle: FontStyle.italic,
                           ),

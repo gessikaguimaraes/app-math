@@ -1,12 +1,18 @@
 import 'package:app_math/app/modules/identificacao/identificacao_page.dart';
-import 'package:app_math/app/shared/components/cutom_appbar.dart';
+import 'package:app_math/app/modules/opcoes/opcoes_page.dart';
+import 'package:app_math/app/shared/components/custom_appbar.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
+import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:clip_shadow/clip_shadow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
+  final String route;
+  final Parametros parametros;
+
+  HomePage({Key key, this.route, this.parametros}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -70,11 +76,22 @@ class _HomePageState extends State<HomePage> {
               Center(
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushNamed(
+                      context,
+                      "/opcoes",
+                      arguments: Parametros(
+                        nome: "",
+                        opcoes: [],
+                        resultado: 0,
+                        quantidade: 0,
+                      ),
+                    );
+
+                    /* Navigator.push(
                       context,
                       PageRouteBuilder(
-                          transitionDuration: Duration(seconds: 0),
-                          /* transitionsBuilder: (BuildContext context,
+                        transitionDuration: Duration(seconds: 0),
+                        /* transitionsBuilder: (BuildContext context,
                               Animation<double> animation,
                               Animation<double> secondaryAnimation,
                               Widget child) {
@@ -84,13 +101,13 @@ class _HomePageState extends State<HomePage> {
                               child: child,
                             );
                           }, */
-                          pageBuilder: (BuildContext context,
-                              Animation<double> animation,
-                              Animation<double> secondaryAnimation) {
-                            return IdentificacaoPage();
-                          }),
-                      //"/identificacao",
-                    );
+                        pageBuilder: (BuildContext context,
+                            Animation<double> animation,
+                            Animation<double> secondaryAnimation) {
+                          return OpcoesPage();
+                        },
+                      ),
+                    ); */
                   },
                   child: ClipOval(
                     child: Container(

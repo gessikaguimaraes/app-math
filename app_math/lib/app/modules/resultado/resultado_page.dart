@@ -23,80 +23,85 @@ class _ResultadoPageState extends State<ResultadoPage> {
 
     var size = MediaQuery.of(context).size;
 
-    return Scaffold(
-      backgroundColor: ColorConst.vermelho,
-      body: Container(
-        width: size.width,
-        height: size.height,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            colors: [
-              ColorConst.rosaEscuro,
-              ColorConst.vermelho,
-            ],
+    return WillPopScope(
+      onWillPop: () {
+        Navigator.pushReplacementNamed(context, "/home");
+      },
+      child: Scaffold(
+        backgroundColor: ColorConst.vermelho,
+        body: Container(
+          width: size.width,
+          height: size.height,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                ColorConst.rosaEscuro,
+                ColorConst.vermelho,
+              ],
+            ),
           ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Align(
-                alignment: Alignment.center,
-                child: ConfettiWidget(
-                  confettiController: confettiController,
-                  blastDirectionality: BlastDirectionality.explosive,
-                  shouldLoop: true,
-                  colors: const [
-                    Colors.green,
-                    Colors.blue,
-                    Colors.pink,
-                    Colors.orange,
-                    Colors.purple
-                  ],
-                ),
-              ),
-              Text(
-                "$nome",
-                style: TextStyle(color: Colors.white, fontSize: 50),
-              ),
-              Text(
-                "Parabéns!",
-                style: TextStyle(color: Colors.white, fontSize: 70),
-              ),
-              Text(
-                "Você Acertou $resultado",
-                style: TextStyle(color: Colors.white, fontSize: 50),
-              ),
-              SizedBox(
-                width: 200,
-                height: 100,
-                child: RaisedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      "/opcoes",
-                      arguments: Parametros(
-                        nome: args.nome,
-                        opcoes: [],
-                        resultado: 0,
-                        quantidade: 0,
-                      ),
-                    );
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(15.0),
-                  ),
-                  color: ColorConst.azulEscuro,
-                  child: Text(
-                    "Jogar Novamente",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.center,
+                  child: ConfettiWidget(
+                    confettiController: confettiController,
+                    blastDirectionality: BlastDirectionality.explosive,
+                    shouldLoop: true,
+                    colors: const [
+                      Colors.green,
+                      Colors.blue,
+                      Colors.pink,
+                      Colors.orange,
+                      Colors.purple
+                    ],
                   ),
                 ),
-              ),
-            ],
+                Text(
+                  "$nome",
+                  style: TextStyle(color: Colors.white, fontSize: 50),
+                ),
+                Text(
+                  "Parabéns!",
+                  style: TextStyle(color: Colors.white, fontSize: 70),
+                ),
+                Text(
+                  "Você Acertou $resultado",
+                  style: TextStyle(color: Colors.white, fontSize: 50),
+                ),
+                SizedBox(
+                  width: 200,
+                  height: 100,
+                  child: RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        "/opcoes",
+                        arguments: Parametros(
+                          nome: args.nome,
+                          opcoes: [],
+                          resultado: 0,
+                          quantidade: 0,
+                        ),
+                      );
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(15.0),
+                    ),
+                    color: ColorConst.azulEscuro,
+                    child: Text(
+                      "Jogar Novamente",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

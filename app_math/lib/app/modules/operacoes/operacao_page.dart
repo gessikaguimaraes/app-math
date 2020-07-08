@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:app_math/app/shared/components/cutom_appbar.dart';
+import 'package:app_math/app/shared/components/custom_appbar.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:app_math/app/shared/const/tipoOperacao_const.dart';

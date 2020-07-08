@@ -17,7 +17,7 @@ class _SplashScreenPageState extends State<SplashScreenPage>
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 5)).then((value) {
-      Navigator.pushNamed(context, "/home");
+      Navigator.pushNamed(context, "/identificacao");
     });
     _controller = AnimationController(
       duration: const Duration(seconds: 10),
