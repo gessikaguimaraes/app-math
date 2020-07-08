@@ -1,15 +1,28 @@
 import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ConfiguracaoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0),
+    return SimpleDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+      ),
+      backgroundColor: Colors.cyan[600],
+      title: Text(
+        "Configuração",
+        textAlign: TextAlign.center,
+        style: GoogleFonts.pacifico(
+          color: Colors.black87,
+          letterSpacing: 1,
+          fontSize: 30,
+          fontWeight: FontWeight.w700,
+          fontStyle: FontStyle.italic,
         ),
-        backgroundColor: Colors.cyan[600],
-        child: Container(
+      ),
+      children: <Widget>[
+        Container(
           // height: 300.0,
           // width: 300.0,
           child: Column(
@@ -17,7 +30,7 @@ class ConfiguracaoPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(top: 32),
+                // padding: EdgeInsets.only(top: 32),
                 child: Column(
                   children: <Widget>[
                     Container(
@@ -27,23 +40,11 @@ class ConfiguracaoPage extends StatelessWidget {
                         right: 16,
                         bottom: 4,
                       ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(50),
-                        ),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black,
-                            blurRadius: 20,
-                          ),
-                        ],
-                      ),
                       child: TextFormField(
                         decoration: InputDecoration(
                           icon: Icon(
                             Icons.people,
-                            color: Colors.grey,
+                            color: Colors.black87,
                           ),
                           hintText: "Nome",
                         ),
@@ -55,6 +56,16 @@ class ConfiguracaoPage extends StatelessWidget {
               Container(
                 child: Column(
                   children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(top: 15),
+                      child: Text("Quantidade de números",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontFamily: "Roboto",
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
                     ListTile(
                       title: const Text(
                         '1',
@@ -64,6 +75,7 @@ class ConfiguracaoPage extends StatelessWidget {
                         ),
                       ),
                       leading: Radio(
+                        activeColor: ColorConst.rosaEscuro,
                         onChanged: (value) {},
                         groupValue: null,
                         value: null,
@@ -78,6 +90,7 @@ class ConfiguracaoPage extends StatelessWidget {
                         ),
                       ),
                       leading: Radio(
+                        activeColor: ColorConst.rosaEscuro,
                         onChanged: (value) {},
                         groupValue: null,
                         value: null,
@@ -92,6 +105,7 @@ class ConfiguracaoPage extends StatelessWidget {
                         ),
                       ),
                       leading: Radio(
+                        activeColor: ColorConst.rosaEscuro,
                         onChanged: (value) {},
                         groupValue: null,
                         value: null,
@@ -106,7 +120,7 @@ class ConfiguracaoPage extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(15.0),
                   ),
-                  color: ColorConst.azulEscuro,
+                  color: ColorConst.rosaEscuro,
                   child: Text(
                     "Avaliar",
                     style: TextStyle(color: Colors.white, fontSize: 20),
@@ -115,7 +129,9 @@ class ConfiguracaoPage extends StatelessWidget {
               ),
             ],
           ),
-        ));
+        )
+      ],
+    );
     // showDialog(
     //     context: context, builder: (BuildContext context) => configuracao);
   }

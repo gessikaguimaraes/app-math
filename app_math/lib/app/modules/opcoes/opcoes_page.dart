@@ -30,10 +30,12 @@ class _OpcoesPageState extends State<OpcoesPage> {
       },
       child: Scaffold(
         appBar: HeaderAppBar(
-          Colors.cyan[600],
-          "Escolha a opção:",
+          ColorConst.roxoClaro,
+          "Escolha a opção",
           Colors.blue[600],
-          30,
+          35,
+          FontStyle.normal,
+          ColorConst.azulClaro,
         ),
         backgroundColor: ColorConst.azulClaro,
         body: Container(
@@ -154,14 +156,14 @@ class _OpcoesPageState extends State<OpcoesPage> {
           ),
         ),
         floatingActionButton: ButtonFloating(
-          route: "/operacao",
-          parametros: Parametros(
-            nome: args.nome,
-            opcoes: listaOpcoes,
-            quantidade: 0,
-            resultado: 0,
-          ),
-        ),
+            route: "/operacao",
+            parametros: Parametros(
+              nome: args.nome,
+              opcoes: listaOpcoes,
+              quantidade: 0,
+              resultado: 0,
+            ),
+            cor: ColorConst.roxoClaro),
       ),
     );
   }

@@ -31,6 +31,8 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
         "Matemática",
         Colors.pink[500],
         40,
+        FontStyle.italic,
+        ColorConst.vermelho,
       ),
       body: Container(
         decoration: BoxDecoration(

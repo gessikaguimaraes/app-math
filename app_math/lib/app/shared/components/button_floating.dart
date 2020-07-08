@@ -3,9 +3,11 @@ import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
 
 class ButtonFloating extends StatefulWidget {
-  ButtonFloating({Key key, this.route, this.parametros}) : super(key: key);
+  ButtonFloating({Key key, this.route, this.parametros, this.cor})
+      : super(key: key);
   final String route;
   final Parametros parametros;
+  final Color cor;
 
   @override
   _ButtonFloatingState createState() => _ButtonFloatingState();
@@ -55,7 +57,7 @@ class _ButtonFloatingState extends State<ButtonFloating> {
       },
       label: Text('Próximo'),
       icon: Icon(Icons.forward),
-      backgroundColor: Colors.cyan[600],
+      backgroundColor: widget.cor,
       foregroundColor: Colors.white,
       elevation: 6,
     );

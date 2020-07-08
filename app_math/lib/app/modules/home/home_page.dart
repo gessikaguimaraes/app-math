@@ -1,6 +1,8 @@
+import 'package:app_math/app/modules/configuracao/configuracao_page.dart';
 import 'package:app_math/app/modules/identificacao/identificacao_page.dart';
 import 'package:app_math/app/modules/opcoes/opcoes_page.dart';
 import 'package:app_math/app/shared/components/custom_appbar.dart';
+import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:clip_shadow/clip_shadow.dart';
@@ -25,24 +27,47 @@ class _HomePageState extends State<HomePage> {
         SystemNavigator.pop();
       },
       child: Scaffold(
-        backgroundColor: Colors.pink[400],
+        backgroundColor: Colors.pink[300],
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight + 250),
           child: ClipShadow(
             clipper: CustomAppBar(),
             boxShadow: [
               BoxShadow(
-                color: Colors.pink[300],
+                color: Colors.pink[400],
                 blurRadius: 10,
                 spreadRadius: 10,
                 offset: Offset(0.0, 1.0),
               )
             ],
             child: Container(
-              color: Colors.grey[400],
+              color: ColorConst.verde,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
+                  Container(
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.settings,
+                        size: 40,
+                        color: Colors.pink[800],
+                      ),
+                      onPressed: () {
+                        // _mostrarDialog(context);
+                        showDialog(
+                            context: context,
+                            builder: (_) => ConfiguracaoPage());
+                        // Navigator.pushNamed(
+                        //   context,
+                        // );
+                        // Navigator.pushNamed(
+                        //   context,
+                        //   "/configuracao",
+                        // );
+                      },
+                    ),
+                  ),
                   Image(
                     alignment: Alignment.topLeft,
                     image: AssetImage(ImagesConst.favicon),
@@ -55,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                       Text(
                         'Matemática',
                         style: GoogleFonts.pacifico(
-                          textStyle: Theme.of(context).textTheme.headline1,
+                          // textStyle: Theme.of(context).textTheme.headline1,
                           fontSize: 60,
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.italic,
@@ -111,12 +136,12 @@ class _HomePageState extends State<HomePage> {
                   },
                   child: ClipOval(
                     child: Container(
-                      color: Colors.blue,
+                      color: Colors.pink[800],
                       height: 200.0,
                       width: 200.0,
                       child: Center(
                         child: Text(
-                          'Iniciar',
+                          'Praticar',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 50,

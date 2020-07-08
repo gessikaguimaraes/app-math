@@ -11,17 +11,14 @@ class HeaderAppBar extends PreferredSize {
   final String nome;
   final Color corSombra;
   final double fontSize;
+  final FontStyle fontStyle;
+  final Color corIconConfig;
 
-  HeaderAppBar(this.cor, this.nome, this.corSombra, this.fontSize);
+  HeaderAppBar(this.cor, this.nome, this.corSombra, this.fontSize,
+      this.fontStyle, this.corIconConfig);
 
   @override
   Size get preferredSize => new Size.fromHeight(kToolbarHeight + 50);
-
-  // Future<bool> _mostrarDialog(context) async {
-  // return showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) => ConfiguracaoPage());
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +57,7 @@ class HeaderAppBar extends PreferredSize {
                             letterSpacing: 1,
                             fontSize: fontSize,
                             fontWeight: FontWeight.w700,
-                            fontStyle: FontStyle.italic,
+                            fontStyle: fontStyle,
                           ),
                         ),
                       ],
@@ -70,7 +67,7 @@ class HeaderAppBar extends PreferredSize {
                         icon: Icon(
                           Icons.settings,
                           size: 40,
-                          color: ColorConst.vermelho,
+                          color: corIconConfig,
                         ),
                         onPressed: () {
                           // _mostrarDialog(context);

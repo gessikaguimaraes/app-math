@@ -48,14 +48,15 @@ class _OperacaoPageState extends State<OperacaoPage> {
       },
       child: Scaffold(
         backgroundColor: ColorConst.verde,
-        appBar: AppBar(
-          title: Text(
-            "$quantidade / 10",
-            style: TextStyle(color: Colors.white, fontSize: 30),
-          ),
-          automaticallyImplyLeading: false,
-          centerTitle: true,
-        ),
+        // appBar: AppBar(
+        //   title: Text(
+        //     "$quantidade / 10",
+        //     style: TextStyle(color: Colors.white, fontSize: 30),
+        //   ),
+        //   automaticallyImplyLeading: false,
+        //   centerTitle: true,
+        //   backgroundColor: ColorConst.,
+        // ),
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -75,6 +76,17 @@ class _OperacaoPageState extends State<OperacaoPage> {
             //crossAxisAlignment: CrossAxisAlignment.center,
             //mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Container(
+                color: ColorConst.roxoClaro,
+                child: Text(
+                  "$quantidade / 10",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
               Image(
                 image: AssetImage(
                   getImagem('$opcao'),
