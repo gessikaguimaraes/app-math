@@ -1,15 +1,19 @@
+import 'package:app_math/app/modules/configuracao/configuracao_page.dart';
 import 'package:app_math/app/shared/components/cutom_appbar.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
+import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:flutter/material.dart';
-
-// class Header extends StatefulWidget {
-//   @override
-//   _HeaderState createState() => _HeaderState();
-// }
+import 'package:google_fonts/google_fonts.dart';
 
 class HeaderAppBar extends PreferredSize {
   @override
   Size get preferredSize => new Size.fromHeight(kToolbarHeight + 50);
+
+  // Future<bool> _mostrarDialog(context) async {
+  // return showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) => ConfiguracaoPage());
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -28,46 +32,58 @@ class HeaderAppBar extends PreferredSize {
             ],
             color: Colors.cyan[600],
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Icon(
-                    Icons.access_alarm,
-                    size: 40,
-                    color: ColorConst.vermelho,
-                  ),
-                  Text(
-                    'Matemática brincando',
-                    // 'Home',
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 25,
-                      fontFamily: "Roboto",
-                      fontWeight: FontWeight.w600,
+          child: Padding(
+            padding: EdgeInsets.only(left: 10, top: 10, right: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Image(
+                          image: AssetImage(ImagesConst.favicon),
+                          height: 45,
+                        ),
+                        Text(
+                          'Matemática',
+                          style: GoogleFonts.pacifico(
+                            color: Colors.black87,
+                            letterSpacing: 1,
+                            fontSize: 40,
+                            fontWeight: FontWeight.w700,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  // margin: const EdgeInsets.only(right: 150),
-                  IconButton(
-                    icon: Icon(
-                      Icons.settings,
-                      size: 40,
-                      color: ColorConst.vermelho,
+                    Container(
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.settings,
+                          size: 40,
+                          color: ColorConst.vermelho,
+                        ),
+                        onPressed: () {
+                          // _mostrarDialog(context);
+                          showDialog(
+                              context: context,
+                              builder: (_) => ConfiguracaoPage());
+                          // Navigator.pushNamed(
+                          //   context,
+                          // );
+                          // Navigator.pushNamed(
+                          //   context,
+                          //   "/configuracao",
+                          // );
+                        },
+                      ),
                     ),
-                    //color: ColorConst.vermelho,
-                    onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        "/configuracao",
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

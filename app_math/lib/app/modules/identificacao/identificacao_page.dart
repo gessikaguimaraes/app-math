@@ -1,3 +1,4 @@
+import 'package:app_math/app/modules/configuracao/configuracao_page.dart';
 import 'package:app_math/app/shared/components/button_floating.dart';
 import 'package:app_math/app/shared/components/cutom_appbar.dart';
 import 'package:app_math/app/shared/components/header.dart';
@@ -45,7 +46,6 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
               Container(
                 padding: EdgeInsets.all(5.0),
                 alignment: Alignment.topCenter,
-                //margin: const EdgeInsets.only(top: 100),
                 child: Text(
                   "Qual é o seu nome?",
                   style: TextStyle(
@@ -68,6 +68,7 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
                   ),
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
+                    counterText: "",
                     contentPadding: EdgeInsets.zero,
                     labelStyle: TextStyle(color: Colors.black),
                   ),
