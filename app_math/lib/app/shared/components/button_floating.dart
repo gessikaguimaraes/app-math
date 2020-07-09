@@ -35,9 +35,10 @@ class _ButtonFloatingState extends State<ButtonFloating> {
               ..removeCurrentSnackBar()
               ..showSnackBar(
                 SnackBar(
+                  elevation: 10,
                   content: Text("Informe a opção"),
                   //behavior: SnackBarBehavior.floating,
-                  backgroundColor: ColorConst.vermelho,
+                  backgroundColor: ColorConst.roxoClaro,
                 ),
               ),
           }
