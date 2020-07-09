@@ -54,17 +54,10 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.pink[800],
                       ),
                       onPressed: () {
-                        // _mostrarDialog(context);
                         showDialog(
-                            context: context,
-                            builder: (_) => ConfiguracaoPage());
-                        // Navigator.pushNamed(
-                        //   context,
-                        // );
-                        // Navigator.pushNamed(
-                        //   context,
-                        //   "/configuracao",
-                        // );
+                          context: context,
+                          builder: (_) => ConfiguracaoPage(),
+                        );
                       },
                     ),
                   ),
@@ -94,65 +87,74 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         body: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Center(
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      "/opcoes",
-                      arguments: Parametros(
-                        nome: "",
-                        opcoes: [],
-                        resultado: 0,
-                        quantidade: 0,
-                      ),
-                    );
+          child: Container(
+            child: Column(
+              //mainAxisAlignment: MainAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Image(
+                    image: AssetImage(ImagesConst.cachorro),
+                    height: 100,
+                  ),
+                ),
+                Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        "/opcoes",
+                        arguments: Parametros(
+                          nome: "",
+                          opcoes: [],
+                          resultado: 0,
+                          quantidade: 0,
+                        ),
+                      );
 
-                    /* Navigator.push(
-                      context,
-                      PageRouteBuilder(
-                        transitionDuration: Duration(seconds: 0),
-                        /* transitionsBuilder: (BuildContext context,
+                      /* Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          transitionDuration: Duration(seconds: 0),
+                          /* transitionsBuilder: (BuildContext context,
+                                Animation<double> animation,
+                                Animation<double> secondaryAnimation,
+                                Widget child) {
+                              return ScaleTransition(
+                                alignment: Alignment.centerLeft,
+                                scale: animation,
+                                child: child,
+                              );
+                            }, */
+                          pageBuilder: (BuildContext context,
                               Animation<double> animation,
-                              Animation<double> secondaryAnimation,
-                              Widget child) {
-                            return ScaleTransition(
-                              alignment: Alignment.centerLeft,
-                              scale: animation,
-                              child: child,
-                            );
-                          }, */
-                        pageBuilder: (BuildContext context,
-                            Animation<double> animation,
-                            Animation<double> secondaryAnimation) {
-                          return OpcoesPage();
-                        },
-                      ),
-                    ); */
-                  },
-                  child: ClipOval(
-                    child: Container(
-                      color: Colors.pink[800],
-                      height: 200.0,
-                      width: 200.0,
-                      child: Center(
-                        child: Text(
-                          'Praticar',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 50,
+                              Animation<double> secondaryAnimation) {
+                            return OpcoesPage();
+                          },
+                        ),
+                      ); */
+                    },
+                    child: ClipOval(
+                      child: Container(
+                        color: Colors.pink[800],
+                        height: 200.0,
+                        width: 200.0,
+                        child: Center(
+                          child: Text(
+                            'Praticar',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 50,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
