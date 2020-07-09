@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ConfiguracaoPage extends StatefulWidget {
-  ConfiguracaoPage({Key key, this.cor}) : super(key: key);
+  ConfiguracaoPage({Key key, this.cor, this.corButton}) : super(key: key);
   final Color cor;
+  final Color corButton;
 
   @override
   _ConfiguracaoPageState createState() => _ConfiguracaoPageState();
 }
 
 class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
-  int selectedIndex = 0;
+  int selectedIndex = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -90,9 +91,9 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
                   shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(15.0),
                   ),
-                  color: ColorConst.rosaEscuro,
+                  color: widget.corButton,
                   child: Text(
-                    "Salvar",
+                    "Avaliar",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ),
@@ -119,20 +120,19 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
         bottom: 10,
       ),
       child: RaisedButton(
-        color: selectedIndex == index ? ColorConst.rosaEscuro : widget.cor,
+        color: selectedIndex == index ? widget.corButton : widget.cor,
         onPressed: () => changeIndex(index),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
           side: BorderSide(
-            color: ColorConst.rosaEscuro,
+            color: widget.corButton,
           ),
         ),
         child: Text(
           texto,
           style: TextStyle(
             fontSize: 30,
-            color:
-                selectedIndex == index ? Colors.black : ColorConst.rosaEscuro,
+            color: selectedIndex == index ? Colors.black : widget.corButton,
           ),
         ),
       ),

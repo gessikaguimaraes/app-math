@@ -56,7 +56,10 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () {
                         showDialog(
                           context: context,
-                          builder: (_) => ConfiguracaoPage(),
+                          builder: (_) => ConfiguracaoPage(
+                            cor: ColorConst.verde,
+                            corButton: Colors.pink[800],
+                          ),
                         );
                       },
                     ),

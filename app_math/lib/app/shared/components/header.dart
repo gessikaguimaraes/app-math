@@ -1,6 +1,5 @@
 import 'package:app_math/app/modules/configuracao/configuracao_page.dart';
 import 'package:app_math/app/shared/components/custom_appbar.dart';
-import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:clip_shadow/clip_shadow.dart';
 import 'package:flutter/material.dart';
@@ -70,20 +69,13 @@ class HeaderAppBar extends PreferredSize {
                           color: corIconConfig,
                         ),
                         onPressed: () {
-                          // _mostrarDialog(context);
                           showDialog(
                             context: context,
                             builder: (_) => ConfiguracaoPage(
                               cor: cor,
+                              corButton: corIconConfig,
                             ),
                           );
-                          // Navigator.pushNamed(
-                          //   context,
-                          // );
-                          // Navigator.pushNamed(
-                          //   context,
-                          //   "/configuracao",
-                          // );
                         },
                       ),
                     ),
