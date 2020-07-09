@@ -1,6 +1,6 @@
-import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ConfiguracaoPage extends StatefulWidget {
   ConfiguracaoPage({Key key, this.cor, this.corButton}) : super(key: key);
@@ -13,6 +13,25 @@ class ConfiguracaoPage extends StatefulWidget {
 
 class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
   int selectedIndex = 1;
+  String _nome = "";
+
+  Future<String> getNamePreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String nome = prefs.getString("nome");
+    return nome;
+  }
+
+  @override
+  void initState() {
+    getNamePreference().then(updateName);
+    super.initState();
+  }
+
+  void updateName(String nome) {
+    setState(() {
+      this._nome = nome;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +68,14 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
                         bottom: 4,
                       ),
                       child: TextFormField(
+                        initialValue: _nome,
                         decoration: InputDecoration(
                           icon: Icon(
                             Icons.people,
                             color: Colors.black87,
                           ),
                           hintText: "Nome",
+                          labelText: _nome,
                         ),
                       ),
                     ),

@@ -15,11 +15,28 @@ class IdentificacaoPage extends StatefulWidget {
 class IdentificacaoPageState extends State<IdentificacaoPage> {
   TextEditingController _controladorNome = TextEditingController();
 
-  _salvar() async {
-    String valorDigitado = _controladorNome.text;
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString("nome", valorDigitado);
-    print(valorDigitado);
+  Future<bool> savedNamePreference(String nome) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString("nome", nome);
+    return prefs.commit();
+  }
+
+  Future<String> getNamePreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String nome = prefs.getString("nome");
+    return nome;
+  }
+
+  void saveName() {
+    String nome = _controladorNome.text;
+    savedNamePreference(nome).then((bool committed) {
+      Navigator.of(context).pushNamed("/home");
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
@@ -83,7 +100,17 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
           );
         }),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          saveName();
+        },
+        label: Text('Próximo'),
+        icon: Icon(Icons.forward),
+        backgroundColor: Colors.cyan[600],
+        foregroundColor: Colors.white,
+        elevation: 6,
+      ),
+      /* floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: ButtonFloating(
         route: "/home",
         parametros: Parametros(
@@ -93,7 +120,7 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
           resultado: 0,
         ),
         cor: Colors.cyan[600],
-      ),
+      ), */
     );
   }
 }
