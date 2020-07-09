@@ -1,5 +1,4 @@
 import 'package:app_math/app/shared/components/button_floating.dart';
-import 'package:app_math/app/shared/components/custom_appbar.dart';
 import 'package:app_math/app/shared/components/header.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
@@ -43,10 +42,6 @@ class _OpcoesPageState extends State<OpcoesPage> {
           child: Wrap(
             direction: Axis.horizontal,
             children: <Widget>[
-              /* Text(
-                'Escolha a opção :',
-                style: TextStyle(fontSize: 40),
-              ), */
               Container(
                 height: size.height / 6,
                 child: GestureDetector(
@@ -156,43 +151,16 @@ class _OpcoesPageState extends State<OpcoesPage> {
           ),
         ),
         floatingActionButton: ButtonFloating(
-            route: "/operacao",
-            parametros: Parametros(
-              nome: args.nome,
-              opcoes: listaOpcoes,
-              quantidade: 0,
-              resultado: 0,
-            ),
-            cor: ColorConst.roxoClaro),
+          route: "/operacao",
+          parametros: Parametros(
+            nome: args.nome,
+            opcoes: listaOpcoes,
+            quantidade: 0,
+            resultado: 0,
+          ),
+          cor: ColorConst.roxoClaro,
+        ),
       ),
     );
   }
 }
-/*
-Widget _buildImageColumn() => Container(
-      child: Column(
-        children: [
-          _buildImageRow(1),
-          _buildImageRow(3),
-        ],
-      ),
-    );
-
-Widget _buildDecoratedImage(int imageIndex) => Expanded(
-      child: Container(
-        /* decoration: BoxDecoration(
-          border: Border.all(width: 10, color: Colors.black38),
-          borderRadius: const BorderRadius.all(const Radius.circular(8)),
-        ), */
-        margin: const EdgeInsets.all(4),
-        child: Image.asset('images/osso$imageIndex.png'),
-      ),
-    );
-
-Widget _buildImageRow(int imageIndex) => Row(
-      children: [
-        _buildDecoratedImage(imageIndex),
-        _buildDecoratedImage(imageIndex + 1),
-      ],
-    );
-*/

@@ -2,14 +2,24 @@ import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ConfiguracaoPage extends StatelessWidget {
+class ConfiguracaoPage extends StatefulWidget {
+  ConfiguracaoPage({Key key, this.cor}) : super(key: key);
+  final Color cor;
+
+  @override
+  _ConfiguracaoPageState createState() => _ConfiguracaoPageState();
+}
+
+class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.0),
       ),
-      backgroundColor: Colors.cyan[600],
+      backgroundColor: widget.cor,
       title: Text(
         "Configuração",
         textAlign: TextAlign.center,
@@ -23,14 +33,11 @@ class ConfiguracaoPage extends StatelessWidget {
       ),
       children: <Widget>[
         Container(
-          // height: 300.0,
-          // width: 300.0,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                // padding: EdgeInsets.only(top: 32),
                 child: Column(
                   children: <Widget>[
                     Container(
@@ -66,50 +73,13 @@ class ConfiguracaoPage extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           )),
                     ),
-                    ListTile(
-                      title: const Text(
-                        '1',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                        ),
-                      ),
-                      leading: Radio(
-                        activeColor: ColorConst.rosaEscuro,
-                        onChanged: (value) {},
-                        groupValue: null,
-                        value: null,
-                      ),
-                    ),
-                    ListTile(
-                      title: const Text(
-                        '2',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                        ),
-                      ),
-                      leading: Radio(
-                        activeColor: ColorConst.rosaEscuro,
-                        onChanged: (value) {},
-                        groupValue: null,
-                        value: null,
-                      ),
-                    ),
-                    ListTile(
-                      title: const Text(
-                        '3',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                        ),
-                      ),
-                      leading: Radio(
-                        activeColor: ColorConst.rosaEscuro,
-                        onChanged: (value) {},
-                        groupValue: null,
-                        value: null,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        _customRadio("1", 1),
+                        _customRadio("2", 2),
+                        _customRadio("3", 3),
+                      ],
                     ),
                   ],
                 ),
@@ -122,7 +92,7 @@ class ConfiguracaoPage extends StatelessWidget {
                   ),
                   color: ColorConst.rosaEscuro,
                   child: Text(
-                    "Avaliar",
+                    "Salvar",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ),
@@ -132,7 +102,40 @@ class ConfiguracaoPage extends StatelessWidget {
         )
       ],
     );
-    // showDialog(
-    //     context: context, builder: (BuildContext context) => configuracao);
+  }
+
+  void changeIndex(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
+  Widget _customRadio(String texto, int index) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 20,
+        right: 3,
+        left: 3,
+        bottom: 10,
+      ),
+      child: RaisedButton(
+        color: selectedIndex == index ? ColorConst.rosaEscuro : widget.cor,
+        onPressed: () => changeIndex(index),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          side: BorderSide(
+            color: ColorConst.rosaEscuro,
+          ),
+        ),
+        child: Text(
+          texto,
+          style: TextStyle(
+            fontSize: 30,
+            color:
+                selectedIndex == index ? Colors.black : ColorConst.rosaEscuro,
+          ),
+        ),
+      ),
+    );
   }
 }

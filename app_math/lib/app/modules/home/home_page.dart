@@ -135,20 +135,29 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ); */
                     },
-                    child: ClipOval(
-                      child: Container(
-                        color: Colors.pink[800],
-                        height: 200.0,
-                        width: 200.0,
-                        child: Center(
-                          child: Text(
-                            'Praticar',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 50,
-                            ),
+                    child: Container(
+                      height: 200.0,
+                      width: 200.0,
+                      child: Center(
+                        child: Text(
+                          'Praticar',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 50,
                           ),
                         ),
+                      ),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.pink[800],
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.pink[900],
+                            blurRadius: 5.0,
+                            offset: Offset(5.0, 5.0),
+                            spreadRadius: 5.0,
+                          ),
+                        ],
                       ),
                     ),
                   ),

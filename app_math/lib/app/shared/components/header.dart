@@ -72,8 +72,11 @@ class HeaderAppBar extends PreferredSize {
                         onPressed: () {
                           // _mostrarDialog(context);
                           showDialog(
-                              context: context,
-                              builder: (_) => ConfiguracaoPage());
+                            context: context,
+                            builder: (_) => ConfiguracaoPage(
+                              cor: cor,
+                            ),
+                          );
                           // Navigator.pushNamed(
                           //   context,
                           // );

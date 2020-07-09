@@ -92,6 +92,7 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
           quantidade: 0,
           resultado: 0,
         ),
+        cor: Colors.cyan[600],
       ),
     );
   }
