@@ -153,7 +153,6 @@ class _OpcoesPageState extends State<OpcoesPage> {
         floatingActionButton: ButtonFloating(
           route: "/operacao",
           parametros: Parametros(
-            nome: args.nome,
             opcoes: listaOpcoes,
             quantidade: 0,
             resultado: 0,

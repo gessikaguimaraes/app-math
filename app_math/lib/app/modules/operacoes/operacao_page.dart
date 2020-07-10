@@ -5,6 +5,7 @@ import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:app_math/app/shared/const/tipoOperacao_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OperacaoPage extends StatefulWidget {
   @override
@@ -12,18 +13,50 @@ class OperacaoPage extends StatefulWidget {
 }
 
 class _OperacaoPageState extends State<OperacaoPage> {
-  int numero1 = new Random().nextInt(9);
-  int numero2 = new Random().nextInt(9);
+  int quantidadeNumero = 1;
+
+  void updateQuantidadeNumero(int index) {
+    setState(() {
+      this.quantidadeNumero = index;
+    });
+  }
+
+  @override
+  void initState() {
+    getQuantidadePreference().then(updateQuantidadeNumero);
+    super.initState();
+  }
+
+  Future<int> getQuantidadePreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getInt("quantidadeNumero");
+  }
 
   @override
   Widget build(BuildContext context) {
     final Parametros args = ModalRoute.of(context).settings.arguments;
-    //print(args.opcoes);
 
     final List<String> listaOpcao = args.opcoes;
+    if (quantidadeNumero == 1) {
+      quantidadeNumero = 9;
+    } else if (quantidadeNumero == 2) {
+      quantidadeNumero = 99;
+    } else if (quantidadeNumero == 3) {
+      quantidadeNumero = 999;
+    }
+
+    int numero1 = new Random().nextInt(quantidadeNumero);
+    int numero2 = new Random().nextInt(quantidadeNumero);
 
     String opcao = listaOpcao[new Random().nextInt(listaOpcao.length)];
     String operacao = getOperacao(numero1, numero2, opcao);
+    if (operacao == " / ") {
+      if (numero1 == 0 && numero2 == 0) {
+        while (numero1 == 0) {
+          numero1 = new Random().nextInt(quantidadeNumero);
+        }
+      }
+    }
     num resultadoOperacao = getResutado(numero1, numero2, opcao);
 
     List<Color> listaCores = getCoresAleatoria();
@@ -32,7 +65,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
     Color cor3 = listaCores[2];
     Color cor4 = listaCores[3];
 
-    List<num> lista = getRadomQuadrado(resultadoOperacao);
+    List<num> lista = getRadomQuadrado(resultadoOperacao, quantidadeNumero);
     num numero3 = lista[0];
     num numero4 = lista[1];
     num numero5 = lista[2];
@@ -47,15 +80,6 @@ class _OperacaoPageState extends State<OperacaoPage> {
       },
       child: Scaffold(
         backgroundColor: ColorConst.verde,
-        // appBar: AppBar(
-        //   title: Text(
-        //     "$quantidade / 10",
-        //     style: TextStyle(color: Colors.white, fontSize: 30),
-        //   ),
-        //   automaticallyImplyLeading: false,
-        //   centerTitle: true,
-        //   backgroundColor: ColorConst.,
-        // ),
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -135,14 +159,14 @@ class _OperacaoPageState extends State<OperacaoPage> {
   }
 }
 
-getNumeroRandomico(num resultado) {
+getNumeroRandomico(num resultado, int quantidadeNumero) {
   List<num> listaQuadrado = [];
   int i = 0;
   listaQuadrado.add(resultado);
   while (i < 3) {
-    int numero = new Random().nextInt(9);
+    int numero = new Random().nextInt(quantidadeNumero);
     while (listaQuadrado.contains(numero)) {
-      numero = new Random().nextInt(9);
+      numero = new Random().nextInt(quantidadeNumero);
     }
     listaQuadrado.add(numero);
     i++;
@@ -150,9 +174,10 @@ getNumeroRandomico(num resultado) {
   return listaQuadrado;
 }
 
-getRadomQuadrado(num resultadoOperacao) {
+getRadomQuadrado(num resultadoOperacao, int quantidadeNumero) {
   List<num> lista = [];
-  List<num> listaQuadrado = getNumeroRandomico(resultadoOperacao);
+  List<num> listaQuadrado =
+      getNumeroRandomico(resultadoOperacao, quantidadeNumero);
   int i = 0;
   while (i < listaQuadrado.length) {
     num numero = listaQuadrado[new Random().nextInt(listaQuadrado.length)];
@@ -281,7 +306,6 @@ Widget quadrado(BuildContext context, Parametros args, num numero, Color cor,
                 context,
                 "/operacao",
                 arguments: Parametros(
-                  nome: args.nome,
                   opcoes: args.opcoes,
                   resultado: resultado,
                   quantidade: args.quantidade + 1,
@@ -292,7 +316,6 @@ Widget quadrado(BuildContext context, Parametros args, num numero, Color cor,
                 context,
                 "/resultado",
                 arguments: Parametros(
-                  nome: args.nome,
                   opcoes: args.opcoes,
                   resultado: resultado,
                   quantidade: args.quantidade,

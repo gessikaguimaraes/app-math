@@ -12,24 +12,62 @@ class ConfiguracaoPage extends StatefulWidget {
 }
 
 class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
+  TextEditingController _controladorNome = TextEditingController();
   int selectedIndex = 1;
   String _nome = "";
 
   Future<String> getNamePreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String nome = prefs.getString("nome");
-    return nome;
+    print(prefs.getString("nome"));
+    return prefs.getString("nome");
+  }
+
+  Future<int> getQuantidadePreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    print(prefs.getInt("quantidadeNumero"));
+    return prefs.getInt("quantidadeNumero");
+  }
+
+  Future<bool> savedNamePreference(String nome) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString("nome", nome);
+    return prefs.commit();
+  }
+
+  Future<bool> savedQuantidadePreference(int index) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt("quantidadeNumero", index);
+    return prefs.commit();
   }
 
   @override
   void initState() {
     getNamePreference().then(updateName);
+    getQuantidadePreference().then(changeIndex);
     super.initState();
+  }
+
+  void saveNome(String nome) {
+    savedNamePreference(nome).then((bool committed) {
+      updateName(nome);
+    });
+  }
+
+  void saveQuantidade(int index) {
+    savedQuantidadePreference(index).then((bool committed) {
+      changeIndex(index);
+    });
   }
 
   void updateName(String nome) {
     setState(() {
       this._nome = nome;
+    });
+  }
+
+  void changeIndex(int index) {
+    setState(() {
+      this.selectedIndex = index;
     });
   }
 
@@ -68,7 +106,8 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
                         bottom: 4,
                       ),
                       child: TextFormField(
-                        initialValue: _nome,
+                        controller: _controladorNome,
+                        //initialValue: _nome,
                         decoration: InputDecoration(
                           icon: Icon(
                             Icons.people,
@@ -106,30 +145,44 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
                   ],
                 ),
               ),
-              Container(
-                child: RaisedButton(
-                  onPressed: () {},
-                  shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(15.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    child: RaisedButton(
+                      onPressed: () {},
+                      shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(15.0),
+                      ),
+                      color: widget.corButton,
+                      child: Text(
+                        "Avaliar",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ),
                   ),
-                  color: widget.corButton,
-                  child: Text(
-                    "Avaliar",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  Container(
+                    child: RaisedButton(
+                      onPressed: () {
+                        saveNome(_controladorNome.text);
+                      },
+                      shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(15.0),
+                      ),
+                      color: widget.corButton,
+                      child: Text(
+                        "Salvar",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ],
           ),
         )
       ],
     );
-  }
-
-  void changeIndex(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
   }
 
   Widget _customRadio(String texto, int index) {
@@ -139,7 +192,7 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
       ),
       child: RaisedButton(
         color: selectedIndex == index ? widget.corButton : widget.cor,
-        onPressed: () => changeIndex(index),
+        onPressed: () => saveQuantidade(index),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
           side: BorderSide(

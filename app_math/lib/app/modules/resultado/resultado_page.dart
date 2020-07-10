@@ -4,6 +4,7 @@ import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ResultadoPage extends StatefulWidget {
   @override
@@ -14,12 +15,30 @@ class _ResultadoPageState extends State<ResultadoPage> {
   ConfettiController confettiController =
       ConfettiController(duration: Duration(seconds: 10));
 
+  String nome = "";
+  Future<String> getNamePreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    print(prefs.getString("nome"));
+    return prefs.getString("nome");
+  }
+
+  @override
+  void initState() {
+    getNamePreference().then(updateName);
+    super.initState();
+  }
+
+  void updateName(String nome) {
+    setState(() {
+      this.nome = nome;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     confettiController.play();
     final Parametros args = ModalRoute.of(context).settings.arguments;
     int resultado = args.resultado;
-    String nome = args.nome;
 
     var size = MediaQuery.of(context).size;
 
@@ -63,7 +82,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
                   ),
                 ),
                 Text(
-                  "$nome",
+                  nome,
                   style: TextStyle(color: Colors.white, fontSize: 50),
                 ),
                 Text(
@@ -83,7 +102,6 @@ class _ResultadoPageState extends State<ResultadoPage> {
                         context,
                         "/opcoes",
                         arguments: Parametros(
-                          nome: args.nome,
                           opcoes: [],
                           resultado: 0,
                           quantidade: 0,
