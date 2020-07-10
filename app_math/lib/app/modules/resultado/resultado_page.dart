@@ -91,7 +91,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
                 ),
                 Text(
                   "Você Acertou $resultado",
-                  style: TextStyle(color: Colors.white, fontSize: 50),
+                  style: TextStyle(color: Colors.white, fontSize: 40),
                 ),
                 SizedBox(
                   width: 200,
