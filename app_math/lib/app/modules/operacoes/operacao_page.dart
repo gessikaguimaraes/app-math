@@ -334,7 +334,7 @@ Widget quadrado(BuildContext context, Parametros args, num numero, Color cor,
             margin: const EdgeInsets.all(6),
             child: Text(
               "$numero",
-              style: TextStyle(color: Colors.white, fontSize: 50),
+              style: TextStyle(color: Colors.white, fontSize: 40),
             ),
           ),
         ),
