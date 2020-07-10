@@ -14,17 +14,14 @@ class ConfiguracaoPage extends StatefulWidget {
 class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
   TextEditingController _controladorNome = TextEditingController();
   int selectedIndex = 1;
-  String _nome = "";
 
   Future<String> getNamePreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    print(prefs.getString("nome"));
     return prefs.getString("nome");
   }
 
   Future<int> getQuantidadePreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    print(prefs.getInt("quantidadeNumero"));
     return prefs.getInt("quantidadeNumero");
   }
 
@@ -61,7 +58,7 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
 
   void updateName(String nome) {
     setState(() {
-      this._nome = nome;
+      this._controladorNome.text = nome;
     });
   }
 
@@ -107,14 +104,12 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
                       ),
                       child: TextFormField(
                         controller: _controladorNome,
-                        //initialValue: _nome,
                         decoration: InputDecoration(
                           icon: Icon(
                             Icons.people,
                             color: Colors.black87,
                           ),
                           hintText: "Nome",
-                          labelText: _nome,
                         ),
                       ),
                     ),
@@ -126,13 +121,15 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(top: 15),
-                      child: Text("Quantidade de números",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontFamily: "Roboto",
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          )),
+                      child: Text(
+                        "Quantidade de números",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontFamily: "Roboto",
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -146,7 +143,7 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
                 ),
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Container(
                     child: RaisedButton(

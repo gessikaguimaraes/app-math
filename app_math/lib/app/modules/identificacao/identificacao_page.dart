@@ -1,8 +1,6 @@
-import 'package:app_math/app/shared/components/button_floating.dart';
 import 'package:app_math/app/shared/components/header.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
-import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,8 +32,15 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
     });
   }
 
+  void updateName(String nome) {
+    setState(() {
+      this._controladorNome.text = nome;
+    });
+  }
+
   @override
   void initState() {
+    getNamePreference().then(updateName);
     super.initState();
   }
 

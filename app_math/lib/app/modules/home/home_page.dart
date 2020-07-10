@@ -1,6 +1,4 @@
 import 'package:app_math/app/modules/configuracao/configuracao_page.dart';
-import 'package:app_math/app/modules/identificacao/identificacao_page.dart';
-import 'package:app_math/app/modules/opcoes/opcoes_page.dart';
 import 'package:app_math/app/shared/components/custom_appbar.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
@@ -98,32 +96,25 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         body: Container(
-          child: Container(
-            child: Column(
-              //mainAxisAlignment: MainAxisAlignment.center,
-              //crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                // Align(
-                //   alignment: Alignment.bottomRight,
-                //   child: Image(
-                //     image: AssetImage(ImagesConst.cachorro),
-                //     height: 100,
-                //   ),
-                // ),
-                Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        "/opcoes",
-                        arguments: Parametros(
-                          opcoes: [],
-                          resultado: 0,
-                          quantidade: 0,
-                        ),
-                      );
+          child: Wrap(
+            direction: Axis.horizontal,
+            //mainAxisAlignment: MainAxisAlignment.center,
+            //crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Center(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      "/opcoes",
+                      arguments: Parametros(
+                        opcoes: [],
+                        resultado: 0,
+                        quantidade: 0,
+                      ),
+                    );
 
-                      /* Navigator.push(
+                    /* Navigator.push(
                         context,
                         PageRouteBuilder(
                           transitionDuration: Duration(seconds: 0),
@@ -144,36 +135,35 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                       ); */
-                    },
-                    child: Container(
-                      height: 200.0,
-                      width: 200.0,
-                      child: Center(
-                        child: Text(
-                          'Praticar',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 50,
-                          ),
+                  },
+                  child: Container(
+                    height: 200.0,
+                    width: 200.0,
+                    child: Center(
+                      child: Text(
+                        'Praticar',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 50,
                         ),
                       ),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.pink[800],
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.pink[900],
-                            blurRadius: 5.0,
-                            offset: Offset(5.0, 5.0),
-                            spreadRadius: 5.0,
-                          ),
-                        ],
-                      ),
+                    ),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.pink[800],
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.pink[900],
+                          blurRadius: 5.0,
+                          offset: Offset(5.0, 5.0),
+                          spreadRadius: 5.0,
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
