@@ -18,17 +18,6 @@ class _ButtonFloatingState extends State<ButtonFloating> {
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
       onPressed: () => {
-        /* if (widget.parametros.nome.isEmpty)
-          {
-            Scaffold.of(context)
-              ..removeCurrentSnackBar()
-              ..showSnackBar(
-                SnackBar(
-                  content: Text("Informe a seu nome"),
-                ),
-              ),
-          }
-        else  */
         if (widget.route == "/operacao" && widget.parametros.opcoes.length == 0)
           {
             Scaffold.of(context)
@@ -48,7 +37,6 @@ class _ButtonFloatingState extends State<ButtonFloating> {
               context,
               widget.route,
               arguments: Parametros(
-                nome: widget.parametros.nome,
                 opcoes: widget.parametros.opcoes,
                 resultado: widget.parametros.resultado,
                 quantidade: widget.parametros.quantidade,

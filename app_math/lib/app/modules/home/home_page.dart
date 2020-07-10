@@ -109,7 +109,6 @@ class _HomePageState extends State<HomePage> {
                         context,
                         "/opcoes",
                         arguments: Parametros(
-                          nome: "",
                           opcoes: [],
                           resultado: 0,
                           quantidade: 0,
