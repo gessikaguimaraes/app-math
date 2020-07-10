@@ -96,7 +96,7 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
                           )),
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         _customRadio("1", 1),
                         _customRadio("2", 2),
@@ -135,10 +135,7 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
   Widget _customRadio(String texto, int index) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: 20,
-        right: 3,
-        left: 3,
-        bottom: 10,
+        top: 15,
       ),
       child: RaisedButton(
         color: selectedIndex == index ? widget.corButton : widget.cor,

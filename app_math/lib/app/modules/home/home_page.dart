@@ -43,10 +43,11 @@ class _HomePageState extends State<HomePage> {
             child: Container(
               color: ColorConst.verde,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                // mainAxisAlignment: MainAxisAlignment.center,
                 // crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   Container(
+                    alignment: Alignment.topRight,
                     child: IconButton(
                       icon: Icon(
                         Icons.settings,
@@ -64,23 +65,30 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                   ),
-                  Image(
-                    alignment: Alignment.topLeft,
-                    image: AssetImage(ImagesConst.favicon),
-                    //fit: BoxFit.fitHeight,
-                    height: 60,
-                  ),
-                  Row(
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Text(
-                        'Matemática',
-                        style: GoogleFonts.pacifico(
-                          // textStyle: Theme.of(context).textTheme.headline1,
-                          fontSize: 60,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.italic,
-                        ),
+                      Image(
+                        // alignment: Alignment.topLeft,
+                        image: AssetImage(ImagesConst.favicon),
+                        //fit: BoxFit.fitHeight,
+                        height: 60,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        // crossAxisAlignment: CrossAxisAlignment.center,r
+                        children: <Widget>[
+                          Text(
+                            'Matemática',
+                            style: GoogleFonts.pacifico(
+                              // textStyle: Theme.of(context).textTheme.headline1,
+                              fontSize: 60,
+                              fontWeight: FontWeight.w700,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -95,13 +103,13 @@ class _HomePageState extends State<HomePage> {
               //mainAxisAlignment: MainAxisAlignment.center,
               //crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Image(
-                    image: AssetImage(ImagesConst.cachorro),
-                    height: 100,
-                  ),
-                ),
+                // Align(
+                //   alignment: Alignment.bottomRight,
+                //   child: Image(
+                //     image: AssetImage(ImagesConst.cachorro),
+                //     height: 100,
+                //   ),
+                // ),
                 Center(
                   child: GestureDetector(
                     onTap: () {
