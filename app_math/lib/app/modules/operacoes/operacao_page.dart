@@ -17,7 +17,7 @@ class _OperacaoPageState extends State<OperacaoPage> {
 
   void updateQuantidadeNumero(int index) {
     setState(() {
-      this.quantidadeNumero = index;
+      this.quantidadeNumero = index == null ? 1 : index;
     });
   }
 

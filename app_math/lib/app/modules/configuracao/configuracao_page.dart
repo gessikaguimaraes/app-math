@@ -64,7 +64,7 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
 
   void changeIndex(int index) {
     setState(() {
-      this.selectedIndex = index;
+      this.selectedIndex = index == null ? 1 : index;
     });
   }
 
