@@ -49,6 +49,7 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
 
   @override
   void dispose() {
+    AdMobService().bannerAd.dispose();
     super.dispose();
   }
 
