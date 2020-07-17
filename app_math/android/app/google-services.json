@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "39460017926",
+    "firebase_url": "https://matematica-3bf03.firebaseio.com",
+    "project_id": "matematica-3bf03",
+    "storage_bucket": "matematica-3bf03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39460017926:android:23c704554db3a314d2b087",
+        "android_client_info": {
+          "package_name": "com.example.app_math"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39460017926-qc8bbalkmhmr2uv24kia3jt0040qqa6n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiS1RR7IdoOqpqsas5WM-z-OAFU-p3nmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "39460017926-qc8bbalkmhmr2uv24kia3jt0040qqa6n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

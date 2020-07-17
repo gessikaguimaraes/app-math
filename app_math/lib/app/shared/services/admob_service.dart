@@ -1,7 +1,12 @@
 import 'package:firebase_admob/firebase_admob.dart';
 
 class AdMobService {
-  MobileAdTargetingInfo targetingInfo;
+  MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+    keywords: <String>['flutterio', 'beautiful apps'],
+    contentUrl: 'https://flutter.io',
+    childDirected: false,
+    testDevices: <String>[],
+  );
   BannerAd bannerAd;
   InterstitialAd interstitialAd;
 
