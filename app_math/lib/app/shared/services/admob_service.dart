@@ -2,7 +2,7 @@ import 'package:firebase_admob/firebase_admob.dart';
 
 class AdMobService {
   MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-    keywords: <String>['flutterio', 'beautiful apps'],
+    keywords: <String>['Games', 'beautiful apps', "matematica"],
     contentUrl: 'https://flutter.io',
     childDirected: false,
     testDevices: <String>[],
@@ -12,9 +12,6 @@ class AdMobService {
 
   BannerAd createBannerAd() {
     return BannerAd(
-      // Replace the testAdUnitId with an ad unit id from the AdMob dash.
-      // https://developers.google.com/admob/android/test-ads
-      // https://developers.google.com/admob/ios/test-ads
       adUnitId: BannerAd.testAdUnitId,
       size: AdSize.smartBanner,
       targetingInfo: targetingInfo,
@@ -26,9 +23,6 @@ class AdMobService {
 
   InterstitialAd createInterstitialAd() {
     return InterstitialAd(
-      // Replace the testAdUnitId with an ad unit id from the AdMob dash.
-      // https://developers.google.com/admob/android/test-ads
-      // https://developers.google.com/admob/ios/test-ads
       adUnitId: InterstitialAd.testAdUnitId,
       targetingInfo: targetingInfo,
       listener: (MobileAdEvent event) {
