@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
+import 'package:app_math/app/shared/services/admob_service.dart';
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -98,6 +99,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
                   height: 100,
                   child: RaisedButton(
                     onPressed: () {
+                      AdMobService().mostrarInterstitial();
                       Navigator.pushNamed(
                         context,
                         "/opcoes",
