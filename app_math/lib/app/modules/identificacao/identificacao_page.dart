@@ -94,6 +94,7 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
                   controller: _controladorNome,
                   maxLength: 20,
                   keyboardType: TextInputType.text,
+                  cursorColor: ColorConst.vermelho,
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 30,
@@ -103,6 +104,9 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
                     counterText: "",
                     contentPadding: EdgeInsets.zero,
                     labelStyle: TextStyle(color: Colors.black),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: ColorConst.vermelho),
+                    ),
                   ),
                 ),
               ),

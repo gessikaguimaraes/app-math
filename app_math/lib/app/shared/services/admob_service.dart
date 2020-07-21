@@ -2,7 +2,19 @@ import 'package:firebase_admob/firebase_admob.dart';
 
 class AdMobService {
   MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-    keywords: <String>['Games', 'beautiful apps', "matematica"],
+    keywords: <String>[
+      "Games",
+      "beautiful apps",
+      "matematica",
+      "Matemática",
+      "Math",
+      "Matematica",
+      "matemática",
+      "math",
+      "games",
+      "game",
+      "Game",
+    ],
     contentUrl: 'https://flutter.io',
     childDirected: false,
     testDevices: <String>[],

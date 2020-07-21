@@ -104,12 +104,16 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
                       ),
                       child: TextFormField(
                         controller: _controladorNome,
+                        cursorColor: widget.corButton,
                         decoration: InputDecoration(
                           icon: Icon(
                             Icons.people,
                             color: Colors.black87,
                           ),
                           hintText: "Nome",
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: widget.corButton),
+                          ),
                         ),
                       ),
                     ),
