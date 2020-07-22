@@ -42,7 +42,6 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
   @override
   void initState() {
     AdMobService().mostrarBanner();
-    //AdMobService().mostrarInterstitial();
     getNamePreference().then(updateName);
     super.initState();
   }
@@ -71,13 +70,10 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
             image: AssetImage(ImagesConst.ossoBranco),
             fit: BoxFit.contain,
           ),
-          //color: ColorConst.vermelho,
         ),
         child: LayoutBuilder(builder: (_, constraints) {
           return Stack(
             alignment: Alignment.center,
-            //mainAxisAlignmento: MainAxisAlignment.start,
-            //crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Container(
                 padding: EdgeInsets.all(5.0),
@@ -98,6 +94,7 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
                   controller: _controladorNome,
                   maxLength: 20,
                   keyboardType: TextInputType.text,
+                  cursorColor: ColorConst.vermelho,
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 30,
@@ -107,6 +104,9 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
                     counterText: "",
                     contentPadding: EdgeInsets.zero,
                     labelStyle: TextStyle(color: Colors.black),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: ColorConst.vermelho),
+                    ),
                   ),
                 ),
               ),
@@ -124,17 +124,6 @@ class IdentificacaoPageState extends State<IdentificacaoPage> {
         foregroundColor: Colors.white,
         elevation: 6,
       ),
-      /* floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: ButtonFloating(
-        route: "/home",
-        parametros: Parametros(
-          nome: _controladorNome.text,
-          opcoes: [],
-          quantidade: 0,
-          resultado: 0,
-        ),
-        cor: Colors.cyan[600],
-      ), */
     );
   }
 }

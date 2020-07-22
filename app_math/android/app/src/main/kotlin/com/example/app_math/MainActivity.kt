@@ -1,4 +1,4 @@
-package com.example.app_math
+package com.pinksplash.matematica
 
 import io.flutter.embedding.android.FlutterActivity
 
