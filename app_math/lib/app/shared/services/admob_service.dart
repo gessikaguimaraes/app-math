@@ -24,7 +24,8 @@ class AdMobService {
 
   BannerAd createBannerAd() {
     return BannerAd(
-      adUnitId: BannerAd.testAdUnitId,
+      // adUnitId: BannerAd.testAdUnitId,
+      adUnitId: "ca-app-pub-1556568734938950/4016772722",
       size: AdSize.smartBanner,
       targetingInfo: targetingInfo,
       listener: (MobileAdEvent event) {
@@ -35,7 +36,8 @@ class AdMobService {
 
   InterstitialAd createInterstitialAd() {
     return InterstitialAd(
-      adUnitId: InterstitialAd.testAdUnitId,
+      //adUnitId: InterstitialAd.testAdUnitId,
+      adUnitId: "ca-app-pub-1556568734938950/9974842261",
       targetingInfo: targetingInfo,
       listener: (MobileAdEvent event) {
         //print("InterstitialAd event is $event");
