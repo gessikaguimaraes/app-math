@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:app_math/app/shared/services/admob_service.dart';
