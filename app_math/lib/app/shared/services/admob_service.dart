@@ -15,7 +15,7 @@ class AdMobService {
       "game",
       "Game",
     ],
-    contentUrl: 'https://flutter.io',
+    // contentUrl: 'https://flutter.io',
     childDirected: false,
     testDevices: <String>[],
   );
@@ -36,7 +36,7 @@ class AdMobService {
 
   InterstitialAd createInterstitialAd() {
     return InterstitialAd(
-      //adUnitId: InterstitialAd.testAdUnitId,
+      // adUnitId: InterstitialAd.testAdUnitId,
       adUnitId: "ca-app-pub-1556568734938950/9974842261",
       targetingInfo: targetingInfo,
       listener: (MobileAdEvent event) {
