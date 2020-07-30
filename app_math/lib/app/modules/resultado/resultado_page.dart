@@ -17,7 +17,6 @@ class _ResultadoPageState extends State<ResultadoPage> {
   String nome = "";
   Future<String> getNamePreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    print(prefs.getString("nome"));
     return prefs.getString("nome");
   }
 

@@ -3,6 +3,7 @@ import 'dart:math' as math;
 
 import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreenPage extends StatefulWidget {
   @override
@@ -13,11 +14,21 @@ class _SplashScreenPageState extends State<SplashScreenPage>
     with TickerProviderStateMixin {
   AnimationController _controller;
 
+  String route = "/identificacao";
+  Future<String> getNamePreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.getString("nome") != "") {
+      route = "/home";
+    }
+    return prefs.getString("nome");
+  }
+
   @override
   void initState() {
     super.initState();
+    getNamePreference();
     Future.delayed(Duration(seconds: 5)).then((value) {
-      Navigator.pushNamed(context, "/identificacao");
+      Navigator.pushNamed(context, route);
     });
     _controller = AnimationController(
       duration: const Duration(seconds: 10),
