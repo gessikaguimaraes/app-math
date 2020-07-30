@@ -1,4 +1,6 @@
+import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:firebase_admob/firebase_admob.dart';
+import 'package:flutter/material.dart';
 
 class AdMobService {
   MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
@@ -34,13 +36,23 @@ class AdMobService {
     );
   }
 
-  InterstitialAd createInterstitialAd() {
+  InterstitialAd createInterstitialAd(BuildContext context) {
     return InterstitialAd(
       // adUnitId: InterstitialAd.testAdUnitId,
       adUnitId: "ca-app-pub-1556568734938950/9974842261",
       targetingInfo: targetingInfo,
       listener: (MobileAdEvent event) {
-        //print("InterstitialAd event is $event");
+        if (event == MobileAdEvent.opened ||
+            event == MobileAdEvent.failedToLoad)
+          Navigator.pushNamed(
+            context,
+            "/opcoes",
+            arguments: Parametros(
+              opcoes: [],
+              resultado: 0,
+              quantidade: 0,
+            ),
+          );
       },
     );
   }
@@ -51,8 +63,8 @@ class AdMobService {
       ..show();
   }
 
-  void mostrarInterstitial() {
-    interstitialAd = createInterstitialAd()
+  void mostrarInterstitial(BuildContext context) {
+    interstitialAd = createInterstitialAd(context)
       ..load()
       ..show(
         anchorType: AnchorType.bottom,

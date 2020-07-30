@@ -43,7 +43,7 @@ class _OpcoesPageState extends State<OpcoesPage> {
             direction: Axis.horizontal,
             children: <Widget>[
               Container(
-                height: size.height / 6,
+                height: size.height / 7,
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -66,13 +66,14 @@ class _OpcoesPageState extends State<OpcoesPage> {
                       child: Image.asset(
                         ImagesConst.ossoSoma,
                         semanticLabel: "Soma",
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),
                 ),
               ),
               Container(
-                height: size.height / 6,
+                height: size.height / 7,
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -95,13 +96,14 @@ class _OpcoesPageState extends State<OpcoesPage> {
                       child: Image.asset(
                         ImagesConst.ossoSubtracao,
                         semanticLabel: "Subtração",
+                        fit: BoxFit.fill,
                       ),
                     ),
                   ),
                 ),
               ),
               Container(
-                height: size.height / 6,
+                height: size.height / 7,
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -125,13 +127,14 @@ class _OpcoesPageState extends State<OpcoesPage> {
                       child: Image.asset(
                         ImagesConst.ossoMultiplicacao,
                         semanticLabel: "Multiplicação",
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),
                 ),
               ),
               Container(
-                height: size.height / 6,
+                height: size.height / 7,
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -154,6 +157,7 @@ class _OpcoesPageState extends State<OpcoesPage> {
                       child: Image.asset(
                         ImagesConst.ossoDivisao,
                         semanticLabel: "Divisão",
+                        fit: BoxFit.fill,
                       ),
                     ),
                   ),

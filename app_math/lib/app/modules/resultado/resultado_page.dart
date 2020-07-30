@@ -96,16 +96,16 @@ class _ResultadoPageState extends State<ResultadoPage> {
                   height: 100,
                   child: RaisedButton(
                     onPressed: () {
-                      AdMobService().mostrarInterstitial();
-                      Navigator.pushNamed(
-                        context,
-                        "/opcoes",
-                        arguments: Parametros(
-                          opcoes: [],
-                          resultado: 0,
-                          quantidade: 0,
-                        ),
-                      );
+                      AdMobService().mostrarInterstitial(context);
+                      // Navigator.pushNamed(
+                      //   context,
+                      //   "/opcoes",
+                      //   arguments: Parametros(
+                      //     opcoes: [],
+                      //     resultado: 0,
+                      //     quantidade: 0,
+                      //   ),
+                      // );
                     },
                     shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(15.0),

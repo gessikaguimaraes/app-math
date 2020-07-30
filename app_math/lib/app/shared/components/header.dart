@@ -47,6 +47,7 @@ class HeaderAppBar extends PreferredSize {
                       children: <Widget>[
                         Image(
                           image: AssetImage(ImagesConst.favicon),
+                          semanticLabel: "Logo do sistema",
                           height: 45,
                         ),
                         Text(

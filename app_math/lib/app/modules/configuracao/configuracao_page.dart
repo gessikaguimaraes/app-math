@@ -149,23 +149,24 @@ class _ConfiguracaoPageState extends State<ConfiguracaoPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  Container(
-                    child: RaisedButton(
-                      onPressed: () {},
-                      shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(15.0),
-                      ),
-                      color: widget.corButton,
-                      child: Text(
-                        "Avaliar",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   child: RaisedButton(
+                  //     onPressed: () {},
+                  //     shape: RoundedRectangleBorder(
+                  //       borderRadius: new BorderRadius.circular(15.0),
+                  //     ),
+                  //     color: widget.corButton,
+                  //     child: Text(
+                  //       "Avaliar",
+                  //       style: TextStyle(color: Colors.white, fontSize: 20),
+                  //     ),
+                  //   ),
+                  // ),
                   Container(
                     child: RaisedButton(
                       onPressed: () {
                         saveNome(_controladorNome.text);
+                        Navigator.pop(context, 'Lost');
                       },
                       shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(15.0),

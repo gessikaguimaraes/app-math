@@ -111,9 +111,8 @@ class _OperacaoPageState extends State<OperacaoPage> {
                 ),
               ),
               Image(
-                image: AssetImage(
-                  getImagem('$opcao'),
-                ),
+                image: AssetImage(getImagem('$opcao')),
+                semanticLabel: getSemanticLabel('$opcao'),
                 //fit: BoxFit.contain,
               ),
               Container(
@@ -216,6 +215,21 @@ getImagem(String tipoOperacao) {
       return ImagesConst.ossoSubtracao;
     default:
       return ImagesConst.ossoSoma;
+  }
+}
+
+getSemanticLabel(String tipoOperacao) {
+  switch (tipoOperacao) {
+    case TipoOperacaoConst.Soma:
+      return 'Soma';
+    case TipoOperacaoConst.Divisao:
+      return 'Divisão';
+    case TipoOperacaoConst.Multiplicacao:
+      return 'Multiplicação';
+    case TipoOperacaoConst.Substracao:
+      return 'Subtração';
+    default:
+      return 'Soma';
   }
 }
 

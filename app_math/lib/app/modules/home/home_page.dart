@@ -69,7 +69,10 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       Image(
                         // alignment: Alignment.topLeft,
-                        image: AssetImage(ImagesConst.favicon),
+                        image: AssetImage(
+                          ImagesConst.favicon,
+                        ),
+                        semanticLabel: "Logo do sistema",
                         //fit: BoxFit.fitHeight,
                         height: 60,
                       ),

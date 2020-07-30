@@ -77,7 +77,10 @@ class SpinningContainer extends AnimatedWidget {
       angle: _progress.value * 2.0 * math.pi,
       child: Container(
         alignment: Alignment.center,
-        child: Image.asset(ImagesConst.favicon),
+        child: Image.asset(
+          ImagesConst.favicon,
+          semanticLabel: "Logo do sistema",
+        ),
       ),
     );
   }
