@@ -1,4 +1,5 @@
 import 'package:app_math/app/modules/configuracao/configuracao_page.dart';
+import 'package:app_math/app/modules/desafio/desafio_operacao.dart';
 import 'package:app_math/app/shared/components/custom_appbar.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
@@ -184,15 +185,12 @@ class _HomePageState extends State<HomePage> {
                 child: Center(
                   child: GestureDetector(
                     onTap: () {
-                      /* Navigator.pushNamed(
+                      Navigator.push(
                         context,
-                        "/opcoes",
-                        arguments: Parametros(
-                          opcoes: [],
-                          resultado: 0,
-                          quantidade: 0,
+                        MaterialPageRoute(
+                          builder: (context) => DesafioOperacao(),
                         ),
-                      ); */
+                      );
                     },
                     child: Container(
                       height: 150.0,
