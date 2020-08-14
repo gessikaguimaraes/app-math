@@ -153,14 +153,14 @@ class _HomePageState extends State<HomePage> {
                       ); */
                   },
                   child: Container(
-                    height: 200.0,
-                    width: 200.0,
+                    height: 150.0,
+                    width: 150.0,
                     child: Center(
                       child: Text(
                         'Praticar',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 50,
+                          fontSize: 40,
                         ),
                       ),
                     ),
@@ -175,6 +175,49 @@ class _HomePageState extends State<HomePage> {
                           spreadRadius: 5.0,
                         ),
                       ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      /* Navigator.pushNamed(
+                        context,
+                        "/opcoes",
+                        arguments: Parametros(
+                          opcoes: [],
+                          resultado: 0,
+                          quantidade: 0,
+                        ),
+                      ); */
+                    },
+                    child: Container(
+                      height: 150.0,
+                      width: 150.0,
+                      child: Center(
+                        child: Text(
+                          'Desafio',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 40,
+                          ),
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.pink[800],
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.pink[900],
+                            blurRadius: 5.0,
+                            offset: Offset(5.0, 5.0),
+                            spreadRadius: 5.0,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

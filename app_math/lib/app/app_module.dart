@@ -2,10 +2,11 @@ import 'package:app_math/app/app_widget.dart';
 import 'package:app_math/app/modules/configuracao/configuracao_page.dart';
 import 'package:app_math/app/modules/home/home_page.dart';
 import 'package:app_math/app/modules/identificacao/identificacao_page.dart';
+import 'package:app_math/app/modules/praticar/opcoes_page.dart';
+import 'package:app_math/app/modules/praticar/operacao_page.dart';
+import 'package:app_math/app/modules/praticar/resultado_page.dart';
 import 'package:app_math/app/modules/splashScreen/splashScreen_page.dart';
-import 'package:app_math/app/modules/opcoes/opcoes_page.dart';
-import 'package:app_math/app/modules/operacoes/operacao_page.dart';
-import 'package:app_math/app/modules/resultado/resultado_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
