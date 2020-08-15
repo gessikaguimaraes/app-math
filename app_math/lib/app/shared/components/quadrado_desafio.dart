@@ -1,4 +1,5 @@
 import 'package:app_math/app/shared/models/parametros.dart';
+import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 
 class QuadradoDesafio extends StatefulWidget {
@@ -16,9 +17,23 @@ class QuadradoDesafio extends StatefulWidget {
 }
 
 class _QuadradoDesafioState extends State<QuadradoDesafio> {
+  AudioCache _audioCache = AudioCache(prefix: "audios/");
+
+  _executar(String nomeAudio) {
+    _audioCache.play(nomeAudio + ".wav");
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _audioCache.loadAll(["1"]);
+  }
+
   @override
   Widget build(BuildContext context) {
     final Parametros args = ModalRoute.of(context).settings.arguments;
+
+    print(args.resultado);
 
     return Expanded(
       child: Container(
@@ -26,7 +41,8 @@ class _QuadradoDesafioState extends State<QuadradoDesafio> {
         height: MediaQuery.of(context).size.height / 5,
         child: GestureDetector(
           onTap: () {
-            var resultado = args.resultado;
+            _executar("1");
+            /* var resultado = args.resultado;
             if (widget.resultadoOperacao.toString() == "${widget.numero}") {
               resultado++;
             }
@@ -50,7 +66,7 @@ class _QuadradoDesafioState extends State<QuadradoDesafio> {
                   quantidade: args.quantidade,
                 ),
               );
-            }
+            } */
           },
           child: Container(
             alignment: Alignment.center,

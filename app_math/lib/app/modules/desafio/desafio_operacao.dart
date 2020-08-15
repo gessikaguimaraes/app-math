@@ -3,12 +3,14 @@ import 'dart:math';
 
 import 'package:app_math/app/modules/desafio/tempo_esgotado.dart';
 import 'package:app_math/app/modules/praticar/operacao_page.dart';
+import 'package:app_math/app/shared/components/quadrado_desafio.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/tipoOperacao_const.dart';
 import 'package:app_math/app/shared/controlador/operacaoController.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 class DesafioOperacao extends StatefulWidget {
   @override
@@ -16,11 +18,16 @@ class DesafioOperacao extends StatefulWidget {
 }
 
 class _DesafioOperacaoState extends State<DesafioOperacao> {
+  AudioCache _audioCache = AudioCache(prefix: "audios/");
   //String valor = "1:00";
   //int _counter = 60;
   String valor = "0:10";
   int _counter = 10;
   Timer _timer;
+
+  _executar(String nomeAudio) {
+    _audioCache.play(nomeAudio + ".wav");
+  }
 
   @override
   void initState() {
@@ -147,18 +154,34 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        quadrado(context, parametros, numero3, cor1,
-                            resultadoOperacao),
-                        quadrado(context, parametros, numero4, cor2,
-                            resultadoOperacao),
+                        QuadradoDesafio(
+                          parametros: parametros,
+                          numero: numero3,
+                          cor: cor1,
+                          resultadoOperacao: resultadoOperacao,
+                        ),
+                        QuadradoDesafio(
+                          parametros: parametros,
+                          numero: numero4,
+                          cor: cor2,
+                          resultadoOperacao: resultadoOperacao,
+                        ),
                       ],
                     ),
                     Row(
                       children: <Widget>[
-                        quadrado(context, parametros, numero5, cor3,
-                            resultadoOperacao),
-                        quadrado(context, parametros, numero6, cor4,
-                            resultadoOperacao),
+                        QuadradoDesafio(
+                          parametros: parametros,
+                          numero: numero5,
+                          cor: cor3,
+                          resultadoOperacao: resultadoOperacao,
+                        ),
+                        QuadradoDesafio(
+                          parametros: parametros,
+                          numero: numero6,
+                          cor: cor4,
+                          resultadoOperacao: resultadoOperacao,
+                        ),
                       ],
                     ),
                   ],

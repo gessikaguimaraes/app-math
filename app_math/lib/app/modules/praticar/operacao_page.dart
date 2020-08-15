@@ -25,13 +25,11 @@ class _OperacaoPageState extends State<OperacaoPage> {
   @override
   void initState() {
     getQuantidadePreference().then(updateQuantidadeNumero);
-    AdMobService().mostrarBanner();
     super.initState();
   }
 
   @override
   void dispose() {
-    AdMobService().bannerAd.dispose();
     super.dispose();
   }
 
