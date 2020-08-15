@@ -22,13 +22,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    AdMobService().mostrarBanner();
+    // AdMobService().mostrarBanner();
     super.initState();
   }
 
   @override
   void dispose() {
-    AdMobService().bannerAd.dispose();
+    //AdMobService().bannerAd.dispose();
     super.dispose();
   }
 
