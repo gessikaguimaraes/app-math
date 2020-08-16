@@ -18,21 +18,22 @@ class DesafioOperacao extends StatefulWidget {
 }
 
 class _DesafioOperacaoState extends State<DesafioOperacao> {
-  AudioCache _audioCache = AudioCache(prefix: "audios/");
+  AudioCache audioCache = AudioCache(prefix: "audios/");
   //String valor = "1:00";
   //int _counter = 60;
   String valor = "0:10";
   int _counter = 10;
   Timer _timer;
 
-  _executar(String nomeAudio) {
-    _audioCache.play(nomeAudio + ".wav");
+  executar(String nomeAudio) {
+    audioCache.play(nomeAudio + ".wav");
   }
 
   @override
   void initState() {
     super.initState();
     // _startTime();
+    audioCache.loadAll(["Trombone.wav"]);
   }
 
   void _startTime() {
@@ -154,7 +155,31 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        QuadradoDesafio(
+                        Container(
+                          width: MediaQuery.of(context).size.width / 2,
+                          height: MediaQuery.of(context).size.height / 5,
+                          child: GestureDetector(
+                            onTap: () {
+                              executar("Trombone");
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: cor1,
+                                borderRadius: const BorderRadius.all(
+                                  const Radius.circular(8),
+                                ),
+                              ),
+                              margin: const EdgeInsets.all(6),
+                              child: Text(
+                                "$numero3",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 40),
+                              ),
+                            ),
+                          ),
+                        ),
+                        /*  QuadradoDesafio(
                           parametros: parametros,
                           numero: numero3,
                           cor: cor1,
@@ -165,12 +190,12 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
                           numero: numero4,
                           cor: cor2,
                           resultadoOperacao: resultadoOperacao,
-                        ),
+                        ), */
                       ],
                     ),
                     Row(
                       children: <Widget>[
-                        QuadradoDesafio(
+                        /* QuadradoDesafio(
                           parametros: parametros,
                           numero: numero5,
                           cor: cor3,
@@ -181,7 +206,7 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
                           numero: numero6,
                           cor: cor4,
                           resultadoOperacao: resultadoOperacao,
-                        ),
+                        ), */
                       ],
                     ),
                   ],
