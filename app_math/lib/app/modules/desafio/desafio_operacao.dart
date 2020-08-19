@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:app_math/app/modules/configuracao/configuracao_page.dart';
 import 'package:app_math/app/modules/desafio/tempo_esgotado.dart';
 import 'package:app_math/app/modules/praticar/operacao_page.dart';
 import 'package:app_math/app/shared/components/quadrado_desafio.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
+import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:app_math/app/shared/const/tipoOperacao_const.dart';
 import 'package:app_math/app/shared/controlador/operacaoController.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
@@ -30,10 +32,10 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
   bool isGameOver = false;
 
   num correctAns;
-  String res = '';
 
   Timer _timer;
   int _start = 60;
+  String tempo = "1:00";
 
   @override
   void initState() {
@@ -65,26 +67,10 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
         }
       }
     }
-    //question = '$numero1 / $numero2';
     question = operadorController.getConta(numero1, numero2, operacao, opcao);
     correctAns = operadorController.getResutado(numero1, numero2, opcao);
-    //int correctAnsLocation = random.nextInt(4);
-    //int incorrectAns;
-
-    //first clear optionList
     optionList.clear();
     optionList = operadorController.getRadomQuadrado(correctAns, 9);
-    /* for (int i = 0; i < 4; i++) {
-      if (i == correctAnsLocation) optionList.add(correctAns);
-
-      incorrectAns = random.nextInt(20);
-      while (correctAns == incorrectAns) {
-        incorrectAns = random.nextInt(20);
-      }
-
-      optionList.add(incorrectAns);
-    }
- */
     listaCores = operadorController.getCoresAleatoria();
   }
 
@@ -119,6 +105,9 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
   }
 
   startCountDown() {
+    String conta = "";
+    int contaDigitos = 0;
+    String i = "";
     const oneSec = const Duration(seconds: 1);
     _timer = Timer.periodic(oneSec, (timer) {
       setState(() {
@@ -127,6 +116,12 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
           gameOver();
         } else {
           _start = _start - 1;
+          conta = _start.toString();
+          contaDigitos = conta.length;
+          if (contaDigitos != 2) {
+            i = "0";
+          }
+          tempo = "0:" + i + conta;
         }
       });
     });
@@ -134,7 +129,8 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
 
   gameOver() {
     isGameOver = true;
-    res = '$numOfCorrectAns / $totalQuesAsk';
+    playAgain();
+    //res = '$numOfCorrectAns / $totalQuesAsk';
     //also disable optionalAnswer selection
   }
 
@@ -142,22 +138,34 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding:
-              EdgeInsets.only(left: 15.0, right: 15.0, top: 25, bottom: 25),
-          child: Container(
-            child: Column(
-              children: [
-                topRow(),
-                Image(
-                  image: AssetImage(getImagem('$opcao')),
-                  semanticLabel: getSemanticLabel('$opcao'),
-                ),
-                questionWidget(),
-                optionalAnswers(),
-                // result(),
-                //playAgain()
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                ColorConst.azulClaro,
+                ColorConst.verde,
               ],
+            ),
+          ),
+          child: Padding(
+            padding:
+                EdgeInsets.only(left: 15.0, right: 15.0, top: 25, bottom: 25),
+            child: Container(
+              child: Column(
+                children: [
+                  topRow(),
+                  Image(
+                    image: AssetImage(getImagem('$opcao')),
+                    semanticLabel: getSemanticLabel('$opcao'),
+                  ),
+                  questionWidget(),
+                  optionalAnswers(),
+                  // result(),
+                  // playAgain(),
+                ],
+              ),
             ),
           ),
         ),
@@ -170,17 +178,18 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          color: Color.fromARGB(255, 159, 102, 123),
+          color: ColorConst.roxoEscuro,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              _start.toString(),
+              //_start.toString(),
+              tempo,
               style: textStyle1,
             ),
           ),
         ),
         Container(
-          color: Color.fromARGB(255, 159, 102, 123),
+          color: ColorConst.roxoEscuro,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
@@ -218,7 +227,7 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
           return Center(
             child: GestureDetector(
               onTap: () {
-                executar("Trombone");
+                //executar("Trombone");
                 if (!isGameOver) {
                   print(optionList[index].toString());
                   checkAnswer(index);
@@ -245,17 +254,17 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
     );
   }
 
-  result() {
-    return Center(
-      child: Text(
-        res,
-        style: textStyle1,
+  playAgain() {
+    showDialog(
+      context: context,
+      builder: (_) => TempoEsgotado(
+        cor: ColorConst.azulClaro,
+        corButton: ColorConst.azulClaro,
+        totalQuestions: '$totalQuesAsk',
+        qtdAcerto: '$numOfCorrectAns',
       ),
     );
-  }
-
-  playAgain() {
-    return Visibility(
+    /*  return Visibility(
       visible: isGameOver,
       child: RaisedButton(
         onPressed: () {
@@ -271,16 +280,13 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
           ),
         ),
       ),
-    );
+    );*/
   }
 
   checkAnswer(int index) {
     setState(() {
       if (optionList[index] == correctAns) {
-        res = 'Correct';
         numOfCorrectAns++;
-      } else {
-        res = 'Incorrect';
       }
 
       totalQuesAsk++;
@@ -293,9 +299,9 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
       numOfCorrectAns = 0;
       totalQuesAsk = 0;
       isGameOver = false;
-      res = '';
       generateQuestion();
       _start = 60;
+      tempo = "1:00";
       startCountDown();
     });
   }

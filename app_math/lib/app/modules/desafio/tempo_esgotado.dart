@@ -1,10 +1,15 @@
+import 'package:app_math/app/modules/desafio/desafio_operacao.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TempoEsgotado extends StatefulWidget {
-  TempoEsgotado({Key key, this.cor, this.corButton}) : super(key: key);
+  TempoEsgotado(
+      {Key key, this.cor, this.corButton, this.totalQuestions, this.qtdAcerto})
+      : super(key: key);
   final Color cor;
   final Color corButton;
+  final String totalQuestions;
+  final String qtdAcerto;
 
   @override
   _TempoEsgotadoState createState() => _TempoEsgotadoState();
@@ -20,7 +25,7 @@ class _TempoEsgotadoState extends State<TempoEsgotado> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.0),
       ),
-      //backgroundColor: widget.cor,
+      backgroundColor: widget.cor,
       title: Text(
         "Tempo Esgotado",
         textAlign: TextAlign.center,
@@ -38,25 +43,46 @@ class _TempoEsgotadoState extends State<TempoEsgotado> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Container(
-                    child: RaisedButton(
-                      onPressed: () {
-                        Navigator.pop(context, 'Lost');
-                      },
-                      shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(15.0),
+              Container(
+                child: Text(
+                  "Você acertou ${widget.qtdAcerto} de ${widget.totalQuestions}",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+              Container(
+                child: RaisedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DesafioOperacao(),
                       ),
-                      //color: widget.corButton,
-                      child: Text(
-                        "Salvar",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                    ),
+                    );
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
                   ),
-                ],
+                  color: widget.corButton,
+                  child: Text(
+                    "Jogar Novamente",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ),
+              ),
+              Container(
+                child: RaisedButton(
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, "/home");
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(15.0),
+                  ),
+                  color: widget.corButton,
+                  child: Text(
+                    "Voltar para o menu",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ),
               ),
             ],
           ),
