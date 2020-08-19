@@ -19,24 +19,76 @@ class DesafioOperacao extends StatefulWidget {
 
 class _DesafioOperacaoState extends State<DesafioOperacao> {
   AudioCache audioCache = AudioCache(prefix: "audios/");
-  //String valor = "1:00";
-  //int _counter = 60;
-  String valor = "0:10";
-  int _counter = 10;
-  Timer _timer;
+  TextStyle textStyle1 = TextStyle(fontSize: 22);
 
-  executar(String nomeAudio) {
-    audioCache.play(nomeAudio + ".wav");
-  }
+  String opcao = "";
+  String question = '';
+  List<num> optionList = List();
+  List<Color> listaCores = List();
+  int numOfCorrectAns = 0;
+  int totalQuesAsk = 0;
+  bool isGameOver = false;
+
+  num correctAns;
+  String res = '';
+
+  Timer _timer;
+  int _start = 60;
 
   @override
   void initState() {
+    generateQuestion();
+    startCountDown();
     super.initState();
-    // _startTime();
     audioCache.loadAll(["Trombone.wav"]);
   }
 
-  void _startTime() {
+  generateQuestion() {
+    Random random = Random();
+    int numero1 = random.nextInt(10);
+    int numero2 = random.nextInt(10);
+
+    OperadorController operadorController = OperadorController();
+    final List<String> listaOpcao = [
+      TipoOperacaoConst.Soma,
+      TipoOperacaoConst.Substracao,
+      TipoOperacaoConst.Multiplicacao,
+      TipoOperacaoConst.Divisao
+    ];
+
+    opcao = listaOpcao[Random().nextInt(4)];
+    String operacao = operadorController.getOperacao(numero1, numero2, opcao);
+    if (operacao == " / ") {
+      if (numero1 == 0 && numero2 == 0) {
+        while (numero1 == 0) {
+          numero1 = new Random().nextInt(9);
+        }
+      }
+    }
+    //question = '$numero1 / $numero2';
+    question = operadorController.getConta(numero1, numero2, operacao, opcao);
+    correctAns = operadorController.getResutado(numero1, numero2, opcao);
+    //int correctAnsLocation = random.nextInt(4);
+    //int incorrectAns;
+
+    //first clear optionList
+    optionList.clear();
+    optionList = operadorController.getRadomQuadrado(correctAns, 9);
+    /* for (int i = 0; i < 4; i++) {
+      if (i == correctAnsLocation) optionList.add(correctAns);
+
+      incorrectAns = random.nextInt(20);
+      while (correctAns == incorrectAns) {
+        incorrectAns = random.nextInt(20);
+      }
+
+      optionList.add(incorrectAns);
+    }
+ */
+    listaCores = operadorController.getCoresAleatoria();
+  }
+
+  /* void _startTime() {
     String conta = "";
     int contaDigitos = 0;
     String i = "";
@@ -61,215 +113,190 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
       });
     });
   }
+   */
+  executar(String nomeAudio) {
+    audioCache.play(nomeAudio + ".wav");
+  }
 
-  OperadorController operadorController = OperadorController();
+  startCountDown() {
+    const oneSec = const Duration(seconds: 1);
+    _timer = Timer.periodic(oneSec, (timer) {
+      setState(() {
+        if (_start < 1) {
+          timer.cancel();
+          gameOver();
+        } else {
+          _start = _start - 1;
+        }
+      });
+    });
+  }
+
+  gameOver() {
+    isGameOver = true;
+    res = '$numOfCorrectAns / $totalQuesAsk';
+    //also disable optionalAnswer selection
+  }
 
   @override
   Widget build(BuildContext context) {
-    final List<String> listaOpcao = [
-      TipoOperacaoConst.Soma,
-      TipoOperacaoConst.Substracao,
-      TipoOperacaoConst.Multiplicacao,
-      TipoOperacaoConst.Divisao
-    ];
-
-    int numero1 = new Random().nextInt(9);
-    int numero2 = new Random().nextInt(9);
-    String opcao = listaOpcao[Random().nextInt(4)];
-    String operacao = operadorController.getOperacao(numero1, numero2, opcao);
-    if (operacao == " / ") {
-      if (numero1 == 0 && numero2 == 0) {
-        while (numero1 == 0) {
-          numero1 = new Random().nextInt(9);
-        }
-      }
-    }
-    num resultadoOperacao =
-        operadorController.getResutado(numero1, numero2, opcao);
-
-    List<Color> listaCores = operadorController.getCoresAleatoria();
-    Color cor1 = listaCores[0];
-    Color cor2 = listaCores[1];
-    Color cor3 = listaCores[2];
-    Color cor4 = listaCores[3];
-
-    List<num> lista = operadorController.getRadomQuadrado(resultadoOperacao, 9);
-    num numero3 = lista[0];
-    num numero4 = lista[1];
-    num numero5 = lista[2];
-    num numero6 = lista[3];
-
-    String conta =
-        operadorController.getConta(numero1, numero2, operacao, opcao);
-    Parametros parametros;
-
-    return WillPopScope(
-      onWillPop: () {
-        Navigator.pushReplacementNamed(context, "/home");
-      },
+    return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.pink[300],
-        body: Container(
-          child: Column(
-            children: <Widget>[
-              Center(
-                child: Text(
-                  valor,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 40,
-                  ),
+        body: Padding(
+          padding:
+              EdgeInsets.only(left: 15.0, right: 15.0, top: 25, bottom: 25),
+          child: Container(
+            child: Column(
+              children: [
+                topRow(),
+                Image(
+                  image: AssetImage(getImagem('$opcao')),
+                  semanticLabel: getSemanticLabel('$opcao'),
                 ),
-              ),
-              Container(
-                color: ColorConst.roxoClaro,
-                child: Text(
-                  "10",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Image(
-                image: AssetImage(getImagem('$opcao')),
-                semanticLabel: getSemanticLabel('$opcao'),
-                //fit: BoxFit.contain,
-              ),
-              Container(
-                padding: const EdgeInsets.all(0),
-                width: MediaQuery.of(context).size.width - 10,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: ColorConst.vermelho,
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                ),
-                child: Text(
-                  '$conta',
-                  style: TextStyle(color: Colors.white, fontSize: 50),
-                ),
-              ),
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          width: MediaQuery.of(context).size.width / 2,
-                          height: MediaQuery.of(context).size.height / 5,
-                          child: GestureDetector(
-                            onTap: () {
-                              executar("Trombone");
-                            },
-                            child: Container(
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: cor1,
-                                borderRadius: const BorderRadius.all(
-                                  const Radius.circular(8),
-                                ),
-                              ),
-                              margin: const EdgeInsets.all(6),
-                              child: Text(
-                                "$numero3",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 40),
-                              ),
-                            ),
-                          ),
-                        ),
-                        /*  QuadradoDesafio(
-                          parametros: parametros,
-                          numero: numero3,
-                          cor: cor1,
-                          resultadoOperacao: resultadoOperacao,
-                        ),
-                        QuadradoDesafio(
-                          parametros: parametros,
-                          numero: numero4,
-                          cor: cor2,
-                          resultadoOperacao: resultadoOperacao,
-                        ), */
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        /* QuadradoDesafio(
-                          parametros: parametros,
-                          numero: numero5,
-                          cor: cor3,
-                          resultadoOperacao: resultadoOperacao,
-                        ),
-                        QuadradoDesafio(
-                          parametros: parametros,
-                          numero: numero6,
-                          cor: cor4,
-                          resultadoOperacao: resultadoOperacao,
-                        ), */
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              /* (_counter > 0
-                  ? Text("")
-                  : SimpleDialog(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      //backgroundColor: widget.cor,
-                      title: Text(
-                        "Que pena seu tempo acabou, tente novamente",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.pacifico(
-                          color: Colors.black87,
-                          letterSpacing: 1,
-                          fontSize: 30,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                      children: <Widget>[
-                        Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  Container(
-                                    child: RaisedButton(
-                                      onPressed: () {
-                                        Navigator.pop(context, 'Lost');
-                                      },
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            new BorderRadius.circular(15.0),
-                                      ),
-                                      color: Colors.blueAccent,
-                                      child: Text(
-                                        "Jogar Novamente",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    )), */
-            ],
+                questionWidget(),
+                optionalAnswers(),
+                // result(),
+                //playAgain()
+              ],
+            ),
           ),
         ),
       ),
     );
+  }
+
+  topRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          color: Color.fromARGB(255, 159, 102, 123),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              _start.toString(),
+              style: textStyle1,
+            ),
+          ),
+        ),
+        Container(
+          color: Color.fromARGB(255, 159, 102, 123),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              '$numOfCorrectAns/$totalQuesAsk',
+              style: textStyle1,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  questionWidget() {
+    return Container(
+      padding: const EdgeInsets.all(0),
+      width: MediaQuery.of(context).size.width - 10,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: ColorConst.vermelho,
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+      child: Text(
+        question,
+        style: TextStyle(color: Colors.white, fontSize: 50),
+      ),
+    );
+  }
+
+  optionalAnswers() {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height / 2,
+      child: GridView.count(
+        crossAxisCount: 2,
+        children: List.generate(4, (index) {
+          return Center(
+            child: GestureDetector(
+              onTap: () {
+                executar("Trombone");
+                if (!isGameOver) {
+                  print(optionList[index].toString());
+                  checkAnswer(index);
+                }
+              },
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: listaCores[index],
+                  borderRadius: const BorderRadius.all(
+                    const Radius.circular(8),
+                  ),
+                ),
+                margin: const EdgeInsets.all(6),
+                child: Text(
+                  optionList[index].toString(),
+                  style: TextStyle(color: Colors.white, fontSize: 40),
+                ),
+              ),
+            ),
+          );
+        }),
+      ),
+    );
+  }
+
+  result() {
+    return Center(
+      child: Text(
+        res,
+        style: textStyle1,
+      ),
+    );
+  }
+
+  playAgain() {
+    return Visibility(
+      visible: isGameOver,
+      child: RaisedButton(
+        onPressed: () {
+          print('play again');
+          startGame();
+        },
+        color: Color.fromARGB(255, 214, 215, 215),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'PLAY AGAIN',
+            style: textStyle1,
+          ),
+        ),
+      ),
+    );
+  }
+
+  checkAnswer(int index) {
+    setState(() {
+      if (optionList[index] == correctAns) {
+        res = 'Correct';
+        numOfCorrectAns++;
+      } else {
+        res = 'Incorrect';
+      }
+
+      totalQuesAsk++;
+      generateQuestion();
+    });
+  }
+
+  startGame() {
+    setState(() {
+      numOfCorrectAns = 0;
+      totalQuesAsk = 0;
+      isGameOver = false;
+      res = '';
+      generateQuestion();
+      _start = 60;
+      startCountDown();
+    });
   }
 }

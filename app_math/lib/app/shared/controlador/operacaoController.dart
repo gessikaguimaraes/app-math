@@ -127,7 +127,7 @@ class OperadorController {
 
   getCoresAleatoria() {
     final List<Color> listaCores = [
-      //ColorConst.amarelo,
+      ColorConst.amarelo,
       ColorConst.azulClaro,
       ColorConst.azulEscuro,
       ColorConst.laranja,
