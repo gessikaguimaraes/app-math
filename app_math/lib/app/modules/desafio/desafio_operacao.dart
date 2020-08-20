@@ -45,6 +45,12 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
     audioCache.loadAll(["Trombone.wav"]);
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    _timer.cancel();
+  }
+
   generateQuestion() {
     Random random = Random();
     int numero1 = random.nextInt(10);
@@ -74,32 +80,6 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
     listaCores = operadorController.getCoresAleatoria();
   }
 
-  /* void _startTime() {
-    String conta = "";
-    int contaDigitos = 0;
-    String i = "";
-    // _counter = 60;
-    _counter = 10;
-    if (_timer != null) {
-      _timer.cancel();
-    }
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_counter > 0) {
-          _counter--;
-          conta = _counter.toString();
-          contaDigitos = conta.length;
-          if (contaDigitos != 2) {
-            i = "0";
-          }
-          valor = "0:" + i + conta;
-        } else {
-          _timer.cancel();
-        }
-      });
-    });
-  }
-   */
   executar(String nomeAudio) {
     audioCache.play(nomeAudio + ".wav");
   }
@@ -130,41 +110,44 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
   gameOver() {
     isGameOver = true;
     playAgain();
-    //res = '$numOfCorrectAns / $totalQuesAsk';
-    //also disable optionalAnswer selection
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                ColorConst.azulClaro,
-                ColorConst.verde,
-              ],
-            ),
-          ),
-          child: Padding(
-            padding:
-                EdgeInsets.only(left: 15.0, right: 15.0, top: 25, bottom: 25),
-            child: Container(
-              child: Column(
-                children: [
-                  topRow(),
-                  Image(
-                    image: AssetImage(getImagem('$opcao')),
-                    semanticLabel: getSemanticLabel('$opcao'),
-                  ),
-                  questionWidget(),
-                  optionalAnswers(),
-                  // result(),
-                  // playAgain(),
+    return WillPopScope(
+      onWillPop: () {
+        Navigator.pushReplacementNamed(context, "/home");
+      },
+      child: SafeArea(
+        child: Scaffold(
+          body: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+                  ColorConst.azulClaro,
+                  ColorConst.verde,
                 ],
+              ),
+            ),
+            child: Padding(
+              padding:
+                  EdgeInsets.only(left: 15.0, right: 15.0, top: 5, bottom: 5),
+              child: Container(
+                child: Column(
+                  children: [
+                    topRow(),
+                    Image(
+                      image: AssetImage(getImagem('$opcao')),
+                      semanticLabel: getSemanticLabel('$opcao'),
+                    ),
+                    questionWidget(),
+                    optionalAnswers(),
+                    // result(),
+                    // playAgain(),
+                  ],
+                ),
               ),
             ),
           ),
@@ -220,7 +203,8 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
 
   optionalAnswers() {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 2,
+      //height: MediaQuery.of(context).size.height / 2,
+      height: 400,
       child: GridView.count(
         crossAxisCount: 2,
         children: List.generate(4, (index) {
@@ -229,7 +213,6 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
               onTap: () {
                 //executar("Trombone");
                 if (!isGameOver) {
-                  print(optionList[index].toString());
                   checkAnswer(index);
                 }
               },
@@ -259,28 +242,11 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
       context: context,
       builder: (_) => TempoEsgotado(
         cor: ColorConst.azulClaro,
-        corButton: ColorConst.azulClaro,
+        corButton: ColorConst.roxoEscuro,
         totalQuestions: '$totalQuesAsk',
         qtdAcerto: '$numOfCorrectAns',
       ),
     );
-    /*  return Visibility(
-      visible: isGameOver,
-      child: RaisedButton(
-        onPressed: () {
-          print('play again');
-          startGame();
-        },
-        color: Color.fromARGB(255, 214, 215, 215),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            'PLAY AGAIN',
-            style: textStyle1,
-          ),
-        ),
-      ),
-    );*/
   }
 
   checkAnswer(int index) {
