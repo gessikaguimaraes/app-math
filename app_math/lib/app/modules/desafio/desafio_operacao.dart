@@ -1,17 +1,12 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:app_math/app/modules/configuracao/configuracao_page.dart';
 import 'package:app_math/app/modules/desafio/tempo_esgotado.dart';
 import 'package:app_math/app/modules/praticar/operacao_page.dart';
-import 'package:app_math/app/shared/components/quadrado_desafio.dart';
 import 'package:app_math/app/shared/const/color_const.dart';
-import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:app_math/app/shared/const/tipoOperacao_const.dart';
 import 'package:app_math/app/shared/controlador/operacaoController.dart';
-import 'package:app_math/app/shared/models/parametros.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:audioplayers/audio_cache.dart';
 
 class DesafioOperacao extends StatefulWidget {
@@ -203,8 +198,7 @@ class _DesafioOperacaoState extends State<DesafioOperacao> {
 
   optionalAnswers() {
     return SizedBox(
-      //height: MediaQuery.of(context).size.height / 2,
-      height: 400,
+      height: MediaQuery.of(context).size.height / 2,
       child: GridView.count(
         crossAxisCount: 2,
         children: List.generate(4, (index) {

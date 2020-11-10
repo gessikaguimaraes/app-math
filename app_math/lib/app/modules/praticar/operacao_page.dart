@@ -4,7 +4,6 @@ import 'package:app_math/app/shared/const/color_const.dart';
 import 'package:app_math/app/shared/const/images_const.dart';
 import 'package:app_math/app/shared/const/tipoOperacao_const.dart';
 import 'package:app_math/app/shared/models/parametros.dart';
-import 'package:app_math/app/shared/services/admob_service.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

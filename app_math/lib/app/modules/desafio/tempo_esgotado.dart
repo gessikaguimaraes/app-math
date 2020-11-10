@@ -1,4 +1,5 @@
 import 'package:app_math/app/modules/desafio/desafio_operacao.dart';
+import 'package:app_math/app/shared/services/admob_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -72,7 +73,7 @@ class _TempoEsgotadoState extends State<TempoEsgotado> {
               Container(
                 child: RaisedButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, "/home");
+                    AdMobService().mostrarInterstitialHome(context, "/home");
                   },
                   shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(15.0),

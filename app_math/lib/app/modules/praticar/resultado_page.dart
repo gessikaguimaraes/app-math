@@ -117,6 +117,23 @@ class _ResultadoPageState extends State<ResultadoPage> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  width: 200,
+                  height: 100,
+                  child: RaisedButton(
+                    onPressed: () {
+                      AdMobService().mostrarInterstitialHome(context, "/home");
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(15.0),
+                    ),
+                    color: ColorConst.azulEscuro,
+                    child: Text(
+                      "Voltar para o menu",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
